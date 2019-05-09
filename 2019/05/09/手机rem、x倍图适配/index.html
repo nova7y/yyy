@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>手机rem、x倍图适配 | Hexo</title>
+  <meta name="description" content="rem计算参考 vm+rem：参考 123456789101112131415161718192021222324252627282930// .scss预编译// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推$vm_fontsize: 75; // iPhone 6尺寸的根元素大小基准值@function rem($p">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机rem、x倍图适配">
+<meta property="og:url" content="/2019/05/09/手机rem、x倍图适配/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="rem计算参考 vm+rem：参考 123456789101112131415161718192021222324252627282930// .scss预编译// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推$vm_fontsize: 75; // iPhone 6尺寸的根元素大小基准值@function rem($p">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-09T03:10:08.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手机rem、x倍图适配">
+<meta name="twitter:description" content="rem计算参考 vm+rem：参考 123456789101112131415161718192021222324252627282930// .scss预编译// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推$vm_fontsize: 75; // iPhone 6尺寸的根元素大小基准值@function rem($p">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/09/手机rem、x倍图适配/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/扩展阅读/">扩展阅读</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/React/">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/前端/">前端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/扩展阅读/">扩展阅读</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13px;">扩展阅读</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">五月 2019</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/React/">React</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/React - 基础/" class="title">React - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:15:24.626Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/前端/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/手机rem、x倍图适配/" class="title">手机rem、x倍图适配</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:11:41.902Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/webpack/">webpack</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/webpack - 基础/" class="title">webpack - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:11:41.887Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/扩展阅读/">扩展阅读</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/雅虎前端优化35条规则/" class="title">雅虎前端优化35条规则</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:03:30.349Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/07/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-07T10:06:43.794Z" itemprop="datePublished">2019-05-07</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#rem计算"><span class="toc-number">1.</span> <span class="toc-text">rem计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vm-rem："><span class="toc-number">1.0.1.</span> <span class="toc-text">vm+rem：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#标准rem方案："><span class="toc-number">1.0.2.</span> <span class="toc-text">标准rem方案：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他rem："><span class="toc-number">1.0.3.</span> <span class="toc-text">其他rem：</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#倍图适配方法"><span class="toc-number">2.</span> <span class="toc-text">倍图适配方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#普通图片："><span class="toc-number">2.1.</span> <span class="toc-text">普通图片：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#js-img异步加载图片"><span class="toc-number">2.1.1.</span> <span class="toc-text">js+img异步加载图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#srcset-标签"><span class="toc-number">2.1.2.</span> <span class="toc-text">srcset 标签</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背景图片："><span class="toc-number">2.2.</span> <span class="toc-text">背景图片：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#media-query"><span class="toc-number">2.2.1.</span> <span class="toc-text">media query</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#横、竖屏："><span class="toc-number">3.</span> <span class="toc-text">横、竖屏：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JS检测横竖屏"><span class="toc-number">3.0.1.</span> <span class="toc-text">JS检测横竖屏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS判断横竖屏"><span class="toc-number">3.0.2.</span> <span class="toc-text">CSS判断横竖屏</span></a></li></ol></li>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-手机rem、x倍图适配" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      手机rem、x倍图适配
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/09/手机rem、x倍图适配/" class="article-date">
+	  <time datetime="2019-05-09T03:11:41.902Z" itemprop="datePublished">2019-05-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/前端/">前端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/前端/">前端</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/手机rem、x倍图适配/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="rem计算"><a href="#rem计算" class="headerlink" title="rem计算"></a>rem计算</h2><p><a href="https://blog.csdn.net/gao531162436/article/details/81699313" target="_blank" rel="noopener">参考</a></p>
+<h4 id="vm-rem："><a href="#vm-rem：" class="headerlink" title="vm+rem："></a>vm+rem：</h4><p><a href="http://caibaojian.com/vw-vh.html" target="_blank" rel="noopener">参考</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .scss预编译</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推</span></span><br><span class="line">$vm_fontsize: <span class="number">75</span>; <span class="comment">// iPhone 6尺寸的根元素大小基准值</span></span><br><span class="line">@<span class="function"><span class="keyword">function</span> <span class="title">rem</span>(<span class="params">$px</span>) </span>&#123;</span><br><span class="line">     @<span class="keyword">return</span> ($px / $vm_fontsize ) * <span class="number">1</span>rem;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 根元素大小使用 vw 单位</span></span><br><span class="line">$vm_design: <span class="number">750</span>;</span><br><span class="line">html &#123;</span><br><span class="line">    font-size: ($vm_fontsize / ($vm_design / <span class="number">2</span>)) * <span class="number">100</span>vw; </span><br><span class="line">    <span class="comment">// 同时，通过Media Queries 限制根元素最大最小值</span></span><br><span class="line">    @media screen and (max-width: <span class="number">320</span>px) &#123;</span><br><span class="line">        font-size: <span class="number">64</span>px;</span><br><span class="line">    &#125;</span><br><span class="line">    @media screen and (min-width: <span class="number">540</span>px) &#123;</span><br><span class="line">        font-size: <span class="number">108</span>px;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// body增加宽度限制，避免默认100%宽度的 block 元素跟随 body 而过大过小</span></span><br><span class="line">body &#123;</span><br><span class="line">    max-width: <span class="number">540</span>px;</span><br><span class="line">    min-width: <span class="number">320</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line">div &#123;</span><br><span class="line">    height: rem(<span class="number">300</span>);</span><br><span class="line">    width: rem(<span class="number">300</span>);</span><br><span class="line">    background: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="标准rem方案："><a href="#标准rem方案：" class="headerlink" title="标准rem方案："></a>标准rem方案：</h4><ul>
+<li>动态获取屏幕宽度 并赋予font-size</li>
+<li>应对于各视口+横竖屏</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//获取手机屏幕宽度</span></span><br><span class="line"><span class="keyword">var</span> deviceWidth = <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line"><span class="comment">//动态设置html的font-size</span></span><br><span class="line"><span class="built_in">document</span>.documentElement.style.fontSize = deviceWidth / <span class="number">6.4</span>	+ <span class="string">'px'</span>;</span><br><span class="line"><span class="comment">//设计稿基准640px则：640/100=6.4</span></span><br><span class="line"><span class="comment">//页面元素rem = 设计稿尺寸 / 100 rem</span></span><br></pre></td></tr></table></figure>
+<h4 id="其他rem："><a href="#其他rem：" class="headerlink" title="其他rem："></a>其他rem：</h4><p>背景：在 <code>1080px</code> 的视觉稿中，左上角有个logo，宽度是 <code>180px</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width"</span>&gt; <span class="comment">//最低设置</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//获取手机屏幕宽度</span></span><br><span class="line"><span class="keyword">var</span> deviceWidth = <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line"><span class="comment">//动态设置html的font-size</span></span><br><span class="line"><span class="built_in">document</span>.documentElement.style.fontSize = deviceWidth + <span class="string">'px'</span>;</span><br></pre></td></tr></table></figure>
+<p>sass</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义方法：calc</span></span><br><span class="line">@<span class="function"><span class="keyword">function</span> <span class="title">calc</span>(<span class="params">$val</span>)</span>&#123;</span><br><span class="line">    @<span class="keyword">return</span> $val / <span class="number">1080</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.logo&#123;</span><br><span class="line">    width : calc(<span class="number">180</span>rem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="倍图适配方法"><a href="#倍图适配方法" class="headerlink" title="倍图适配方法"></a>倍图适配方法</h2><h3 id="普通图片："><a href="#普通图片：" class="headerlink" title="普通图片："></a>普通图片：</h3><h4 id="js-img异步加载图片"><a href="#js-img异步加载图片" class="headerlink" title="js+img异步加载图片"></a>js+img异步加载图片</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;img id=<span class="string">"img"</span> data-src1x=<span class="string">"xxx@1x.jpg"</span> data-src2x=<span class="string">"xxx@2x.jpg"</span> data-src3x=<span class="string">"xxx@3x.jpg"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> dpr = <span class="built_in">window</span>.devicePixelRatio;</span><br><span class="line"><span class="keyword">if</span>(dpr &gt; <span class="number">3</span>)&#123;</span><br><span class="line">    dpr = <span class="number">3</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> imgSrc = $(<span class="string">'#img'</span>).data(<span class="string">'src'</span>+dpr+<span class="string">'x'</span>);</span><br><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.src = imgSrc;</span><br><span class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params">imgObj</span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'#img'</span>).remove().prepend(imgObj);<span class="comment">//替换img对象</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="srcset-标签"><a href="#srcset-标签" class="headerlink" title="srcset 标签"></a><code>srcset</code> 标签</h4><blockquote>
+<p>基于WebKit特性srcset</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">"1.jpg"</span> srcset=<span class="string">"2.jpg 2x, 3.jpg 3x"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="http://developer.51cto.com/art/201309/410720.htm" target="_blank" rel="noopener">参考</a></p>
+<h3 id="背景图片："><a href="#背景图片：" class="headerlink" title="背景图片："></a>背景图片：</h3><h4 id="media-query"><a href="#media-query" class="headerlink" title="media query"></a>media query</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 普通显示屏(设备像素比例小于等于1)使用1倍的图 */</span></span><br><span class="line">.css&#123;</span><br><span class="line">    background-image: url(img_1x.png);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 高清显示屏(设备像素比例大于等于2)使用2倍图  */</span></span><br><span class="line">@media only screen and (-webkit-min-device-pixel-ratio:<span class="number">2</span>)&#123;</span><br><span class="line">    .css&#123;</span><br><span class="line">        background-image: url(img_2x.png);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 高清显示屏(设备像素比例大于等于3)使用3倍图  */</span></span><br><span class="line">@media only screen and (-webkit-min-device-pixel-ratio:<span class="number">3</span>)&#123;</span><br><span class="line">    .css&#123;</span><br><span class="line">        background-image: url(img_3x.png);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="横、竖屏："><a href="#横、竖屏：" class="headerlink" title="横、竖屏："></a>横、竖屏：</h2><blockquote>
+<p>需要针对横、竖屏编写不同的css</p>
+</blockquote>
+<blockquote>
+<p>动态设置字体尺寸（不推荐）</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> deviceWidth = <span class="built_in">document</span>.documentElement.clientWidth,</span><br><span class="line">    deviceHeight = <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line"></span><br><span class="line"><span class="comment">//横屏状态</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.orientation === <span class="number">90</span> || <span class="built_in">window</span>.orientation === <span class="number">-90</span>) &#123;</span><br><span class="line">    deviceWidth = deviceHeight;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置根字体大小</span></span><br><span class="line"><span class="built_in">document</span>.documentElement.style.fontSize = deviceWidth + <span class="string">'px'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="JS检测横竖屏"><a href="#JS检测横竖屏" class="headerlink" title="JS检测横竖屏"></a>JS检测横竖屏</h4><p>js获取屏幕旋转方向：<code>window.orientation</code></p>
+<ul>
+<li>0 - 正常方向</li>
+<li>-90 - 屏幕顺时钟旋转90度</li>
+<li>90 - 屏幕逆时针旋转90度</li>
+<li>180 - 屏幕旋转180度</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"orientationchange"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.orientation === <span class="number">0</span> ? alert(<span class="string">'竖屏'</span>) : alert(<span class="string">'横屏'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"onorientationchange"</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">"orientationchange"</span> : <span class="string">"resize"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.orientation === <span class="number">180</span> || <span class="built_in">window</span>.orientation === <span class="number">0</span>) &#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'竖屏状态！'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.orientation === <span class="number">90</span> || <span class="built_in">window</span>.orientation === <span class="number">-90</span> )&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'横屏状态！'</span>);</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="CSS判断横竖屏"><a href="#CSS判断横竖屏" class="headerlink" title="CSS判断横竖屏"></a>CSS判断横竖屏</h4><p>方式一：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 竖屏 --&gt;</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> media=<span class="string">"all and (orientation:portrait)"</span> href=<span class="string">"portrait.css"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 竖屏 --&gt;</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> media=<span class="string">"all and (orientation:landscape)"</span> href=<span class="string">"landscape.css"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>方式二：写在同一个CSS中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (orientation: portrait) &#123;</span><br><span class="line">  <span class="comment">/*竖屏 css*/</span></span><br><span class="line">&#125; </span><br><span class="line">@media screen and (orientation: landscape) &#123;</span><br><span class="line">  <span class="comment">/*横屏 css*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/09/手机rem、x倍图适配/" title="手机rem、x倍图适配" target="_blank" rel="external">/2019/05/09/手机rem、x倍图适配/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/yyy/2019/05/09/React - 基础/" title="React - 基础"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/webpack - 基础/" title="webpack - 基础"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
