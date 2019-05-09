@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>JavaScript - 高级、ES5、ES6 | nova7y</title>
+  <meta name="description" content="JS 高级原型-对象   英文 描述     原型中定义的属性或方法，可以被所关联的构造函数所创建的实例对象==共享==。   减少了属性或方法的在内存占的使用，节省了内存空间。    构造函数名.prototype 构造函数可以通过prototype找到原型   .constructor 原型可以通过constructor找到关联的构造函数   原型链：先从对象本身中查找、会通过proto这个属">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript - 高级、ES5、ES6">
+<meta property="og:url" content="/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="JS 高级原型-对象   英文 描述     原型中定义的属性或方法，可以被所关联的构造函数所创建的实例对象==共享==。   减少了属性或方法的在内存占的使用，节省了内存空间。    构造函数名.prototype 构造函数可以通过prototype找到原型   .constructor 原型可以通过constructor找到关联的构造函数   原型链：先从对象本身中查找、会通过proto这个属">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-09T06:23:10.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript - 高级、ES5、ES6">
+<meta name="twitter:description" content="JS 高级原型-对象   英文 描述     原型中定义的属性或方法，可以被所关联的构造函数所创建的实例对象==共享==。   减少了属性或方法的在内存占的使用，节省了内存空间。    构造函数名.prototype 构造函数可以通过prototype找到原型   .constructor 原型可以通过constructor找到关联的构造函数   原型链：先从对象本身中查找、会通过proto这个属">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/yyy/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/yyy/tags/html、css/" style="font-size: 13px;">html、css</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/" class="title">JavaScript - 高级、ES5、ES6</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T06:05:56.131Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/" class="title">JavaScript - Math、Array、Date、String</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T05:49:42.142Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/" class="title">JavaScript - DOM、BOM操作、事件</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T05:45:46.181Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.1.JavaScript - 基础/" class="title">JavaScript - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T05:39:37.307Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/sql/">sql</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/4.SQL/" class="title">SQL</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T04:57:17.451Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS-高级"><span class="toc-number">1.</span> <span class="toc-text">JS 高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原型-对象"><span class="toc-number">1.1.</span> <span class="toc-text">原型-对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承"><span class="toc-number">1.2.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原型方式继承："><span class="toc-number">1.2.1.</span> <span class="toc-text">原型方式继承：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#借用继承："><span class="toc-number">1.2.2.</span> <span class="toc-text">借用继承：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合继承："><span class="toc-number">1.2.3.</span> <span class="toc-text">组合继承：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-继承"><span class="toc-number">1.2.4.</span> <span class="toc-text">class 继承</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数其他"><span class="toc-number">1.3.</span> <span class="toc-text">函数其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-number">1.4.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归"><span class="toc-number">1.5.</span> <span class="toc-text">递归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浅拷贝"><span class="toc-number">1.6.</span> <span class="toc-text">浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深拷贝"><span class="toc-number">1.7.</span> <span class="toc-text">深拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#new"><span class="toc-number">1.8.</span> <span class="toc-text">new</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this"><span class="toc-number">1.9.</span> <span class="toc-text">this</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6"><span class="toc-number">2.</span> <span class="toc-text">ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#声明"><span class="toc-number">2.1.</span> <span class="toc-text">声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解构赋值"><span class="toc-number">2.2.</span> <span class="toc-text">解构赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">2.3.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Array-扩展"><span class="toc-number">2.4.</span> <span class="toc-text">Array 扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-扩展"><span class="toc-number">2.5.</span> <span class="toc-text">String 扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Number-扩展"><span class="toc-number">2.6.</span> <span class="toc-text">Number 扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#promise"><span class="toc-number">2.7.</span> <span class="toc-text">promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async、await"><span class="toc-number">2.8.</span> <span class="toc-text">async、await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块化"><span class="toc-number">2.9.</span> <span class="toc-text">模块化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三点运算符"><span class="toc-number">2.10.</span> <span class="toc-text">三点运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象名称"><span class="toc-number">2.11.</span> <span class="toc-text">对象名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">2.12.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-2.4.JavaScript - 高级、ES5、ES6" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript - 高级、ES5、ES6
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/" class="article-date">
+	  <time datetime="2019-05-09T06:05:56.131Z" itemprop="datePublished">2019-05-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/JavaScript/">JavaScript</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="JS-高级"><a href="#JS-高级" class="headerlink" title="JS 高级"></a>JS 高级</h1><h2 id="原型-对象"><a href="#原型-对象" class="headerlink" title="原型-对象"></a>原型-对象</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原型中定义的属性或方法，可以被所关联的构造函数所创建的实例对象==共享==。   减少了属性或方法的在内存占的使用，节省了内存空间。</td>
+<td></td>
+</tr>
+<tr>
+<td>构造函数名.prototype</td>
+<td>构造函数可以通过prototype找到原型</td>
+</tr>
+<tr>
+<td>.constructor</td>
+<td>原型可以通过constructor找到关联的构造函数</td>
+</tr>
+<tr>
+<td>原型链：先从对象本身中查找、会通过proto这个属性提供的地址，找到原型对象、会通过proto这个属性提供的地址，找到原型的原型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="原型方式继承："><a href="#原型方式继承：" class="headerlink" title="原型方式继承："></a>原型方式继承：</h3><blockquote>
+<p>可继承方法，但不继承属性   </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">this</span>.name = <span class="string">'人类'</span>;</span><br><span class="line">     <span class="keyword">this</span>.age = <span class="number">10</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   Person.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"我会吃....."</span>);</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 原型继承</span></span><br><span class="line">   Student.prototype = <span class="keyword">new</span> Person();</span><br><span class="line">   <span class="comment">// 给原型添加constructor属性</span></span><br><span class="line">   Student.prototype.contructor = Student;</span><br><span class="line">  </span><br><span class="line">   <span class="comment">// 创建一个学生对象</span></span><br><span class="line">   <span class="keyword">var</span> stu1 = <span class="keyword">new</span> Student();</span><br><span class="line">   stu1.eat();</span><br></pre></td></tr></table></figure>
+<h3 id="借用继承："><a href="#借用继承：" class="headerlink" title="借用继承："></a>借用继承：</h3><blockquote>
+<p>call方法改变this的指向，但是不继承函数方法</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"我会吃....."</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// this 代表的具体的某一个学生的实例 stu1 、stu2</span></span><br><span class="line">  <span class="keyword">var</span> stu = <span class="keyword">this</span>;</span><br><span class="line">  Person.call(stu,name,age)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建一个学生对象</span></span><br><span class="line"><span class="keyword">var</span> stu1 = <span class="keyword">new</span> Student(<span class="string">'张三'</span>,<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="组合继承："><a href="#组合继承：" class="headerlink" title="组合继承："></a>组合继承：</h3><blockquote>
+<p>原型继承+借用继承</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"我会吃....."</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 借用继承【借用属性】</span></span><br><span class="line">  Person.call(<span class="keyword">this</span>,name,age,gender)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 原型继承【继承方法】</span></span><br><span class="line">Student.prototype = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="comment">// 设置原型contructor属性指向Student</span></span><br><span class="line">Student.prototype.constructor = Student;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"><span class="comment">// 创建一个学生对象</span></span><br><span class="line"><span class="keyword">var</span> stu1 = <span class="keyword">new</span> Student(<span class="string">'张三'</span>,<span class="number">10</span>,<span class="string">'男'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="class-继承"><a href="#class-继承" class="headerlink" title="class 继承"></a>class 继承</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrimaryStudent</span> <span class="keyword">extends</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, grade) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name); <span class="comment">// 记得用super调用父类的构造方法!</span></span><br><span class="line">        <span class="keyword">this</span>.grade = grade;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    myGrade() &#123;</span><br><span class="line">        alert(<span class="string">'I am at grade '</span> + <span class="keyword">this</span>.grade);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="函数其他"><a href="#函数其他" class="headerlink" title="函数其他"></a>函数其他</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>函数名.arguments</td>
+<td>获取用户传入的实参</td>
+</tr>
+<tr>
+<td>函数.length</td>
+<td>获取函数形参的个数</td>
+</tr>
+<tr>
+<td>函数.name</td>
+<td>函数的名字</td>
+</tr>
+</tbody>
+</table>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bieShu</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">'三儿'</span>;</span><br><span class="line">    <span class="keyword">var</span> guanJia = <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        a = v;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> guanJia;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cyqz = bieShu();</span><br><span class="line">cyqz(<span class="string">'3'</span>);</span><br><span class="line">cyqz(<span class="string">'33'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jisuan</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> jisuan(n - <span class="number">1</span>) + <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = jisuan(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> father = &#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    age: <span class="number">52</span>,</span><br><span class="line">    cars: [<span class="string">'奔驰'</span>, <span class="string">'宝马'</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> son = &#123;</span><br><span class="line">    name: <span class="string">'小三'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> father) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!son.hasOwnProperty[key]) &#123;</span><br><span class="line">        son[key] = father[key]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> father = &#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    age: <span class="number">52</span>,</span><br><span class="line">    cars: [<span class="string">'奥迪'</span>, <span class="string">'大众'</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> son = &#123;</span><br><span class="line">    name: <span class="string">'小三'</span></span><br><span class="line">&#125;</span><br><span class="line">copy(father, son)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">fatherOBJ, sonOBJ</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> fatherOBJ) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!sonOBJ.hasOwnProperty[key]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (fatherOBJ[key] <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">                sonOBJ[key] = <span class="keyword">new</span> <span class="built_in">Array</span>() copy(fatherOBJ[key], sonOBJ[key])</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (fatherOBJ[key] <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</span><br><span class="line">                sonOBJ[key] = <span class="keyword">new</span> object() copy(fatherOBJ[key], sonOBJ[key])</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sonOBJ[key] = fatherOBJ[key]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><ol>
+<li>在内存中申请了一块空间，存放了一个对象。</li>
+<li>让构造函数内部的this指向该空间</li>
+<li>通过this向内存中空的对象中添加属性和方法</li>
+<li>new关键字最后将this返回给外部变量</li>
+</ol>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>this通常指向于调用者<code>会找最近的包裹的function</code></p>
+<ol>
+<li>在全局环境下，this 始终指向全局对象（window）</li>
+<li>普通函数内部this严格模式：window  非严格模式：undefined</li>
+<li>对象内部方法的this指向调用这些方法的对象</li>
+<li>原型链中的方法的this仍然指向调用它的对象</li>
+<li>构造函数中的this与被创建的新对象绑定。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>改变this指向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cell   可以用函数       例如 数组中的push            ////           组合继承中也用这个</td>
+<td></td>
+</tr>
+<tr>
+<td>函数名.call(调用者,参数1…)</td>
+<td>函数被借用时，会立即执行，并且函数体内的this会指向借用者或调用者</td>
+</tr>
+<tr>
+<td>函数名.apply(调用者,[参数1…])</td>
+<td>函数被借用时，会立即执行，并且函数体内的this会指向借用者或调用者</td>
+</tr>
+<tr>
+<td>函数名.bind(调用者,参数1…)</td>
+<td>不会立即执行，返回新的函数。并且函数体内的this会指向借用者或调用者</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span></span><br><span class="line">	- <span class="keyword">let</span> 定义变量,变量不可以重名,必须先定义再使用- 具有块级作用域- 没有变量提升</span><br><span class="line"><span class="keyword">const</span></span><br><span class="line">	- 常量一旦初始化，不可以重新赋值</span><br><span class="line">    - <span class="keyword">const</span> 定义常量，常量不可以重名，必须先定义再使用- 具有块级作用域- 没有变量提升</span><br></pre></td></tr></table></figure>
+<h2 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h2><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h2 id="Array-扩展"><a href="#Array-扩展" class="headerlink" title="Array 扩展"></a>Array 扩展</h2><h2 id="String-扩展"><a href="#String-扩展" class="headerlink" title="String 扩展"></a>String 扩展</h2><h2 id="Number-扩展"><a href="#Number-扩展" class="headerlink" title="Number 扩展"></a>Number 扩展</h2><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><h2 id="async、await"><a href="#async、await" class="headerlink" title="async、await"></a>async、await</h2><h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><h2 id="三点运算符"><a href="#三点运算符" class="headerlink" title="三点运算符"></a>三点运算符</h2><h2 id="对象名称"><a href="#对象名称" class="headerlink" title="对象名称"></a>对象名称</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>英文</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不确定es版本</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>num.toFixed(3)</td>
+<td>保留小数点3位</td>
+</tr>
+<tr>
+<td>js错误处理</td>
+<td>try{}catch(e){console.log(e.message)}</td>
+<td></td>
+</tr>
+<tr>
+<td>获取自定义属性</td>
+<td>this.dataset.id</td>
+<td></td>
+</tr>
+<tr>
+<td>转URL编码 encodeURIComponent(q)       转URL编码 querystring.escape(str)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>利用json深拷贝</td>
+<td>this.todoContent =   JSON.parse(JSON.stringify(item))</td>
+<td></td>
+</tr>
+<tr>
+<td>数组按照大小排序</td>
+<td>ary.sort((a,b)=&gt;(a-b))</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <div class="article-footer">
+         <!--
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/" title="JavaScript - 高级、ES5、ES6" target="_blank" rel="external">/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+   -->
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/" title="JavaScript - Math、Array、Date、String"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

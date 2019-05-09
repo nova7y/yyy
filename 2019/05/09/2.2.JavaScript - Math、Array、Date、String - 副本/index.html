@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>Hello World | nova7y</title>
-  <meta name="description" content="前言 入了前端坑了以后，才越发发现技术领域的庞大，为了巩固所学知识 与项目实战的经验 着手准备撰写博客  该博客采用Hexo框架搭建，配置在了全球最大同性交友平台（giyhub）上   搭建流程概述 安装nodejs      官网 打开cmd，安装hexo        官网 npm install hexo-cli -g   新建文件夹 在cmd中初始化hexo hexo init   安装对">
-<meta name="keywords" content="hexo">
+  <title>JavaScript - Math、Array、Date、String | nova7y</title>
+  <meta name="description" content="JS 对象Math   Math Math.*     Math.PI 获取圆周率   Math.random() 返回大于等于0小于1之间的随机数   Math.floor() 向下取整，返回一个小于当前数字的整数   Math.ceil() 向上取整，返回一个大于当前数字的整数   Math.round() 四舍五入   Math.abs() 取绝对值   Math.max() 返回一组数中的">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="/2019/05/07/0.hello-world/index.html">
+<meta property="og:title" content="JavaScript - Math、Array、Date、String">
+<meta property="og:url" content="/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/index.html">
 <meta property="og:site_name" content="nova7y">
-<meta property="og:description" content="前言 入了前端坑了以后，才越发发现技术领域的庞大，为了巩固所学知识 与项目实战的经验 着手准备撰写博客  该博客采用Hexo框架搭建，配置在了全球最大同性交友平台（giyhub）上   搭建流程概述 安装nodejs      官网 打开cmd，安装hexo        官网 npm install hexo-cli -g   新建文件夹 在cmd中初始化hexo hexo init   安装对">
+<meta property="og:description" content="JS 对象Math   Math Math.*     Math.PI 获取圆周率   Math.random() 返回大于等于0小于1之间的随机数   Math.floor() 向下取整，返回一个小于当前数字的整数   Math.ceil() 向上取整，返回一个大于当前数字的整数   Math.round() 四舍五入   Math.abs() 取绝对值   Math.max() 返回一组数中的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T03:48:12.636Z">
+<meta property="og:updated_time" content="2019-05-09T05:49:17.815Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="前言 入了前端坑了以后，才越发发现技术领域的庞大，为了巩固所学知识 与项目实战的经验 着手准备撰写博客  该博客采用Hexo框架搭建，配置在了全球最大同性交友平台（giyhub）上   搭建流程概述 安装nodejs      官网 打开cmd，安装hexo        官网 npm install hexo-cli -g   新建文件夹 在cmd中初始化hexo hexo init   安装对">
+<meta name="twitter:title" content="JavaScript - Math、Array、Date、String">
+<meta name="twitter:description" content="JS 对象Math   Math Math.*     Math.PI 获取圆周率   Math.random() 返回大于等于0小于1之间的随机数   Math.floor() 向下取整，返回一个小于当前数字的整数   Math.ceil() 向上取整，返回一个大于当前数字的整数   Math.round() 四舍五入   Math.abs() 取绝对值   Math.max() 返回一组数中的">
   <!-- Canonical links -->
-  <link rel="canonical" href="/2019/05/07/0.hello-world/index.html">
+  <link rel="canonical" href="/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/index.html">
   
     <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
   
@@ -292,21 +292,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建流程概述"><span class="toc-number">2.</span> <span class="toc-text">搭建流程概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置（转载）"><span class="toc-number">3.</span> <span class="toc-text">配置（转载）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS-对象"><span class="toc-number">1.</span> <span class="toc-text">JS 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Math"><span class="toc-number">1.1.</span> <span class="toc-text">Math</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Array"><span class="toc-number">1.2.</span> <span class="toc-text">Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Date"><span class="toc-number">1.3.</span> <span class="toc-text">Date</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String"><span class="toc-number">1.4.</span> <span class="toc-text">String</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-0.hello-world" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-2.2.JavaScript - Math、Array、Date、String - 副本" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      JavaScript - Math、Array、Date、String
     </h1>
   
 
@@ -314,52 +314,299 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/yyy/2019/05/07/0.hello-world/" class="article-date">
-	  <time datetime="2019-05-07T10:06:43.794Z" itemprop="datePublished">2019-05-07</time>
+	<a href="/yyy/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/" class="article-date">
+	  <time datetime="2019-05-09T05:49:42.142Z" itemprop="datePublished">2019-05-09</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/yyy/categories/hexo/">hexo</a>
+    <a class="article-category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/yyy/tags/hexo/">hexo</a>
+	<a class="article-tag-link" href="/yyy/tags/JavaScript/">JavaScript</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/07/0.hello-world/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li><p>入了前端坑了以后，才越发发现技术领域的庞大，为了巩固所学知识 与项目实战的经验 着手准备撰写博客</p>
-</li>
-<li><p>该博客采用Hexo框架搭建，配置在了全球最大同性交友平台（giyhub）上</p>
-</li>
-</ul>
-<h1 id="搭建流程概述"><a href="#搭建流程概述" class="headerlink" title="搭建流程概述"></a>搭建流程概述</h1><ol>
-<li>安装nodejs      <a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a></li>
-<li>打开cmd，安装hexo        <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">官网</a><ul>
-<li>npm install hexo-cli -g</li>
-</ul>
-</li>
-<li>新建文件夹 在cmd中初始化hexo<ul>
-<li>hexo init</li>
-</ul>
-</li>
-<li>安装对应主题（去github或官网查看）</li>
-<li>配置_config.yml</li>
-<li>使用git 初始化、上传到github上</li>
-</ol>
-<h1 id="配置（转载）"><a href="#配置（转载）" class="headerlink" title="配置（转载）"></a>配置（转载）</h1><p><a href="https://www.jianshu.com/p/9f0e90cc32c2" target="_blank" rel="noopener">https://www.jianshu.com/p/9f0e90cc32c2</a></p>
+        <h1 id="JS-对象"><a href="#JS-对象" class="headerlink" title="JS 对象"></a>JS 对象</h1><h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><table>
+<thead>
+<tr>
+<th>Math</th>
+<th>Math.*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Math.PI</td>
+<td>获取圆周率</td>
+</tr>
+<tr>
+<td>Math.random()</td>
+<td>返回大于等于0小于1之间的随机数</td>
+</tr>
+<tr>
+<td>Math.floor()</td>
+<td>向下取整，返回一个小于当前数字的整数</td>
+</tr>
+<tr>
+<td>Math.ceil()</td>
+<td>向上取整，返回一个大于当前数字的整数</td>
+</tr>
+<tr>
+<td>Math.round()</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>Math.abs()</td>
+<td>取绝对值</td>
+</tr>
+<tr>
+<td>Math.max()</td>
+<td>返回一组数中的最大值(不可是数组)</td>
+</tr>
+<tr>
+<td>Math.min()</td>
+<td>返回一组数中的最小值(不可是数组)</td>
+</tr>
+<tr>
+<td>Math.pow(x,y)</td>
+<td>返回x的y次幂</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><table>
+<thead>
+<tr>
+<th>Array</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.toString()</td>
+<td>把数组转换为字符串，使用逗号分隔</td>
+</tr>
+<tr>
+<td>*.valueOf()</td>
+<td>返回数组对象本身 ？？？</td>
+</tr>
+<tr>
+<td>*.ary.push()</td>
+<td>数组末尾 增加值</td>
+</tr>
+<tr>
+<td>*.ary.pop()</td>
+<td>用于删除数组的最后一个元素并返回删除的元素。(会修改数组长度)</td>
+</tr>
+<tr>
+<td>*.ary.shift()</td>
+<td>用于删除数组的第一个元素并返回删除的元素。(会修改数组长度)</td>
+</tr>
+<tr>
+<td>*.unshift(number)</td>
+<td>在数组起始位置添加一个、或多个值</td>
+</tr>
+<tr>
+<td><em>.concat(</em>   //可以是 nub、ary   )</td>
+<td>拼接字符串、数组（第一个不能是Number类型）</td>
+</tr>
+<tr>
+<td>*.slice(startindex,   endindex)</td>
+<td>从当前数组中复制个新的数组，如果第二个值不写，则取到结尾</td>
+</tr>
+<tr>
+<td>*.splice(startindex,   deletCont, options)</td>
+<td>删除或者替换数组中的某些值</td>
+</tr>
+<tr>
+<td>*.indexOf(content[,index])，lastIndexof()</td>
+<td>查找所传值 在数据中的索引，未找到的话   返回-1</td>
+</tr>
+<tr>
+<td>*.join(‘内容’)</td>
+<td>在数组中的值 之间 插入内容，并转成字符串</td>
+</tr>
+<tr>
+<td>*.reverse()</td>
+<td>数组反转</td>
+</tr>
+<tr>
+<td>*.filter(function(item,index,   ary) {return 不要的值})     //返回一个新数组,可以获取赛选结果</td>
+<td></td>
+</tr>
+<tr>
+<td>map(function(item,index,ary)   {})  //遍历数组,返回一个新数组</td>
+<td></td>
+</tr>
+<tr>
+<td>*.forEach(function(item,index,   ary) {}) //遍历数组,没有返回值</td>
+<td></td>
+</tr>
+<tr>
+<td>*.sort()</td>
+<td>数组排序，默认按升序 排序</td>
+</tr>
+<tr>
+<td>var ary = [1500, 2000, 1000, 2100, 900, 1900, 3000]      ary.filter(function(item, index) {           if (item &gt;= 2000) {                 ary.splice(index, 1)            }       })</td>
+<td>var ary = [‘a’, ‘b’,   ‘c’, ‘d’, ‘a’, ‘e’, ‘f’, ‘a’, ‘g’, ‘h’]      ary.forEach(function(item, index) {           if (item == ‘a’) {             console.log(index)             }       })</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>var * = new   Date()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.toString();</td>
+<td>转化成字符串(Sat Nov 03 2018 19:04:20   GMT+0800 (中国标准时间))</td>
+</tr>
+<tr>
+<td>*.toDateString();</td>
+<td>转换成日期字符串(Sat Nov   03 2018)</td>
+</tr>
+<tr>
+<td>*.toTimeString();</td>
+<td>转换成时间字符串(19:04:20   GMT+0800 (中国标准时间))</td>
+</tr>
+<tr>
+<td>*.toLocaleDateString();</td>
+<td>返回本地的日期格式  （不同浏览器不同效果）</td>
+</tr>
+<tr>
+<td>*.toLocaleTimeString();</td>
+<td>返回本地的时间格式  （不同浏览器不同效果）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*.getSeconds()</td>
+<td>获取秒</td>
+</tr>
+<tr>
+<td>*.getMinutes()</td>
+<td>获取分钟</td>
+</tr>
+<tr>
+<td>*.getHours()</td>
+<td>获取小时</td>
+</tr>
+<tr>
+<td>*.getDay()</td>
+<td>返回周几   （0表示周日）</td>
+</tr>
+<tr>
+<td>*.getDate()</td>
+<td>返回当前月的第几天</td>
+</tr>
+<tr>
+<td>*.getMonth()</td>
+<td>返回月份   （从0开始）</td>
+</tr>
+<tr>
+<td>*.getFullYear()</td>
+<td>返回年份</td>
+</tr>
+<tr>
+<td>*.valueOf()</td>
+<td>获取当前时间毫秒</td>
+</tr>
+<tr>
+<td>*.getTime()</td>
+<td></td>
+</tr>
+<tr>
+<td>Date.now()</td>
+<td></td>
+</tr>
+<tr>
+<td>toLocaleString()</td>
+<td>格式化</td>
+</tr>
+</tbody>
+</table>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><table>
+<thead>
+<tr>
+<th>String</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.charAt(索引)</td>
+<td>获取指定位置处的字符</td>
+</tr>
+<tr>
+<td>*.str[index]</td>
+<td>获取指定位置的字符 （H5中的方法）</td>
+</tr>
+<tr>
+<td><em>.concat(</em>   //可以是 nub、ary   )</td>
+<td>拼接字符串、数组（第一个不能是Number类型）</td>
+</tr>
+<tr>
+<td>*.slice(索引,索引)</td>
+<td>从指定位置开始，截取字符串到结束位置，end值取不到</td>
+</tr>
+<tr>
+<td>*.substring(start,end)</td>
+<td>从指定位置开始，截取字符串到结束位置，   end值取不到</td>
+</tr>
+<tr>
+<td>*.substr(start,length)</td>
+<td>从指定位置开始，截取length长度个字符</td>
+</tr>
+<tr>
+<td><em>.indexOf(字符,从</em>索引开始找)</td>
+<td>返回字符在字符串中的位置</td>
+</tr>
+<tr>
+<td>lastIndexOf(字符)</td>
+<td>从后往前找，只找第一个匹配的字符</td>
+</tr>
+<tr>
+<td>*.trim()</td>
+<td>只能去除字符串前后空白</td>
+</tr>
+<tr>
+<td>*.toLocaleUpperCase()</td>
+<td>转化为大写</td>
+</tr>
+<tr>
+<td>*.toLocaleLowerCase()</td>
+<td>转化为小写</td>
+</tr>
+<tr>
+<td>*.replace(a,b)</td>
+<td>用b替换a</td>
+</tr>
+<tr>
+<td>*.split()</td>
+<td>以一个分割符,将一个字符串串分割成一个数组</td>
+</tr>
+<tr>
+<td>indexOf()   方法可返回某个指定的字符串值在字符串中首次出现的位置。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -370,7 +617,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="/2019/05/07/0.hello-world/" title="Hello World" target="_blank" rel="external">/2019/05/07/0.hello-world/</a>
+      <a href="/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/" title="JavaScript - Math、Array、Date、String" target="_blank" rel="external">/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -418,9 +665,13 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/yyy/2019/05/09/雅虎前端优化35条规则/" title="雅虎前端优化35条规则"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/yyy/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/" title="JavaScript - 高级、ES5、ES6"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/" title="JavaScript - DOM、BOM操作、事件"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
     <li class="toggle-toc">

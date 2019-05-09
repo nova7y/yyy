@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>JavaScript - DOM、BOM操作、事件 | nova7y</title>
+  <meta name="description" content="DOM获取元素   英文 中文 描述     document.getElementById(‘id’) 文档.得到 元素 通过 ID 根据id值获取单个元素   document.getElementsByTagName(‘标签名’) 文档.得到 元素 通过 TagName 根据标签名获取一组元素   document.querySelector(‘选择器’) 文档.查询 选择 根据选择器获取单">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript - DOM、BOM操作、事件">
+<meta property="og:url" content="/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="DOM获取元素   英文 中文 描述     document.getElementById(‘id’) 文档.得到 元素 通过 ID 根据id值获取单个元素   document.getElementsByTagName(‘标签名’) 文档.得到 元素 通过 TagName 根据标签名获取一组元素   document.querySelector(‘选择器’) 文档.查询 选择 根据选择器获取单">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-09T06:05:32.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript - DOM、BOM操作、事件">
+<meta name="twitter:description" content="DOM获取元素   英文 中文 描述     document.getElementById(‘id’) 文档.得到 元素 通过 ID 根据id值获取单个元素   document.getElementsByTagName(‘标签名’) 文档.得到 元素 通过 TagName 根据标签名获取一组元素   document.querySelector(‘选择器’) 文档.查询 选择 根据选择器获取单">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/yyy/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/yyy/tags/html、css/" style="font-size: 13px;">html、css</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">18</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.4.JavaScript - 高级、ES5、ES6/" class="title">JavaScript - 高级、ES5、ES6</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T06:05:56.131Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/" class="title">JavaScript - Math、Array、Date、String</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T05:49:42.142Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/" class="title">JavaScript - DOM、BOM操作、事件</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T05:45:46.181Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.1.JavaScript - 基础/" class="title">JavaScript - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T05:39:37.307Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/sql/">sql</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/4.SQL/" class="title">SQL</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T04:57:17.451Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM"><span class="toc-number">1.</span> <span class="toc-text">DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取元素"><span class="toc-number">1.1.</span> <span class="toc-text">获取元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见属性"><span class="toc-number">1.2.</span> <span class="toc-text">常见属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a标签"><span class="toc-number">1.3.</span> <span class="toc-text">a标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表单"><span class="toc-number">1.4.</span> <span class="toc-text">表单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点层级"><span class="toc-number">1.5.</span> <span class="toc-text">节点层级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态控制元素"><span class="toc-number">1.6.</span> <span class="toc-text">动态控制元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义行内属性"><span class="toc-number">1.7.</span> <span class="toc-text">自定义行内属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制元素样式"><span class="toc-number">1.8.</span> <span class="toc-text">控制元素样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BOM"><span class="toc-number">2.</span> <span class="toc-text">BOM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#window对象"><span class="toc-number">2.1.</span> <span class="toc-text">window对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#location对象"><span class="toc-number">2.2.</span> <span class="toc-text">location对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#history对象"><span class="toc-number">2.3.</span> <span class="toc-text">history对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#navigator对象"><span class="toc-number">2.4.</span> <span class="toc-text">navigator对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">2.5.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件相关"><span class="toc-number">3.</span> <span class="toc-text">事件相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标事件"><span class="toc-number">3.1.</span> <span class="toc-text">鼠标事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#键盘事件"><span class="toc-number">3.2.</span> <span class="toc-text">键盘事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件监听"><span class="toc-number">3.3.</span> <span class="toc-text">事件监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件委托"><span class="toc-number">3.4.</span> <span class="toc-text">事件委托</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#touch事件"><span class="toc-number">3.5.</span> <span class="toc-text">touch事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他-1"><span class="toc-number">3.6.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-2.3.JavaScript - DOM、BOM操作、事件" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript - DOM、BOM操作、事件
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/" class="article-date">
+	  <time datetime="2019-05-09T05:45:46.181Z" itemprop="datePublished">2019-05-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/JavaScript/">JavaScript</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document.getElementById(‘id’)</td>
+<td>文档.得到 元素 通过 ID</td>
+<td>根据id值获取单个元素</td>
+</tr>
+<tr>
+<td>document.getElementsByTagName(‘标签名’)</td>
+<td>文档.得到 元素 通过 TagName</td>
+<td>根据标签名获取一组元素</td>
+</tr>
+<tr>
+<td>document.querySelector(‘选择器’)</td>
+<td>文档.查询 选择</td>
+<td>根据选择器获取单个元素</td>
+</tr>
+<tr>
+<td>document.querySelectorAll(‘选择器’)</td>
+<td>文档.查询 选择 所有</td>
+<td>根据选择器获取一组元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常见属性"><a href="#常见属性" class="headerlink" title="常见属性"></a>常见属性</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id、title、href、src、className    \</td>
+<td>innerText、innerHTML      textContent(标准，不兼容ie8)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>return false</td>
+<td>取消默认行为</td>
+<td></td>
+</tr>
+<tr>
+<td>href =   javascript:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素.value</td>
+<td>值</td>
+<td>表单元素的内容</td>
+</tr>
+<tr>
+<td>元素.disabled   （若是其他标签则需要.style.）</td>
+<td>使 xxx失去能力</td>
+<td>操作表单元素是否禁用（true→禁用，false→不禁用）   不加引号</td>
+</tr>
+<tr>
+<td>*.checked</td>
+<td>选中的</td>
+<td>操作表单元素是否选中（true→选中，false→不选中）</td>
+</tr>
+<tr>
+<td>*.selected</td>
+<td>挑选出来的</td>
+<td>操作表单元素的是否选中（true→选中，false→不选中）      注意:原生js中没有:selcted这个选择器            var options = document.querySelectorAll(‘#sel1   option:checked’);  //js  筛选选中的option      options[i].selected = false;        //设置被选中的option的选中状态</td>
+</tr>
+</tbody>
+</table>
+<h2 id="节点层级"><a href="#节点层级" class="headerlink" title="节点层级"></a>节点层级</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>子节点.parentNode</td>
+<td>父节点</td>
+<td>子节点获取父节点</td>
+</tr>
+<tr>
+<td>父节点.childNodes</td>
+<td>子节点</td>
+<td>父节点获取子节点  -     获取的节点包含了文本和元素</td>
+</tr>
+<tr>
+<td>父元素.children</td>
+<td>孩子们</td>
+<td>父节点获取子节点  -   获取仅仅是元素，不包含文本</td>
+</tr>
+<tr>
+<td>父节点.firstElementChild</td>
+<td>第一个  元素    孩子</td>
+<td></td>
+</tr>
+<tr>
+<td>父节点.lastElementChild</td>
+<td>最后一个  元素    孩子</td>
+<td></td>
+</tr>
+<tr>
+<td>节点.nextElementSibling</td>
+<td>下一个 元素 兄弟</td>
+<td>获取上一个兄弟</td>
+</tr>
+<tr>
+<td>节点.previousElementSibling</td>
+<td>以前  元素 兄弟</td>
+<td>获取下一个兄弟</td>
+</tr>
+</tbody>
+</table>
+<p>节点的nodeType、nodeName、nodeValue的属性           </p>
+<ul>
+<li>节点属性nodeType的作用，获取节点类型:        元素节点的nodeType→ 1  ，  文本节点的nodeType→3      </li>
+<li>节点属性nodeName的作用，获取节点的名称： 元素节点→标签名（大写H2）， 文本节点→ #text     </li>
+<li>节点属性nodeValue的作用，获取节点的值： 元素节点→null           文本节点→ 文本值比如换行”↵    “</li>
+</ul>
+<h2 id="动态控制元素"><a href="#动态控制元素" class="headerlink" title="动态控制元素"></a>动态控制元素</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素.innerHTML = ‘内容’;</td>
+<td></td>
+<td>通过innerHTML创建元素 (性能差)</td>
+</tr>
+<tr>
+<td>document.createElement(‘标签名’);</td>
+<td>文档.创建 元素</td>
+<td>创建元素，并返回新元素对象  var * = document.createElement(‘li’);</td>
+</tr>
+<tr>
+<td>父元素.appendChild(子元素);</td>
+<td>添加 子节点</td>
+<td>动态追加元素</td>
+</tr>
+<tr>
+<td>父元素.removeChild(子元素);</td>
+<td>移除 子节点</td>
+<td>动态删除元素</td>
+</tr>
+<tr>
+<td>父节点.insertBefore(新的节点,旧的子节点)</td>
+<td>插入 节点</td>
+<td>在*位置上插入新元素  旧子阶段获取：var 旧节点 = 盒子.children[0];</td>
+</tr>
+<tr>
+<td>父节点.replaceChild(新的节点,旧的子节点)</td>
+<td>替换 节点</td>
+<td>替换元素</td>
+</tr>
+<tr>
+<td>元素.cloneNode(true或false);</td>
+<td>克隆 节点</td>
+<td>克隆元素。返回克隆后的元素，默认false（仅克隆外层）；true，克隆所有内容</td>
+</tr>
+</tbody>
+</table>
+<h2 id="自定义行内属性"><a href="#自定义行内属性" class="headerlink" title="自定义行内属性"></a>自定义行内属性</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素.getAttribute(name);</td>
+<td>获取 属性</td>
+<td>获取</td>
+</tr>
+<tr>
+<td>元素.setAttribute(name,value);</td>
+<td>设置 属性</td>
+<td>设置</td>
+</tr>
+<tr>
+<td>元素.removeAttribute(name,value);</td>
+<td>移除 属性</td>
+<td>移除</td>
+</tr>
+</tbody>
+</table>
+<h2 id="控制元素样式"><a href="#控制元素样式" class="headerlink" title="控制元素样式"></a>控制元素样式</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素.style.样式属性名 = ‘样式属性值’;</td>
+<td>通过style属性设置样式</td>
+</tr>
+<tr>
+<td>元素.className =   ‘类名’</td>
+<td>通过class 控制标签样式</td>
+</tr>
+</tbody>
+</table>
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><h2 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>window</td>
+<td>顶级对象    全局变量或全局函数本质上都是window的属性或方法</td>
+</tr>
+<tr>
+<td>window.innerWidth</td>
+<td>获取浏览器宽度</td>
+</tr>
+<tr>
+<td>var * =   window.pageYOffset</td>
+<td>获取页面卷曲高度</td>
+</tr>
+<tr>
+<td>window.setTimeout(callback,   time);</td>
+<td>定时器，仅执行一次，可返回一个标识  用变量接收</td>
+</tr>
+<tr>
+<td>window.clearTimeout(定时器的标识);</td>
+<td>清除定时器</td>
+</tr>
+<tr>
+<td>window.setInterval(callback,   time)</td>
+<td>定时器，重复执行  直到取消，可返回标识    用变量接收</td>
+</tr>
+<tr>
+<td>window.clearInterval(定时器的标识);</td>
+<td>清除定时器</td>
+</tr>
+</tbody>
+</table>
+<h2 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location.href</td>
+<td>设置或获取地址栏地址</td>
+</tr>
+<tr>
+<td>location.reload()</td>
+<td>刷新页面</td>
+</tr>
+</tbody>
+</table>
+<h2 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>history.length</td>
+<td>获取历史记录的长度</td>
+</tr>
+<tr>
+<td>history.back()</td>
+<td>回退上一个历史记录</td>
+</tr>
+<tr>
+<td>history.forward()</td>
+<td>前进下一个历史记录</td>
+</tr>
+<tr>
+<td>history.go(数字)</td>
+<td>正数，表示前进； 负数，表示回退</td>
+</tr>
+</tbody>
+</table>
+<h2 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>navigator.userAgent</td>
+<td>获取浏览器的信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>window.onload  = function(){}</td>
+<td>等页面资源全部加完毕后，要执行的程序(一般不用)</td>
+</tr>
+<tr>
+<td>对象名.hasOwnProperty( 键名 )</td>
+<td>检测该属性、方法是否属于x对象</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>offset</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素.offsetWidth</td>
+<td>返回的是数字。 大小包含： 内容 +   padding + border;      只读，不可赋值</td>
+</tr>
+<tr>
+<td>元素.offsetHeight</td>
+<td></td>
+</tr>
+<tr>
+<td>元素.offsetLeft</td>
+<td>返回的是数字。（参照谁？看定位关系）</td>
+</tr>
+<tr>
+<td>元素.offsetTop</td>
+<td></td>
+</tr>
+<tr>
+<td>元素.offsetParent</td>
+<td>获取“父元素”，  按照定位关系</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>scroll</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素.scrollWidth</td>
+<td>获取的元素的大小  ,包含   【内容+ padding + 溢出】</td>
+</tr>
+<tr>
+<td>元素.scrollHeight</td>
+<td></td>
+</tr>
+<tr>
+<td>元素.scrollLeft</td>
+<td>获取被卷起的页面间距</td>
+</tr>
+<tr>
+<td>元素.scrollTop</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>client（不常用）</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素.clientWidth</td>
+<td>获取元素的大小，包含 【内容 + padding】</td>
+</tr>
+<tr>
+<td>元素.clientHeight</td>
+<td></td>
+</tr>
+<tr>
+<td>元素.clientLeft</td>
+<td>获取边框的厚度</td>
+</tr>
+<tr>
+<td>元素.clientTop</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> sc = <span class="built_in">document</span>.body.scrollTop || <span class="built_in">document</span>.documentElement.scrollTop</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击按钮  回到页面顶端</span></span><br><span class="line">toTop.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">  <span class="built_in">document</span>.body.scrollTop = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">document</span>.documentElement.scrollTop = <span class="number">0</span>;&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="事件相关"><a href="#事件相关" class="headerlink" title="事件相关"></a>事件相关</h1><blockquote>
+<p>事件对象 :事件源.事件类型 =   function(e){  // 第一个形参e就是事件对象    } </p>
+</blockquote>
+<h2 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.onclick</td>
+<td>点击</td>
+<td>鼠标点击事件</td>
+</tr>
+<tr>
+<td>*.onmousemove</td>
+<td>鼠标 移动</td>
+<td>document.onmousemove   = function(){}</td>
+</tr>
+<tr>
+<td>*.onmousedown</td>
+<td>鼠标 按下</td>
+<td></td>
+</tr>
+<tr>
+<td>*.onmouseup</td>
+<td>鼠标 弹起</td>
+<td></td>
+</tr>
+<tr>
+<td>onmosueenter/onmosueleave</td>
+<td>鼠标进入  离开</td>
+<td>不支持冒泡</td>
+</tr>
+<tr>
+<td>onmosueover/onmouseout</td>
+<td>鼠标进入  离开</td>
+<td>支持冒泡</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>事件对象.clientX   /    事件对象.clientY    参照是==浏览器==           client：客户      </p>
+</li>
+<li><p>事件对象.pageX   /    事件对象.pageY    参照是==文档==                page：页面      </p>
+</li>
+<li><p>事件对象.offsetX   /    事件对象.offsetY    参照是==当前的元素==    offset：抵消？      screenX   屏幕</p>
+</li>
+</ul>
+<h2 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onkeydown</td>
+<td>键入 按下</td>
+<td>键盘按下事件</td>
+</tr>
+<tr>
+<td>onkeyup</td>
+<td>键入 抬起</td>
+<td>键盘弹起事件</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>事件对象.keyCode     获取键盘按键对应的键码值</li>
+<li>事件对象.altKey        表示alt键是否按下，返回布尔值。</li>
+<li>事件对象.shiftKey        表示shift键是否按下，返回布尔值。</li>
+<li>事件对象.ctrlKey        表示ctrl键是否按下，返回布尔值。（true按下，false没有按下）</li>
+</ul>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p><code>(官宣)老IE不兼容，建议在web使用</code></p>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事件源.addEventListener(‘类型’,处理程序,捕获);</td>
+<td>添加 事件 监视器</td>
+<td>捕获，可选参数，默认为false。 true→ 捕获，false→冒泡</td>
+</tr>
+<tr>
+<td>事件源.removeEventListener(‘类型’,处理程序名称)</td>
+<td>移除 事件 监视器</td>
+<td>若要通过事件监听的方式移除事件，需单独将事件处理程序   抽取出来命名</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">'button'</span>);</span><br><span class="line"><span class="comment">// 事件监听注册事件</span></span><br><span class="line">   btn.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">'button'</span>);</span><br><span class="line"><span class="keyword">var</span> fn1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);&#125;;</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>,fn1);</span><br><span class="line">btn.removeEventListener(<span class="string">'click'</span>,fn1)</span><br></pre></td></tr></table></figure>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>给一组元素父级标签设置事件委托，提高性能   减少事件绑定       通过事件对象.target的nodeName   属性检测触发元素</td>
+<td></td>
+</tr>
+<tr>
+<td>document.onclick =   function(e) {  var _e = e \</td>
+<td>\</td>
+<td>window.event  }          //解决ie低版本兼容性</td>
+<td></td>
+</tr>
+<tr>
+<td>事件对象.target</td>
+<td>this指向事件源，target指向事件触发点</td>
+</tr>
+</tbody>
+</table>
+<h2 id="touch事件"><a href="#touch事件" class="headerlink" title="touch事件"></a>touch事件</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>touchstart</td>
+<td>触摸 开始</td>
+<td>手指按下    ，需要用事件监听的方式注册</td>
+</tr>
+<tr>
+<td>touchmove</td>
+<td>触摸 移动</td>
+<td>手指移动    ，需要用事件监听的方式注册</td>
+</tr>
+<tr>
+<td>touchend</td>
+<td>触摸 结束</td>
+<td>手指松开    ，需要用事件监听的方式注册</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>事件对象.touches</td>
+<td>触摸s</td>
+<td>位于屏幕上的所有手指的列表，伪数组</td>
+</tr>
+<tr>
+<td>事件对象.targetTouches</td>
+<td>目标 触摸s</td>
+<td>位于该元素上的所有手指的列表，伪数组</td>
+</tr>
+<tr>
+<td>事件对象.changedTouches</td>
+<td>改变 触摸</td>
+<td>被改变的手指列表。touchstart时包含刚与屏幕接触的触点，touchend时包含离开屏幕的触点，伪数组</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>手指对象.clientX/Y 手指相对于layout viewport的水平/垂直像素距离</li>
+<li>手指对象.pageX/Y 手指相对于layout viewport的水平/垂直像素距离</li>
+</ol>
+<p><code>在移动端推荐使用clientX/Y</code></p>
+<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事件对象.preventDefault();</td>
+<td>防止 默认</td>
+<td>阻止默认行为</td>
+</tr>
+<tr>
+<td>事件对象.stopPropagation();</td>
+<td>停止 传播</td>
+<td>停止冒泡传播</td>
+</tr>
+<tr>
+<td>*.oninput</td>
+<td>输入</td>
+<td>通常用于文本框输入时 触发</td>
+</tr>
+<tr>
+<td>transitionend事件</td>
+<td>过度 结束</td>
+<td>css中过渡结束后检测的行为</td>
+</tr>
+<tr>
+<td>*.onfocus</td>
+<td>获取 焦点</td>
+<td>获取焦点（通常用于表单 的事件）</td>
+</tr>
+<tr>
+<td>*.onblur</td>
+<td>获取 模糊？？ （on 布尔）</td>
+<td>失去焦点（通常用于表单 的事件）</td>
+</tr>
+<tr>
+<td>*.submit</td>
+<td>表单的触发事件</td>
+<td>提交表单时 按键盘enter   也可以提交，但是需要注意 必须有 submit按钮</td>
+</tr>
+<tr>
+<td>window.onhashchange =   ()=&gt;{}</td>
+<td>url改变监听</td>
+<td>window.location.hash     监听url/锚点 改变后的值</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <div class="article-footer">
+         <!--
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/" title="JavaScript - DOM、BOM操作、事件" target="_blank" rel="external">/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+   -->
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/yyy/2019/05/09/2.2.JavaScript - Math、Array、Date、String - 副本/" title="JavaScript - Math、Array、Date、String"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/2.1.JavaScript - 基础/" title="JavaScript - 基础"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

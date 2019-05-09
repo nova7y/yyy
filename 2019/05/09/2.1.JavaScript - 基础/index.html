@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>Hello World | nova7y</title>
-  <meta name="description" content="前言 入了前端坑了以后，才越发发现技术领域的庞大，为了巩固所学知识 与项目实战的经验 着手准备撰写博客  该博客采用Hexo框架搭建，配置在了全球最大同性交友平台（giyhub）上   搭建流程概述 安装nodejs      官网 打开cmd，安装hexo        官网 npm install hexo-cli -g   新建文件夹 在cmd中初始化hexo hexo init   安装对">
-<meta name="keywords" content="hexo">
+  <title>JavaScript - 基础 | nova7y</title>
+  <meta name="description" content="JS 基础js组成   英文 中文 描述     ECMAScript JavaScript的核心 描述了语言的基本语法和数据类型，ECMAScript是一套标准   BOM 浏览器对象模型 操作浏览器窗口，比如：弹出框、控制浏览器跳转、获取分辨率等   DOM 文档对象模型 一套操作页面元素的API    简单数据类型   英文 中文 描述     Number     String     B">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="/2019/05/07/0.hello-world/index.html">
+<meta property="og:title" content="JavaScript - 基础">
+<meta property="og:url" content="/2019/05/09/2.1.JavaScript - 基础/index.html">
 <meta property="og:site_name" content="nova7y">
-<meta property="og:description" content="前言 入了前端坑了以后，才越发发现技术领域的庞大，为了巩固所学知识 与项目实战的经验 着手准备撰写博客  该博客采用Hexo框架搭建，配置在了全球最大同性交友平台（giyhub）上   搭建流程概述 安装nodejs      官网 打开cmd，安装hexo        官网 npm install hexo-cli -g   新建文件夹 在cmd中初始化hexo hexo init   安装对">
+<meta property="og:description" content="JS 基础js组成   英文 中文 描述     ECMAScript JavaScript的核心 描述了语言的基本语法和数据类型，ECMAScript是一套标准   BOM 浏览器对象模型 操作浏览器窗口，比如：弹出框、控制浏览器跳转、获取分辨率等   DOM 文档对象模型 一套操作页面元素的API    简单数据类型   英文 中文 描述     Number     String     B">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T03:48:12.636Z">
+<meta property="og:updated_time" content="2019-05-09T05:45:36.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="前言 入了前端坑了以后，才越发发现技术领域的庞大，为了巩固所学知识 与项目实战的经验 着手准备撰写博客  该博客采用Hexo框架搭建，配置在了全球最大同性交友平台（giyhub）上   搭建流程概述 安装nodejs      官网 打开cmd，安装hexo        官网 npm install hexo-cli -g   新建文件夹 在cmd中初始化hexo hexo init   安装对">
+<meta name="twitter:title" content="JavaScript - 基础">
+<meta name="twitter:description" content="JS 基础js组成   英文 中文 描述     ECMAScript JavaScript的核心 描述了语言的基本语法和数据类型，ECMAScript是一套标准   BOM 浏览器对象模型 操作浏览器窗口，比如：弹出框、控制浏览器跳转、获取分辨率等   DOM 文档对象模型 一套操作页面元素的API    简单数据类型   英文 中文 描述     Number     String     B">
   <!-- Canonical links -->
-  <link rel="canonical" href="/2019/05/07/0.hello-world/index.html">
+  <link rel="canonical" href="/2019/05/09/2.1.JavaScript - 基础/index.html">
   
     <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
   
@@ -292,21 +292,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建流程概述"><span class="toc-number">2.</span> <span class="toc-text">搭建流程概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置（转载）"><span class="toc-number">3.</span> <span class="toc-text">配置（转载）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS-基础"><span class="toc-number">1.</span> <span class="toc-text">JS 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#js组成"><span class="toc-number">1.1.</span> <span class="toc-text">js组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单数据类型"><span class="toc-number">1.2.</span> <span class="toc-text">简单数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂数据类型"><span class="toc-number">1.3.</span> <span class="toc-text">复杂数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他1"><span class="toc-number">1.4.</span> <span class="toc-text">其他1</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#转换数据类型"><span class="toc-number">2.1.</span> <span class="toc-text">转换数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三元运算符"><span class="toc-number">2.2.</span> <span class="toc-text">三元运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算符（按先后排序）"><span class="toc-number">2.3.</span> <span class="toc-text">运算符（按先后排序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断"><span class="toc-number">2.4.</span> <span class="toc-text">判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#循环"><span class="toc-number">2.5.</span> <span class="toc-text">循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组"><span class="toc-number">2.6.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-number">2.7.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">2.8.</span> <span class="toc-text">对象</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-0.hello-world" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-2.1.JavaScript - 基础" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      JavaScript - 基础
     </h1>
   
 
@@ -314,52 +314,442 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/yyy/2019/05/07/0.hello-world/" class="article-date">
-	  <time datetime="2019-05-07T10:06:43.794Z" itemprop="datePublished">2019-05-07</time>
+	<a href="/yyy/2019/05/09/2.1.JavaScript - 基础/" class="article-date">
+	  <time datetime="2019-05-09T05:39:37.307Z" itemprop="datePublished">2019-05-09</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/yyy/categories/hexo/">hexo</a>
+    <a class="article-category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/yyy/tags/hexo/">hexo</a>
+	<a class="article-tag-link" href="/yyy/tags/JavaScript/">JavaScript</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/07/0.hello-world/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/2.1.JavaScript - 基础/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li><p>入了前端坑了以后，才越发发现技术领域的庞大，为了巩固所学知识 与项目实战的经验 着手准备撰写博客</p>
-</li>
-<li><p>该博客采用Hexo框架搭建，配置在了全球最大同性交友平台（giyhub）上</p>
-</li>
-</ul>
-<h1 id="搭建流程概述"><a href="#搭建流程概述" class="headerlink" title="搭建流程概述"></a>搭建流程概述</h1><ol>
-<li>安装nodejs      <a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a></li>
-<li>打开cmd，安装hexo        <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">官网</a><ul>
-<li>npm install hexo-cli -g</li>
-</ul>
-</li>
-<li>新建文件夹 在cmd中初始化hexo<ul>
-<li>hexo init</li>
-</ul>
-</li>
-<li>安装对应主题（去github或官网查看）</li>
-<li>配置_config.yml</li>
-<li>使用git 初始化、上传到github上</li>
-</ol>
-<h1 id="配置（转载）"><a href="#配置（转载）" class="headerlink" title="配置（转载）"></a>配置（转载）</h1><p><a href="https://www.jianshu.com/p/9f0e90cc32c2" target="_blank" rel="noopener">https://www.jianshu.com/p/9f0e90cc32c2</a></p>
+        <h1 id="JS-基础"><a href="#JS-基础" class="headerlink" title="JS 基础"></a>JS 基础</h1><h2 id="js组成"><a href="#js组成" class="headerlink" title="js组成"></a>js组成</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECMAScript</td>
+<td>JavaScript的核心</td>
+<td>描述了语言的基本语法和数据类型，ECMAScript是一套标准</td>
+</tr>
+<tr>
+<td>BOM</td>
+<td>浏览器对象模型</td>
+<td>操作浏览器窗口，比如：弹出框、控制浏览器跳转、获取分辨率等</td>
+</tr>
+<tr>
+<td>DOM</td>
+<td>文档对象模型</td>
+<td>一套操作页面元素的API</td>
+</tr>
+</tbody>
+</table>
+<h2 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔</td>
+<td>true(1)  false(0)</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>未下定义的</td>
+<td></td>
+</tr>
+<tr>
+<td>Null</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="复杂数据类型"><a href="#复杂数据类型" class="headerlink" title="复杂数据类型"></a>复杂数据类型</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object</td>
+<td>目标</td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他1"><a href="#其他1" class="headerlink" title="其他1"></a>其他1</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Infinity</td>
+<td>无穷大</td>
+<td></td>
+</tr>
+<tr>
+<td>-Infinity</td>
+<td>无穷小</td>
+<td></td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>not a number</td>
+<td></td>
+</tr>
+<tr>
+<td>isNaN(x)</td>
+<td>判断是否是数字</td>
+<td></td>
+</tr>
+<tr>
+<td>typeof *</td>
+<td>类型</td>
+<td></td>
+</tr>
+<tr>
+<td>.length</td>
+<td>长度</td>
+<td></td>
+</tr>
+<tr>
+<td>document.write();</td>
+<td>文件  写作</td>
+<td>新增一个标签   document.write(‘<h1></h1>‘);</td>
+</tr>
+<tr>
+<td>console.log(‘’);</td>
+<td>控制台 日志</td>
+<td>在浏览器控制台打印内容</td>
+</tr>
+<tr>
+<td>console.dir(*)</td>
+<td>*代表标签</td>
+<td>显示一个对象所有的属性和方法</td>
+</tr>
+<tr>
+<td>alert();</td>
+<td>警告</td>
+<td>浏览器弹窗  alert(‘你好’);</td>
+</tr>
+<tr>
+<td>confirm(‘’);</td>
+<td>证实</td>
+<td>和alert()差不多，但是带“取消”按钮</td>
+</tr>
+<tr>
+<td>prompt(‘’)    prompt(‘’,’’)</td>
+<td>提示</td>
+<td>浏览器弹窗，可输入内容；var msg =   prompt(‘主题’,’提示’)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="转换数据类型"><a href="#转换数据类型" class="headerlink" title="转换数据类型"></a>转换数据类型</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.toString()</td>
+<td></td>
+<td>不可转换undefined和null</td>
+</tr>
+<tr>
+<td>String()</td>
+<td></td>
+<td>可以转换undefined和null</td>
+</tr>
+<tr>
+<td>Number()</td>
+<td></td>
+<td>如果目标含非数字，则返回NaN</td>
+</tr>
+<tr>
+<td>parseInt()</td>
+<td>解析整数</td>
+<td>转换整数，遇到非数字后停止</td>
+</tr>
+<tr>
+<td>parseFloat()</td>
+<td>解析浮点数</td>
+<td>可以转换浮点数，遇到非数字后停止</td>
+</tr>
+<tr>
+<td>Boolean()</td>
+<td></td>
+<td>false：0    ‘’(空字符串)    null      undefined    NaN       true：其他都会转换成true</td>
+</tr>
+<tr>
+<td>+<em>    -</em>    、  *+’’</td>
+<td></td>
+<td>采用隐式转换，但是需要注意数据类型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表达式  ?  true    :  false</td>
+<td>三元表达式</td>
+<td>如果表达式成立，则返回true</td>
+</tr>
+</tbody>
+</table>
+<h2 id="运算符（按先后排序）"><a href="#运算符（按先后排序）" class="headerlink" title="运算符（按先后排序）"></a>运算符（按先后排序）</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>++     –</td>
+<td>一元运算符</td>
+<td></td>
+</tr>
+<tr>
+<td>+ - * / %</td>
+<td>算数运算符</td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;  &gt;    &gt;=  &lt;=</td>
+<td>关系运算符</td>
+<td></td>
+</tr>
+<tr>
+<td>== != === !==</td>
+<td>相等运算符</td>
+<td></td>
+</tr>
+<tr>
+<td>&amp;&amp;  \</td>
+<td>\</td>
+<td>!</td>
+<td>逻辑运算符</td>
+<td>与、或、非</td>
+</tr>
+<tr>
+<td>=   +=     -=   *=   /=     %=</td>
+<td>赋值运算符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>if  else</td>
+<td>如果      其他</td>
+<td></td>
+</tr>
+<tr>
+<td>switch (expression){       case 常量1: 语句; break;      default: 语句; break;}</td>
+<td>switch：开关      case：情况      break：打断      default: 其他默认</td>
+<td>break若省略，则会穿透            case:kas      default:difo</td>
+</tr>
+</tbody>
+</table>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>while (循环条件)    {    //循环体  }</td>
+<td>当什么的时候 xxxx</td>
+<td>音标：wil</td>
+</tr>
+<tr>
+<td>do {   // 循环体;    }    while (循环条件);</td>
+<td></td>
+<td>不管条件是否成立，均先执行一次</td>
+</tr>
+<tr>
+<td>for (初始化表达式1; 判断表达式2; 自增表达式3)       {  // 循环体4  }</td>
+<td>为，为了；因为；给；对于；至于</td>
+<td>for (var i = 0; i   &lt; 10; i++) {循环体}</td>
+</tr>
+<tr>
+<td>break</td>
+<td>打断</td>
+<td>立即跳出整个循环，即循环结束，开始执行循环后面的内容</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>继续</td>
+<td>立即跳出当前循环，继续下一次循环</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>var * = new Array()</td>
+<td>数组</td>
+<td></td>
+</tr>
+<tr>
+<td>数组.splice(索引，删除数量)</td>
+<td>拼接</td>
+<td>删除数据中的数据</td>
+</tr>
+<tr>
+<td>*.join(‘内容’)</td>
+<td>加入</td>
+<td>在数组中的值 之间 插入内容</td>
+</tr>
+<tr>
+<td>*.indexOf(值、变量名)</td>
+<td></td>
+<td>查找所传值 在数据中的索引，未找到的话   返回-1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>function * (){}</td>
+<td>函数</td>
+<td>形参、实参</td>
+</tr>
+<tr>
+<td>(function   (){})()</td>
+<td>匿名函数、自调用函数</td>
+<td></td>
+</tr>
+<tr>
+<td>return</td>
+<td>返回</td>
+<td>一个函数中  只能返回一个return的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>var * ={}</td>
+<td>字面量 创建</td>
+<td></td>
+</tr>
+<tr>
+<td>var * = new   Object()</td>
+<td>Object 创建</td>
+<td></td>
+</tr>
+<tr>
+<td>function <em> (变量名,变量名){      var </em> = new Object()          <em>.name = ‘’      return </em>}</td>
+<td>工厂方式创建</td>
+<td></td>
+</tr>
+<tr>
+<td>function * (变量名,变量名){          this.name = ‘’      return this;//可以不写return}</td>
+<td>自定义 构造函数</td>
+<td></td>
+</tr>
+<tr>
+<td>arguments.length</td>
+<td>参数</td>
+<td>函数声明的时候不写形参，通过这个   来获取数量</td>
+</tr>
+<tr>
+<td>delete 对象名.属性名</td>
+<td>删除对象中的值</td>
+<td></td>
+</tr>
+<tr>
+<td>for (变量名(key) in 对象名)</td>
+<td>循环遍历 对象</td>
+<td>for (变量名(key) in 对象名)   {console.log(key);      console.log(zs[key]);}</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -370,7 +760,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="/2019/05/07/0.hello-world/" title="Hello World" target="_blank" rel="external">/2019/05/07/0.hello-world/</a>
+      <a href="/2019/05/09/2.1.JavaScript - 基础/" title="JavaScript - 基础" target="_blank" rel="external">/2019/05/09/2.1.JavaScript - 基础/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -418,9 +808,13 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/yyy/2019/05/09/雅虎前端优化35条规则/" title="雅虎前端优化35条规则"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/yyy/2019/05/09/2.3.JavaScript - DOM、BOM操作、事件/" title="JavaScript - DOM、BOM操作、事件"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/4.SQL/" title="SQL"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
     <li class="toggle-toc">
