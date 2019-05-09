@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>node + 插件 + 包 + 模块 | Hexo</title>
+  <meta name="description" content="Node.js JavaScript运行环境                   除了node安装以外，其余插件安装均在cmd中进行  Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. 特点：事件驱动、非阻塞 IO（异步） 模型、单线程、跨平台  能解析和执行 JavaScript 代码（严格来说应该是">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node + 插件 + 包 + 模块">
+<meta property="og:url" content="/2019/05/09/node + 插件 + 包 + 模块/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="Node.js JavaScript运行环境                   除了node安装以外，其余插件安装均在cmd中进行  Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. 特点：事件驱动、非阻塞 IO（异步） 模型、单线程、跨平台  能解析和执行 JavaScript 代码（严格来说应该是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-09T03:28:29.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node + 插件 + 包 + 模块">
+<meta name="twitter:description" content="Node.js JavaScript运行环境                   除了node安装以外，其余插件安装均在cmd中进行  Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. 特点：事件驱动、非阻塞 IO（异步） 模型、单线程、跨平台  能解析和执行 JavaScript 代码（严格来说应该是">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/09/node + 插件 + 包 + 模块/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/Node-js/">Node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/ajax、jsonp/">ajax、jsonp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/扩展阅读/">扩展阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/本地存储/">本地存储</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/React/">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/Vue/">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/ajax、jsonp/">ajax、jsonp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/前端/">前端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/扩展阅读/">扩展阅读</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/本地存储/">本地存储</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">五月 2019</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/ajax、jsonp/">ajax、jsonp</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/ajax + jsonp/" class="title">ajax + jsonp</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:33:47.197Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/本地存储/">本地存储</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/cookie、session、WebStorage/" class="title">cookie、session、WebStorage</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:32:47.110Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Git/">Git</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Git - 基础/" class="title">Git - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:31:16.682Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/JS高级笔记/" class="title">JS高级笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:30:19.347Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Node-js/">Node.js</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/node + 插件 + 包 + 模块/" class="title">node + 插件 + 包 + 模块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:28:32.690Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js"><span class="toc-number">1.</span> <span class="toc-text">Node.js</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#npm-包"><span class="toc-number">2.</span> <span class="toc-text">npm(包)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一般工具"><span class="toc-number">3.</span> <span class="toc-text">一般工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gulp"><span class="toc-number">3.1.</span> <span class="toc-text">Gulp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LESS"><span class="toc-number">3.2.</span> <span class="toc-text">LESS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel"><span class="toc-number">3.3.</span> <span class="toc-text">babel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#browser-sync"><span class="toc-number">3.4.</span> <span class="toc-text">browser-sync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#forever"><span class="toc-number">3.5.</span> <span class="toc-text">forever</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nodemon"><span class="toc-number">3.6.</span> <span class="toc-text">nodemon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mime"><span class="toc-number">3.7.</span> <span class="toc-text">mime</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#glob"><span class="toc-number">3.8.</span> <span class="toc-text">glob</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#moment"><span class="toc-number">3.9.</span> <span class="toc-text">moment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-number">3.10.</span> <span class="toc-text">MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#youch"><span class="toc-number">3.11.</span> <span class="toc-text">youch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#morgan"><span class="toc-number">3.12.</span> <span class="toc-text">morgan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cross-env"><span class="toc-number">3.13.</span> <span class="toc-text">cross-env</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模板引擎"><span class="toc-number">4.</span> <span class="toc-text">模板引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#art-template"><span class="toc-number">4.1.</span> <span class="toc-text">art-template</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模板继承"><span class="toc-number">4.1.0.1.</span> <span class="toc-text">模板继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在模板页中引用子模板"><span class="toc-number">4.1.0.2.</span> <span class="toc-text">在模板页中引用子模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#过滤器"><span class="toc-number">4.1.0.3.</span> <span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#html页面使用"><span class="toc-number">4.1.0.4.</span> <span class="toc-text">html页面使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改语法界定符"><span class="toc-number">4.1.0.5.</span> <span class="toc-text">修改语法界定符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#传递变量"><span class="toc-number">4.1.0.6.</span> <span class="toc-text">传递变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#express-art-template"><span class="toc-number">4.2.</span> <span class="toc-text">express-art-template</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#web开发框架"><span class="toc-number">5.</span> <span class="toc-text">web开发框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Express"><span class="toc-number">5.1.</span> <span class="toc-text">Express</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#路由"><span class="toc-number">5.1.0.1.</span> <span class="toc-text">路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#处理静态资源"><span class="toc-number">5.1.0.2.</span> <span class="toc-text">处理静态资源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解析-post-请求体"><span class="toc-number">5.1.0.3.</span> <span class="toc-text">解析 post 请求体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#中间件"><span class="toc-number">5.1.0.4.</span> <span class="toc-text">中间件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie处理"><span class="toc-number">5.1.1.</span> <span class="toc-text">cookie处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session处理"><span class="toc-number">5.1.2.</span> <span class="toc-text">session处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#express-mysql-session"><span class="toc-number">5.1.3.</span> <span class="toc-text">express-mysql-session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multer"><span class="toc-number">5.1.4.</span> <span class="toc-text">multer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-errors"><span class="toc-number">5.1.5.</span> <span class="toc-text">http-errors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#svg-captcha"><span class="toc-number">5.1.6.</span> <span class="toc-text">svg-captcha</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他常用"><span class="toc-number">5.1.7.</span> <span class="toc-text">其他常用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#md5加密"><span class="toc-number">6.</span> <span class="toc-text">md5加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配合vue-路由模式？"><span class="toc-number">7.</span> <span class="toc-text">配合vue 路由模式？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP协议"><span class="toc-number">8.</span> <span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cookie"><span class="toc-number">8.0.0.1.</span> <span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Session"><span class="toc-number">8.0.0.2.</span> <span class="toc-text">Session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">8.0.0.3.</span> <span class="toc-text">参考资料</span></a></li></ol></li>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-node + 插件 + 包 + 模块" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      node + 插件 + 包 + 模块
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/09/node + 插件 + 包 + 模块/" class="article-date">
+	  <time datetime="2019-05-09T03:28:32.690Z" itemprop="datePublished">2019-05-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/Node-js/">Node.js</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/Node-js/">Node.js</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/node + 插件 + 包 + 模块/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h1><blockquote>
+<p>JavaScript运行环境                   除了node安装以外，其余插件安装均在cmd中进行</p>
+</blockquote>
+<p>Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.</p>
+<p>特点：事件驱动、非阻塞 IO（异步） 模型、单线程、跨平台</p>
+<ul>
+<li>能解析和执行 JavaScript 代码（严格来说应该是 ECMAScript 代码）</li>
+<li>构建于 Chrome V8 JavaScript 引擎之上</li>
+<li>为 JavaScript 提供了服务端编程的能力</li>
+<li>从技术角度它的能力和 Java、PHP、Python、Perl、Ruby 等服务端技术类似</li>
+</ul>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">安装node环境</span><br><span class="line">	执行*.exe安装文件</span><br><span class="line">    检测是否安装成功    node -v</span><br><span class="line"></span><br><span class="line">安装cnpm(包管理工具)   (需要完善)</span><br><span class="line">    npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">    检测是否安装成功  cnpm - v</span><br></pre></td></tr></table></figure>
+<p><strong>升级</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 全局安装n</span><br><span class="line">$ npm install -g n</span><br><span class="line"># 升级到最新稳定版</span><br><span class="line">$ n stable </span><br><span class="line"># 升级到最新版</span><br><span class="line">$ n latest</span><br><span class="line"># 升级到定制版</span><br><span class="line">$ n v7.10.0</span><br><span class="line"># 切换使用版本</span><br><span class="line">$ n 7.10.0 (ENTER)</span><br></pre></td></tr></table></figure>
+<h1 id="npm-包"><a href="#npm-包" class="headerlink" title="npm(包)"></a>npm(包)</h1><ul>
+<li>npm<code>全称</code>Node Package Manager`(node 包管理器)，它的诞生是为了解决 Node 中第三方包共享的问题。</li>
+<li><code>npm</code> 不需要单独安装。在安装Node的时候，会连带一起安装<code>npm</code>。</li>
+</ul>
+<ol>
+<li>本地安装：安装到当前项目中</li>
+<li>全局安装：安装到电脑系统中，各个项目都可以调用</li>
+</ol>
+<p>常用命令:</p>
+<ul>
+<li><p>查看 <code>npm</code> 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm --version</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>升级 <code>npm</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install npm --global</span><br><span class="line">npm install npm -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化 <code>package.json</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装第三方包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install 包名</span><br><span class="line">npm install 包名 包名</span><br><span class="line">npm install 包名@版本号</span><br><span class="line"></span><br><span class="line">npm install --production       // 只下载dependencies依赖包</span><br><span class="line">npm install                   // devDependencies和 dependencies依赖包 都下载</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从缓存目录安装包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看缓存目录</span></span><br><span class="line">npm config get cache</span><br><span class="line"><span class="comment"># 从缓存目录下载包</span></span><br><span class="line"><span class="comment"># --cache-min 后面跟的是时间，单位是分钟，超过这个时间才去服务器下载</span></span><br><span class="line">npm install --cache-min 9999999 &lt;package-name&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>package.json</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">main：制订入口文件</span><br><span class="line"></span><br><span class="line">dependencies：依赖        </span><br><span class="line">		//~1.2.2 代表安装1.2.x  以上的版本</span><br><span class="line">		//^1.2.2 代表安装1.x.x  以上的版本</span><br><span class="line">		</span><br><span class="line">script：命令行</span><br><span class="line">		"scripts": &#123;</span><br><span class="line">            "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",</span><br><span class="line">            "start": "node app.js",</span><br><span class="line">            "t": "dir c:\\"</span><br><span class="line">         &#125;</span><br><span class="line">         npm run t</span><br><span class="line">		 npm run start</span><br><span class="line">         # 只有 start 可以简化调用</span><br><span class="line">          npm start</span><br></pre></td></tr></table></figure>
+<p>—配置生产、开发环境变量</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  "scripts": &#123;</span><br><span class="line">    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",</span><br><span class="line">    "dev": "cross-env NODE_ENV=development nodemon app.js",</span><br><span class="line">    "start": "cross-env NODE_ENV=production nodemon app.js"</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">//设置环境变量后 可以通过nodemon 环境变量名(dev) 运行</span><br><span class="line">//注意看“cross-env”插件</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p><strong>node.js 第三方模块使用教程  (开发项目中的安装模块方法)</strong></p>
+<blockquote>
+<p>在使用第三方模块之前，需要在当前项目中建立一个 package.json 文件(不能包含中文)</p>
+<p>方法：cmd中 输入npm init -y</p>
+</blockquote>
+<p><strong>模块的加载机制</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Node.js 中的模块化遵守 CommonJS 规范，CommonJS 是模块化的一种规范，Node.js 中实现了这种规范。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 如果不是文件模块，也不是核心模块</span><br><span class="line">- node 会去 node_modules 目录中找（找跟你引用的名称一样的目录），例如这里 require(&apos;moment&apos;)</span><br><span class="line">- 如果在 node_modules 目录中找到 moment 目录，则找该目录下的 package.json 文件</span><br><span class="line">- 如果找到 package.json 文件，则找该文件中的 main 属性，拿到 main 指定的入口模块</span><br><span class="line">- 如果过程都找不到，node 则取上一级目录下找 node_modules 目录，规则同上</span><br><span class="line">- 如果一直找到代码文件的根路径还找不到，则报错</span><br></pre></td></tr></table></figure>
+<h1 id="一般工具"><a href="#一般工具" class="headerlink" title="一般工具"></a>一般工具</h1><h2 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h2><blockquote>
+<p>压制代码、部署浏览器同步测试工具</p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cnpm install  gulp -g</span><br><span class="line"></span><br><span class="line">检测是否安装成功:  gulp - v</span><br></pre></td></tr></table></figure>
+<p><strong>本地环境搭建</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">初始化</span><br><span class="line">    在对应的工作目录下 按下 shift 选中在命令窗口中打开</span><br><span class="line">    </span><br><span class="line">安装插件</span><br><span class="line">    # 当前项目中安装gulp</span><br><span class="line">    cnpm install gulp --save-dev</span><br><span class="line">    # 压缩html的插件</span><br><span class="line">    cnpm install gulp-htmlmin --save-dev</span><br><span class="line">    # 压缩css的插件</span><br><span class="line">    cnpm install gulp-cssmin --save-dev</span><br><span class="line">    # 自动打开浏览器，并实时刷新插件(浏览器同步测试工具)</span><br><span class="line">    cnpm install browser-sync --save-dev</span><br></pre></td></tr></table></figure>
+<p><strong>配置文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">将gulpjs文件复制到项目根目录下</span><br><span class="line"></span><br><span class="line">自动化压缩和复制文件到发布目录dist</span><br><span class="line">    gulp build</span><br><span class="line">         </span><br><span class="line">开启测试用的服务器</span><br><span class="line">    gulp dev</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="LESS"><a href="#LESS" class="headerlink" title="LESS"></a>LESS</h2><blockquote>
+<p>CSS 预处理语言，增加了诸如变量、混合（mixin）、函数等功能</p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">运行cmd命令输入:</span><br><span class="line">    npm  install  less  -g</span><br><span class="line"></span><br><span class="line">验证less是否安装成功</span><br><span class="line">    lessc -v </span><br><span class="line"></span><br><span class="line">安装成功后新建一个less文件即可</span><br><span class="line">    *.less</span><br></pre></td></tr></table></figure>
+<p><strong>将Less文件编译为CSS文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">运行cmd命令输入:</span><br><span class="line">      注意: 首先要通过cmd命令进入到当前less文件所在的文件夹目录中</span><br><span class="line">      编译less文件cmd命令:   lessc  要被编译的less文件  要编译为自定义CSS文件</span><br><span class="line">      例如:  lessc   index.less   index.css</span><br></pre></td></tr></table></figure>
+<p><strong>开发工具配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">webstorm自带less编译功能,实时编译</span><br><span class="line">webStorm: 配置快捷键方式进行编译</span><br><span class="line">       ◆ 文件  - &gt; 设置 - &gt; 工具 -&gt; file watchers  -&gt; 选择less文件点击编辑 -&gt; 取消实时编译选项</span><br><span class="line">       ◆ 文件  - &gt; 设置 -&gt;  快捷键 - &gt;  插件 - &gt; File watchers  -&gt; 点击右键添加键盘快捷键</span><br><span class="line">       </span><br><span class="line">Sublime安装插件: LESS2CSS    </span><br><span class="line">       安装编译插件:  ctral+shift+P  ---&gt; 在搜索栏中输入   LESS2CSS </span><br><span class="line">       </span><br><span class="line">VSCode需要安装插件:  Easy Less  安装成功后  Ctrl+s保存即可</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h2><blockquote>
+<p>ECMAScript 6 降级处理        <a href="https://www.babeljs.cn/" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>步骤概述</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">降级处理 babel 的使用步骤</span><br><span class="line">  1. 安装Node.js</span><br><span class="line">  2. 命令行中安装 babel</span><br><span class="line">  3. 配置文件 .babelrc</span><br><span class="line">  4. 运行</span><br></pre></td></tr></table></figure>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install  @babel/core @babel/cli @babel/preset-env</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">配置文件 .babelrc</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;presets&quot;: [&quot;@babel/preset-env&quot;]</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">在命令行中，运行</span><br><span class="line">        # 把转换的结果输出到指定的文件</span><br><span class="line">        babel index.js -o test.js</span><br><span class="line">        # 把转换的结果输出到指定的目录</span><br><span class="line">        babel src -d lib</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="browser-sync"><a href="#browser-sync" class="headerlink" title="browser-sync"></a>browser-sync</h2><blockquote>
+<p>简单服务器（文件更新后不需要刷新网页）        <a href="https://browsersync.io/" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g browser-sync</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="forever"><a href="#forever" class="headerlink" title="forever"></a>forever</h2><blockquote>
+<p>node服务器，关闭cdm后 服务器依然会运行        <a href="https://github.com/foreverjs/forever" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i forever -g</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forever start (node服务器入口文件 例 app.js)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h2><blockquote>
+<p>自动重启项目工程        <a href="https://nodemon.io/" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodemon</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmd中用nodemon替换node 运行服务器程序：</span><br><span class="line">	nodemon *</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">	node app.js		→		nodemon app.js</span><br></pre></td></tr></table></figure>
+<p><strong>其他类似模块</strong></p>
+<p>forever，nodemon，node-dev</p>
+<hr>
+<h2 id="mime"><a href="#mime" class="headerlink" title="mime"></a>mime</h2><blockquote>
+<p>根据后缀名生成 Content-Type值        <a href="https://github.com/broofa/node-mime" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mime</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const Mime = require(&apos;mime/Mime&apos;);</span><br><span class="line">Mime.getType(&apos;abc&apos;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="glob"><a href="#glob" class="headerlink" title="glob"></a>glob</h2><blockquote>
+<p>文件路径获取工具        <a href="https://github.com/isaacs/node-glob" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i glob</span><br><span class="line"></span><br><span class="line"><span class="comment">//or 下载js文件</span></span><br></pre></td></tr></table></figure>
+<p><strong>语法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> glob = <span class="built_in">require</span>(<span class="string">"glob"</span>)</span><br><span class="line"></span><br><span class="line">glob(<span class="string">"**/*.js"</span>, options, <span class="function"><span class="keyword">function</span> (<span class="params">er, files</span>) </span>&#123;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mg = <span class="keyword">new</span> Glob(pattern, options, cb)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="moment"><a href="#moment" class="headerlink" title="moment"></a>moment</h2><blockquote>
+<p>日期处理类库,用于解析、检验、操作、显示日期        <a href="http://momentjs.cn/" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install moment</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">moment().format(&apos;dddd&apos;);                    // 星期一</span><br><span class="line">moment().format(&quot;MMM Do YY&quot;);               // 12月 10日 18</span><br><span class="line">moment().format(&apos;YYYY [escaped] YYYY&apos;);     // 2018 escaped 2018</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><blockquote>
+<p>使用框架连接my sql数据库            <a href="https://github.com/mysqljs/mysql" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mysql</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql      = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host     : <span class="string">'localhost'</span>,</span><br><span class="line">  port		 : <span class="number">3306</span></span><br><span class="line">  user     : <span class="string">'me'</span>,</span><br><span class="line">  password : <span class="string">'secret'</span>,</span><br><span class="line">  database : <span class="string">'my_db'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.connect();</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">'SELECT 1 + 1 AS solution'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// error: 是否有错误</span></span><br><span class="line">  <span class="comment">// results: 查询的结果，数组。重要</span></span><br><span class="line">  <span class="comment">// fields: 字段信息</span></span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The solution is: '</span>, results[<span class="number">0</span>].solution);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.end();</span><br></pre></td></tr></table></figure>
+<p><strong>连接池</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入第三方mysql模块</span></span><br><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用连接池的方式 建立连接</span></span><br><span class="line"><span class="keyword">const</span> pool = mysql.createPool(&#123;</span><br><span class="line">    host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    user: <span class="string">'root'</span>,</span><br><span class="line">    password: <span class="string">'root'</span>,</span><br><span class="line">    database: <span class="string">'alishow'</span>,</span><br><span class="line">    connectionLimit: <span class="number">10</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//抛出一个执行sql语句的方法</span></span><br><span class="line"><span class="built_in">module</span>.exports.query = <span class="function">(<span class="params">sql, params, callback</span>) =&gt;</span> &#123;</span><br><span class="line">    pool.getConnection(<span class="function">(<span class="params">err, connection</span>) =&gt;</span> &#123;</span><br><span class="line">        connection.query(sql, params, (err, results, feilds) =&gt; &#123;</span><br><span class="line">            callback(err, results, feilds)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="youch"><a href="#youch" class="headerlink" title="youch"></a>youch</h2><blockquote>
+<p>node中的错误页面        <a href="https://github.com/poppinss/youch" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i youch</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置中间件 处理错误页面</span></span><br><span class="line">app.use(<span class="function">(<span class="params">err, req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> youch = <span class="keyword">new</span> Youch(err, req)</span><br><span class="line">    youch.toHTML().then(<span class="function"><span class="params">html</span> =&gt;</span> res.end(html))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="morgan"><a href="#morgan" class="headerlink" title="morgan"></a>morgan</h2><blockquote>
+<p>打印、生成请求日志        <a href="https://github.com/expressjs/morgan" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i morgan</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.use(log(<span class="string">'combined'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"></span><br><span class="line">app.use(log(<span class="string">'dev'</span>))</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="cross-env"><a href="#cross-env" class="headerlink" title="cross-env"></a>cross-env</h2><blockquote>
+<p>解决mac、windows环境变量的兼容        <a href="https://github.com/kentcdodds/cross-env" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cross-env -g</span><br></pre></td></tr></table></figure>
+<p><strong>运行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">根据环境变量 运行对应的node app.js</span><br><span class="line">npm run 环境变量名     npm run dev</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h1><h2 id="art-template"><a href="#art-template" class="headerlink" title="art-template"></a>art-template</h2><blockquote>
+<p>用于循环数据，动态生成网站        <a href="https://aui.github.io/art-template/" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g browser-sync</span><br></pre></td></tr></table></figure>
+<p><strong>基本语法</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入 art-template</span></span><br><span class="line">		<span class="keyword">const</span> template = <span class="built_in">require</span>(<span class="string">'art-template'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//语法：</span></span><br><span class="line">        <span class="keyword">let</span> html = template(绝对路径, 数据对象);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> html = template(path.join(__dirname, <span class="string">'views/xx.html'</span>), &#123;</span><br><span class="line">          title: <span class="string">'这是数据'</span></span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line"><span class="comment">//输出数据：(在html中 插入占位符) 		&#123;&#123; title &#125;&#125;</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//条件输出：</span></span><br><span class="line">        &#123;&#123;<span class="keyword">if</span> value&#125;&#125; </span><br><span class="line">            &lt;p&gt;&#123;&#123; value &#125;&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &#123;&#123;/i</span>f&#125;&#125;</span><br><span class="line"><span class="comment">//循环输出：</span></span><br><span class="line">		&#123;&#123;each items&#125;&#125;</span><br><span class="line">    		&#123;&#123;$index&#125;&#125; &#123;&#123;$value&#125;&#125;</span><br><span class="line">		&#123;&#123;/each&#125;&#125;</span><br><span class="line">          </span><br><span class="line"><span class="comment">//数据别名(防止名称冲突)</span></span><br><span class="line">&#123;&#123;each category data i&#125;&#125;</span><br><span class="line">          </span><br><span class="line"></span><br><span class="line"><span class="comment">//在html页面中使用</span></span><br><span class="line">template(url(可以是*.html), &#123;key,value&#125;)</span><br><span class="line"></span><br><span class="line">&lt;% <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span> ; i&lt;=<span class="number">10</span> ; i++)&#123; %&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href="#"&gt;&#123;&#123;i&#125;&#125;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//html字符串 转义符：#   or   @</span></span><br></pre></td></tr></table></figure>
+<h4 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//其他页面引入模板</span></span><br><span class="line">        &#123;&#123; extend <span class="string">'./_layout/layout.html'</span> &#125;&#125;</span><br><span class="line">        </span><br><span class="line"><span class="comment">//模板页面中挖坑：</span></span><br><span class="line">		&#123;&#123; block <span class="string">'content'</span> &#125;&#125;&#123;&#123; /block &#125;&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"><span class="comment">//其他页面填充父模板的坑:</span></span><br><span class="line">        &#123;&#123; block <span class="string">'content'</span> &#125;&#125;</span><br><span class="line">        <span class="comment">//.....填充的内容</span></span><br><span class="line">        &#123;&#123; /block &#125;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在模板页中引用子模板"><a href="#在模板页中引用子模板" class="headerlink" title="在模板页中引用子模板"></a>在模板页中引用子模板</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;include <span class="string">'../includes/navbar.html'</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> template = <span class="built_in">require</span>(<span class="string">'art-template'</span>);</span><br><span class="line"><span class="comment">// 给 art-template 设置过滤器</span></span><br><span class="line">template.defaults.imports.dateFormat = <span class="function"><span class="keyword">function</span>(<span class="params">date, format</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> moment(date).format(format);  <span class="comment">//利用moment处理日期数据 并返回</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="html页面使用"><a href="#html页面使用" class="headerlink" title="html页面使用"></a>html页面使用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在页面中 引入模板引擎 .js文件后  写入&lt;script&gt;</span></span><br><span class="line"></span><br><span class="line">    &lt;script type=<span class="string">"text/html"</span> id=<span class="string">"javaaa"</span>&gt;</span><br><span class="line">        &#123;&#123; each msg&#125;&#125;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"&#123;&#123; $value.img &#125;&#125;"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">                &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"name"</span>&gt;&#123;&#123; $value.uName &#125;&#125; 说：&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">                &lt;span&gt;&#123;&#123; $value.content &#125;&#125;&lt;/</span>span&gt;</span><br><span class="line">        &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">       &#123;&#123; /</span>each &#125;&#125;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/获取服务器返回的json数据、解析后给模板引擎赋值、然后生成页面解构</span></span><br><span class="line"><span class="regexp">    var aaa = JSON.parse(this.responseText)</span></span><br><span class="line"><span class="regexp">    let a = template('javaaa', &#123;msg: aaa&#125;)</span></span><br><span class="line"><span class="regexp">    $('ul').html(a)</span></span><br></pre></td></tr></table></figure>
+<h4 id="修改语法界定符"><a href="#修改语法界定符" class="headerlink" title="修改语法界定符"></a>修改语法界定符</h4><blockquote>
+<p>若与服务器的模板引擎发送冲突，则需要进行配置</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">template.defaults.rules[<span class="number">1</span>].test = <span class="regexp">/&#123;-([@#]?)[ \t]*(\/?)([\w\W]*?)[ \t]*-&#125;/</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 原始语法的界定符规则</span></span><br><span class="line"><span class="regexp">template.defaults.rules[0].test = /</span>&lt;!(#?)((?:==|=#|[=-])?)[ \t]*([\w\W]*?)[ \t]*(-?)!&gt;/;</span><br></pre></td></tr></table></figure>
+<h4 id="传递变量"><a href="#传递变量" class="headerlink" title="传递变量"></a>传递变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//变量声明</span></span><br><span class="line">template.defaults.imports.log = <span class="built_in">console</span>.log;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入变量</span></span><br><span class="line">&lt;%= $imports.log(<span class="string">'hello world'</span>) %&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>其他模板引擎</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- jade</span><br><span class="line">- ejs</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="express-art-template"><a href="#express-art-template" class="headerlink" title="express-art-template"></a>express-art-template</h2><blockquote>
+<p>与Express框架配合使用（基于art-template，其作用为 简化代码）</p>
+<p><a href="https://github.com/aui/express-art-template" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install art-template express-art-template</span><br></pre></td></tr></table></figure>
+<p><strong>配置</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认模板都放在views文件夹中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置html文件为模板</span></span><br><span class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'html'</span>);</span><br><span class="line"><span class="comment">// 设置模板交给谁去处理</span></span><br><span class="line">app.engine(<span class="string">'html'</span>, <span class="built_in">require</span>(<span class="string">'express-art-template'</span>));</span><br></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// render 方法默认会去项目的 views 目录中查找 index.html 文件</span></span><br><span class="line">  <span class="comment">// render 方法的本质就是将读取文件和模板引擎渲染这件事儿给封装起来了</span></span><br><span class="line">  <span class="comment">// 默认模板都是html文件，这里的.html可以省略</span></span><br><span class="line">  res.render(<span class="string">'index.html'</span>, &#123;</span><br><span class="line">    title: <span class="string">'hello world'</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>如果希望修改默认的 <code>views</code> 视图渲染存储目录，可以：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一个参数 views 是一个特定标识，不能乱写</span></span><br><span class="line"><span class="comment">// 第二个参数给定一个目录路径作为默认的视图查找目录</span></span><br><span class="line">app.set(<span class="string">'views'</span>, 目录路径)</span><br></pre></td></tr></table></figure>
+<p>#### </p>
+<h1 id="web开发框架"><a href="#web开发框架" class="headerlink" title="web开发框架"></a>web开发框架</h1><h2 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h2><blockquote>
+<p>可以设置中间件来响应 HTTP 请求。<br>定义了路由表用于执行不同的 HTTP 请求动作。<br>可以通过向模板传递参数来动态渲染 HTML页面</p>
+</blockquote>
+<p><a href="http://expressjs.com/" target="_blank" rel="noopener">官网</a>、<a href="http://www.expressjs.com.cn/" target="_blank" rel="noopener">中文官网</a>、<a href="https://github.com/expressjs/express" target="_blank" rel="noopener">Github</a></p>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//    调用 express() 得到一个 app        类似于 http.createServer()</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">//   设置请求对应的处理函数     当客户端以 GET 方法请求 / 的时候就会调用第二个参数：请求处理函数</span></span><br><span class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  res.send(<span class="string">'hello world'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//   监听端口号，启动 Web 服务</span></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; <span class="built_in">console</span>.log(<span class="string">'app listening on port 3000!'</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><blockquote>
+<p><a href="http://expressjs.com/en/starter/basic-routing.html" target="_blank" rel="noopener">参考文档</a></p>
+</blockquote>
+<p>路由（Routing）是由一个 URL（或者叫路径标识）和一个特定的 HTTP 方法（GET、POST 等）组成的，涉及到应用如何处理响应客户端请求。</p>
+<p>每一个路由都可以有一个或者多个处理器函数，当匹配到路由时，这个/些函数将被执行。</p>
+<p>路由的定义的结构如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.METHOD(PATH, HANDLER)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//前缀可选</span></span><br><span class="line">app.use(<span class="string">'前缀'</span>,<span class="string">'路由'</span>)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>app</code> 是 express 实例</li>
+<li><code>METHOD</code> 是一个 <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank" rel="noopener">HTTP 请求方法</a></li>
+<li><code>PATH</code> 是服务端路径（定位标识）</li>
+<li><code>HANDLER</code> 是当路由匹配到时需要执行的处理函数</li>
+</ul>
+<p>下面是一些基本示例。</p>
+<ul>
+<li>处理 get 请求</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当你以 GET 方法请求 / 的时候，执行对应的处理函数</span></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">'Hello World!'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>处理 post 请求</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当你以 POST 方法请求 / 的时候，指定对应的处理函数</span></span><br><span class="line">app.post(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">'Got a POST request'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>路由的参考文档 <a href="http://expressjs.com/en/guide/routing.html" target="_blank" rel="noopener">routing guide</a>.</p>
+<p><strong>设置路由</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在路由配置上面设置</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">module</span>.exports = express.Router();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//等同于以下方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = express.Router()</span><br><span class="line"><span class="comment">//路由内容  例处理get、post请求</span></span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
+<p><strong>多路由文件处理</strong></p>
+<blockquote>
+<p> 下载、使用glob模块</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> glob = <span class="built_in">require</span>(<span class="string">'glob'</span>)</span><br><span class="line"></span><br><span class="line">glob(<span class="string">'./routers/**/*.js'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">er, files</span>) </span>&#123;</span><br><span class="line">    files.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> routers = path.join(__dirname, item)</span><br><span class="line">        app.use(<span class="built_in">require</span>(routers))</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="处理静态资源"><a href="#处理静态资源" class="headerlink" title="处理静态资源"></a>处理静态资源</h4><p><a href="http://expressjs.com/en/starter/static-files.html" target="_blank" rel="noopener">参考文档</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通处理方式</span></span><br><span class="line">app.use(express.static(<span class="string">'public'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">//带前缀的静态资源</span></span><br><span class="line">app.use(<span class="string">'/public'</span>, express.static(path.join(__dirname, <span class="string">'./public'</span>)))</span><br></pre></td></tr></table></figure>
+<p>注：css/images等文件夹不能直接被处理，需要同意放在一个公共的文件夹中(例 public)</p>
+<h4 id="解析-post-请求体"><a href="#解析-post-请求体" class="headerlink" title="解析 post 请求体"></a>解析 post 请求体</h4><blockquote>
+<ul>
+<li>express 已经内置 body-parser</li>
+<li>express 通过 express.urlencoded 方法包装了 body-parser</li>
+</ul>
+</blockquote>
+<p>新版的Express 已经内置了！！</p>
+<p><strong>配置+使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置</span></span><br><span class="line">app.use(express.urlencoded())</span><br><span class="line"></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"></span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(express.urlencoded(&#123;<span class="attr">extended</span>: <span class="literal">false</span>&#125;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">*.body     <span class="comment">//例  req.body</span></span><br></pre></td></tr></table></figure>
+<p><strong>body-parser - 独立模块</strong></p>
+<p>参考文档：</p>
+<ul>
+<li><a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">GitHub - body-parser</a></li>
+</ul>
+<ul>
+<li>在 Express 中没有内置获取表单 POST 请求体的 API</li>
+<li>这里我们需要使用一个第三方包：<code>body-parser</code></li>
+</ul>
+<p>安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install body-parser</span><br></pre></td></tr></table></figure>
+<p>配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置 body-parser</span></span><br><span class="line"><span class="comment">// 只要加入这个配置，则在 req 请求对象上会多出来一个属性：body</span></span><br><span class="line"><span class="comment">// 也就是说你就可以直接通过 req.body 来获取表单 POST 请求体数据了</span></span><br><span class="line"><span class="comment">// parse application/x-www-form-urlencoded</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line"><span class="comment">// parse application/json</span></span><br><span class="line">app.use(bodyParser.json());</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以通过 req.body 来获取表单 POST 请求体数据</span></span><br><span class="line">app.post(<span class="string">'/publish'</span>, (req, res) =&gt; &#123;</span><br><span class="line">   res.send(req.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>302跳转</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// express中新增了一个redirect ，设置状态码 302 ，并设置响应头 location</span></span><br><span class="line"></span><br><span class="line">res.redirect(<span class="string">'/admin'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h4><blockquote>
+<ul>
+<li>中间件是 Express 的最大特色，也是最重要的一个设计</li>
+<li>一个 Express 应用，就是由许许多多的中间件来完成的</li>
+<li>中间件函数是能够访问请求对象、响应对象，以及应用程序的请求/响应循环中的下一个中间件函数</li>
+<li>中间件函数可以执行以下任何任务<ul>
+<li>执行任何代码</li>
+<li>修改 request 或者 response 响应对象</li>
+<li>结束请求响应周期</li>
+<li>调用下一个中间件</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><strong>return next 后   程序会去找挂在路由的js文件   去执行写了4个形参的函数，并去执行</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用中间件 处理404  500页面</span></span><br><span class="line">app.use(<span class="function">(<span class="params">err, req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">    res.status(<span class="number">404</span>)</span><br><span class="line">    res.send(<span class="string">'404 页面'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">app.use(<span class="function">(<span class="params">err, req, res, next</span>)=&gt;</span>&#123;</span><br><span class="line">    res.status(<span class="number">500</span>)</span><br><span class="line">    res.send(<span class="string">'500 页面'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 四个参数，缺一不可</span></span><br><span class="line"><span class="comment">// 这里配置好以后，接下来你就可以在其他的路由处理函数中，遇到错误的使用，调用 next(传入错误对象)</span></span><br><span class="line"><span class="comment">// 那么，这个带有四个参数的中间件就会被调用</span></span><br><span class="line"><span class="comment">// 该中间件的第一个参数就是你 next(错误对象) 调用所传递的那个错误对象</span></span><br><span class="line">app.use(<span class="function">(<span class="params">err, req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 简单一点，在网站系统中增加一个异常管理功能</span></span><br><span class="line">  <span class="comment">//    数据表，异常表</span></span><br><span class="line">  <span class="comment">//    报错时间，报错文件，具体的报错信息，哪个路由，哪个方法....</span></span><br><span class="line">  <span class="comment">//    发送邮件或短信给开发人员，给管理员</span></span><br><span class="line">  res.status(<span class="number">500</span>).send(&#123;</span><br><span class="line">    statusCode: <span class="number">500</span>,</span><br><span class="line">    message: <span class="string">'Internal Server Error'</span>,</span><br><span class="line">    error: err.message</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="cookie处理"><a href="#cookie处理" class="headerlink" title="cookie处理"></a>cookie处理</h3><blockquote>
+<p>配置cookie的key、value            需要安装cookie-parser        <a href="https://github.com/expressjs/cookie-parser" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cookie-parser</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line">app.use(cookieParser())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//--------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line">app.use(cookieParser())</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Cookies that have not been signed</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Cookies: '</span>, req.cookies)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Cookies that have been signed</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Signed Cookies: '</span>, req.signedCookies)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>存cookie数据</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取cookie数据</span></span><br><span class="line"><span class="comment">//cookies是对象</span></span><br><span class="line"><span class="keyword">let</span> cookie = req.cookies[key]</span><br><span class="line"></span><br><span class="line"><span class="comment">//存储cookie</span></span><br><span class="line">req.cookie(key,value)   <span class="comment">//value 是json字符串</span></span><br><span class="line">req.cookie(&#123;key,value&#125;，&#123;过期时间,v&#125;,&#123;???&#125;)   <span class="comment">//value 是json字符串</span></span><br><span class="line">res.cookie(config.cookie.key, <span class="built_in">JSON</span>.stringify(cookieJson),&#123;expires&#125;)</span><br><span class="line">                                 </span><br><span class="line"><span class="comment">//删除cookie</span></span><br><span class="line">req.clearCookie(key)</span><br></pre></td></tr></table></figure>
+<p><strong>其他参数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expires:过期时间</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>JS下的cookie操作</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie =</span><br></pre></td></tr></table></figure>
+<h3 id="session处理"><a href="#session处理" class="headerlink" title="session处理"></a>session处理</h3><blockquote>
+<p>需要安装第三方框架：express-session        <a href="https://github.com/expressjs/session" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i express-session</span><br></pre></td></tr></table></figure>
+<p><strong>配置</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"></span><br><span class="line">app.use(session(&#123; </span><br><span class="line">  secret: <span class="string">'keyboard cat'</span>, </span><br><span class="line">  cookie: &#123; <span class="attr">maxAge</span>: <span class="number">60</span>*<span class="number">1000</span> &#125;,   <span class="comment">//cookie过期时间</span></span><br><span class="line">  resave: <span class="literal">false</span>,</span><br><span class="line">  saveUninitialized: <span class="literal">true</span>,    <span class="comment">//!!配合express-mysql-session 使用</span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>name: 设置 cookie 中，保存 session 的字段名称，默认为 connect.sid 。</li>
+<li>secret: 这个 string 对 sessionID 对应的cookie进行签名，并放在 cookie 中。</li>
+<li>cookie: 设置存放 session id 的 cookie 的相关选项，默认为 (default: { path: ‘/’, httpOnly: true, maxAge: null })</li>
+<li>resave: 强制session保存到session store中。即使在请求中这个session没有被修改。</li>
+<li>saveUninitialized: 强制没有“初始化”的session保存到storage中，没有初始化的session指的是：刚被创建没有被修改（第一次请求是否生成 sessionid）</li>
+</ul>
+<p><strong>简单使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// req.session 是一个对象</span></span><br><span class="line"><span class="comment">// 当配置好 session 之后，可以使用 session 保持登录的状态</span></span><br><span class="line">req.session.isLogin = user;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在其他"路由"，可以判断登录的状态</span></span><br><span class="line"><span class="keyword">if</span> (!req.session.isLogin) &#123;</span><br><span class="line">  <span class="comment">// 如果状态不存在则没有登录，跳转到首页</span></span><br><span class="line">  <span class="keyword">return</span> res.redirect(<span class="string">'/'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 退出的时候要，销毁session</span></span><br><span class="line">req.session.destroy()</span><br></pre></td></tr></table></figure>
+<p><strong>中间件方式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在程序入口（app.js）中设置一个中间件，用于判断用户是否已经登陆</span></span><br><span class="line"><span class="comment">//用户若访问/admin下的页面，则会经过这个中间件   需要在路由之前注册中间件</span></span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/admin'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="comment">//获取当前访问的url ( req.originalUrl )</span></span><br><span class="line">  <span class="keyword">const</span> url = req.originalUrl</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (url === <span class="string">'/admin/login'</span>) &#123;</span><br><span class="line">    <span class="comment">// 调用 next 会往后找与当前请求匹配的路由处理函数</span></span><br><span class="line">    <span class="keyword">return</span> next()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 校验登录状态   session</span></span><br><span class="line">  <span class="keyword">const</span> sessionUser = req.session.isLogin</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 若没有登录，则让用户跳转到登录页</span></span><br><span class="line">  <span class="keyword">if</span> (!sessionUser) &#123;</span><br><span class="line">    <span class="keyword">return</span> res.redirect(<span class="string">'/admin/login'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">   next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="express-mysql-session"><a href="#express-mysql-session" class="headerlink" title="express-mysql-session"></a>express-mysql-session</h3><blockquote>
+<p>用于session永久化，该模块会在数据库中创建一个session表        <a href="https://github.com/chill117/express-mysql-session" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express-mysql-session</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="built_in">module</span>.exports = express();</span><br><span class="line"><span class="comment">//----------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"><span class="keyword">var</span> MySQLStore = <span class="built_in">require</span>(<span class="string">'express-mysql-session'</span>)(session);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">	host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">	port: <span class="number">3306</span>,</span><br><span class="line">	user: <span class="string">'root'</span>,</span><br><span class="line">	password: <span class="string">'root'</span>,</span><br><span class="line">	database: <span class="string">'session_test'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">	key: <span class="string">'session_cookie_name'</span>,			<span class="comment">//cookie key名称</span></span><br><span class="line">	secret: <span class="string">'session_cookie_secret'</span>,   <span class="comment">//算法私钥，可以理解为 随便设置</span></span><br><span class="line">	store: sessionStore,		<span class="comment">//告诉 express-session，要用sessionStore持久化session</span></span><br><span class="line">	resave: <span class="literal">false</span>,               <span class="comment">//重新保存    session有效期</span></span><br><span class="line">	saveUninitialized: <span class="literal">false</span>     <span class="comment">//什么时候初始化  用session的时候 才初始化</span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<ul>
+<li>若使用session永久化，需要在配置express-session之前进行配置</li>
+</ul>
+<h3 id="multer"><a href="#multer" class="headerlink" title="multer"></a>multer</h3><blockquote>
+<p>处理用户上传文件        <a href="https://github.com/expressjs/multer" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<ul>
+<li>若用户上传文件，则req.body，需要使用新的模块</li>
+</ul>
+<p><strong>下载</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install multer</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用于处理用户上传文件的中间件</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> multer = <span class="built_in">require</span>(<span class="string">'multer'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//配置multer</span></span><br><span class="line"><span class="keyword">let</span> storage = multer.diskStorage(&#123;</span><br><span class="line">    destination: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">        cb(<span class="literal">null</span>, <span class="string">'public/uploads/'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    filename: <span class="function"><span class="keyword">function</span> (<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> ext = path.extname(file.originalname)</span><br><span class="line">        cb(<span class="literal">null</span>, file.fieldname + <span class="string">'-'</span> + <span class="built_in">Date</span>.now() + ext)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">let</span> upload = multer(&#123;</span><br><span class="line">    storage: storage</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = upload</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//这里的upload.single('article_file')  必须与提交的name字段名一致</span></span><br><span class="line">router.post(<span class="string">'/api/posts/add'</span>, upload.single(<span class="string">'article_file'</span>), (req, res, next) =&gt; &#123;</span><br><span class="line">    <span class="comment">//通过解构的方式获得input内容 + 上传文件</span></span><br><span class="line">    <span class="keyword">let</span> &#123;body , file&#125; = req      <span class="comment">//file存储的图片相关信息</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//以上是一个路由，用来处理用户上传文件 (upload.single('article_file'))</span></span><br></pre></td></tr></table></figure>
+<p><strong>html页面里的ajax请求</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">//文章上传功能</span></span><br><span class="line">  $(<span class="string">'#save'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// var body =  $('#add_form').serialize()</span></span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">from</span> = $(<span class="string">'#add_form'</span>)</span><br><span class="line">    <span class="keyword">var</span> data = <span class="keyword">new</span> FormData(<span class="keyword">from</span>.get(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">      url: <span class="string">"/api/posts/add"</span>,</span><br><span class="line">      type: <span class="string">"POST"</span>,</span><br><span class="line">      data: data,</span><br><span class="line">      processData: <span class="literal">false</span>, <span class="comment">// 不处理数据</span></span><br><span class="line">      contentType: <span class="literal">false</span>, <span class="comment">// 不设置内容类型</span></span><br><span class="line">      error: <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">      &#125;,</span><br><span class="line">      success: <span class="function"><span class="keyword">function</span> (<span class="params">results</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(results)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="http-errors"><a href="#http-errors" class="headerlink" title="http-errors"></a>http-errors</h3><blockquote>
+<p>为express，处理http 404、500等错误        <a href="https://github.com/jshttp/http-errors" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-errors</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> createError = <span class="built_in">require</span>(<span class="string">'http-errors'</span>)</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.user) <span class="keyword">return</span> next(createError(<span class="number">401</span>, <span class="string">'Please login to view this page.'</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"></span><br><span class="line">app.use(<span class="function">(<span class="params">req,res,next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> next(createError(<span class="number">404</span>, <span class="string">'Not Found'</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="svg-captcha"><a href="#svg-captcha" class="headerlink" title="svg-captcha"></a>svg-captcha</h3><blockquote>
+<p>验证码        <a href="https://www.npmjs.com/package/svg-captcha" target="_blank" rel="noopener">官网</a></p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install svg-captcha</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> svgCaptcha = <span class="built_in">require</span>(<span class="string">'svg-captcha'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> captcha = svgCaptcha.create();</span><br><span class="line"><span class="built_in">console</span>.log(captcha);</span><br><span class="line"><span class="comment">// &#123;data: '&lt;svg.../svg&gt;', text: 'abcd'&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他常用"><a href="#其他常用" class="headerlink" title="其他常用"></a>其他常用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//url重定向(跳转页面)</span></span><br><span class="line">res.redirect（[status，] path）</span><br><span class="line">res.redirect(<span class="string">'http://example.com'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//获取用户访问的url      GET 'http://www.example.com/admin/new'</span></span><br><span class="line"><span class="built_in">console</span>.log(req.originalUrl); <span class="comment">// '/admin/new'</span></span><br><span class="line"><span class="built_in">console</span>.log(req.baseUrl); <span class="comment">// '/admin'</span></span><br><span class="line"><span class="built_in">console</span>.log(req.path); <span class="comment">// '/new'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//locals对象 设置后可以模板中使用该变量</span></span><br><span class="line">app.locals.abc = <span class="number">123123</span>   <span class="comment">//全局中的变量  放内存中  //模板引擎中  →  &#123;&#123; abc &#125;&#125;  </span></span><br><span class="line">res.locals.category		  <span class="comment">//响应体中的变量</span></span><br><span class="line">req.app.locals.category   <span class="comment">//请求体中的变量  //express app 中存变量，通常用于缓存</span></span><br><span class="line"></span><br><span class="line">res.locals.statusCode = err.status == <span class="number">404</span> ? <span class="number">404</span> : <span class="number">500</span> <span class="comment">//将错误状态吗存入全局对象中</span></span><br><span class="line"><span class="comment">//在art-template的.html中使用  &#123;&#123;statusCode&#125;&#125;</span></span><br><span class="line">res.status(err.status || <span class="number">500</span>) <span class="comment">//返回404或者500状态码</span></span><br></pre></td></tr></table></figure>
+<h1 id="md5加密"><a href="#md5加密" class="headerlink" title="md5加密"></a>md5加密</h1><blockquote>
+<p>使用node内置crypto模块进行数据加密</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入crypto模块</span></span><br><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//将加密方法 导出，外部require引用时  需要传入加密字符串</span></span><br><span class="line"><span class="built_in">module</span>.exports.crypto_hash = <span class="function">(<span class="params">str</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> hash = crypto.createHash(<span class="string">'md5'</span>)</span><br><span class="line">    hash.update(str)</span><br><span class="line">    <span class="keyword">return</span> hash.digest(<span class="string">'hex'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="配合vue-路由模式？"><a href="#配合vue-路由模式？" class="headerlink" title="配合vue 路由模式？"></a>配合vue 路由模式？</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'*'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  response.sendFile(path.resolve(__dirname, <span class="string">'build'</span>, <span class="string">'index.html'</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><blockquote>
+<p>HTTP 协议是无状态的，服务端不能跟踪客户端的状态，也就无法记录客户端登录的状态。</p>
+</blockquote>
+<h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><p><strong>什么是 Cookie</strong></p>
+<ul>
+<li>Cookie - 小甜点，属于 HTTP 协议的一部分</li>
+<li><strong>是服务器发送到用户浏览器并保存在本地的一小块数据</strong></li>
+<li><strong>在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上</strong></li>
+<li>它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态</li>
+<li>Cookie 使基于<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#HTTP_is_stateless_but_not_sessionless" target="_blank" rel="noopener">无状态</a>的 HTTP 协议记录稳定的状态信息成为了可能</li>
+<li>Cookie 存储的数据量有限，由浏览器决定，一般在4KB左右</li>
+</ul>
+<p><strong>Cookie 的使用场景</strong></p>
+<p>Cookie 主要用来分辨两个请求是否来自同一个浏览器，以及用来保存一些状态信息。它的常用场合有以下一些。</p>
+<ul>
+<li>对话（session）管理：保存登录、购物车等需要记录的信息。</li>
+<li>个性化：保存用户的偏好，比如网页的字体大小、背景色等等。</li>
+<li>追踪：记录和分析用户行为。</li>
+</ul>
+<p><strong>Cookie 的属性</strong></p>
+<p>Cookie 的访问被限制，只能在当前域名下可以访问。(不能跨域访问)。</p>
+<ul>
+<li><p>Path</p>
+<p><code>Path</code>属性指定浏览器发出 HTTP 请求时，哪些路径要附带这个 Cookie。只要浏览器发现，<code>Path</code>属性是 HTTP 请求路径的开头一部分，就会在头信息里面带上这个 Cookie。比如，<code>PATH</code>属性是<code>/</code>，那么请求<code>/docs</code>路径也会包含该 Cookie。当然，前提是域名必须一致。</p>
+</li>
+<li><p><strong>HttpOnly</strong></p>
+<p>设置该属性的话，不允许客户端操作 Cookie</p>
+</li>
+<li><p>Expires</p>
+<p>设置过期时间，具体的时间点</p>
+</li>
+<li><p>Max-Age</p>
+<p>设置过期时间，时间段，隔多长时间过期，单位是秒 (例如：60*60  1小时)</p>
+<p>如果同时设置 Max-Age 和 Expires，Max-Age优先</p>
+<p><strong>如果没有设置 Expires 和 Max-Age，浏览器关闭 Cookie 就消失 (只存储在内存中)</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">res.cookie(<span class="string">'name'</span>, <span class="string">'zs'</span>, &#123;</span><br><span class="line">  httpOnly: <span class="literal">true</span>,</span><br><span class="line">  path: <span class="string">'/'</span>,</span><br><span class="line">  <span class="comment">// 此处的单位是 毫秒</span></span><br><span class="line">  maxAge: <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">1000</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Cookie 与 HTTP 协议</strong></p>
+<p>Cookie 由 HTTP 协议生成，也主要是供 HTTP 协议使用。</p>
+<p><strong>HTTP 响应：Cookie 的生成</strong></p>
+<p>服务器如果希望在浏览器保存 Cookie，就要在 HTTP 回应的头信息里面，放置一个<code>Set-Cookie</code>字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie:foo=bar</span><br></pre></td></tr></table></figure>
+<p>上面代码会在浏览器保存一个名为<code>foo</code>的 Cookie，它的值为<code>bar</code>。</p>
+<p>HTTP 回应可以包含多个<code>Set-Cookie</code>字段，即在浏览器生成多个 Cookie。下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 OK</span><br><span class="line">Content-type: text/html</span><br><span class="line">Set-Cookie: yummy_cookie=choco; HttpOnly</span><br><span class="line">Set-Cookie: tasty_cookie=strawberry; HttpOnly</span><br></pre></td></tr></table></figure>
+<p>下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly</span><br></pre></td></tr></table></figure>
+<p><strong>HTTP 请求：Cookie 的发送</strong></p>
+<p>浏览器向服务器发送 HTTP 请求时，每个请求都会带上相应的 Cookie。也就是说，把服务器早前保存在浏览器的这段信息，再发回服务器。这时要使用 HTTP 头信息的<code>Cookie</code>字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: foo=bar</span><br></pre></td></tr></table></figure>
+<p>上面代码会向服务器发送名为<code>foo</code>的 Cookie，值为<code>bar</code>。</p>
+<p><code>Cookie</code>字段可以包含多个 Cookie，使用分号（<code>;</code>）分隔。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: name=value; name2=value2; name3=value3</span><br></pre></td></tr></table></figure>
+<p>下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /sample_page.html HTTP/1.1</span><br><span class="line">Host: www.example.org</span><br><span class="line">Cookie: yummy_cookie=choco; tasty_cookie=strawberry</span><br></pre></td></tr></table></figure>
+<p><strong>在浏览器中操作 Cookie</strong></p>
+<p><strong>document.cookie</strong></p>
+<p><code>document.cookie</code>属性用于读写当前网页的 Cookie。</p>
+<p>读取的时候，它会返回当前网页的所有 Cookie，前提是该 Cookie 不能有<code>HTTPOnly</code>属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie // &quot;foo=bar;baz=bar&quot;</span><br></pre></td></tr></table></figure>
+<p><code>document.cookie</code>属性是可写的，可以通过它为当前网站添加 Cookie。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &apos;fontSize=14&apos;;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong><code>document.cookie</code>一次只能写入一个 Cookie，而且写入并不是覆盖，而是添加。</p>
+<p><strong>s-cookie</strong></p>
+<blockquote>
+<p><a href="https://github.com/js-cookie/js-cookie" target="_blank" rel="noopener">https://github.com/js-cookie/js-cookie</a></p>
+</blockquote>
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>会话保持的机制，session 是记录客户状态的机制，不同的是 Cookie 保存在客户端浏览器中，而 session 保存在服务器上。</p>
+<p><strong>session 的使用</strong></p>
+<ul>
+<li><p>第三方模块 <a href="https://github.com/expressjs/session" target="_blank" rel="noopener">express-session</a></p>
+</li>
+<li><p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"></span><br><span class="line">app.use(session(&#123; </span><br><span class="line">  secret: <span class="string">'keyboard cat'</span>, </span><br><span class="line">  cookie: &#123; <span class="attr">maxAge</span>: <span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">1000</span> &#125;,</span><br><span class="line">  resave: <span class="literal">false</span>,</span><br><span class="line">  saveUninitialized: <span class="literal">true</span>,</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>name: 设置 cookie 中，保存 session 的字段名称，默认为 connect.sid 。</li>
+<li>secret: 这个 string 对 sessionID 对应的cookie进行签名，并放在 cookie 中。</li>
+<li>cookie: 设置存放 session id 的 cookie 的相关选项，默认为 (default: { path: ‘/’, httpOnly: true, maxAge: null })</li>
+<li>resave: 强制session保存到session store中。即使在请求中这个session没有被修改。</li>
+<li>saveUninitialized: 强制没有“初始化”的session保存到storage中，没有初始化的session指的是：刚被创建没有被修改（第一次请求是否生成 sessionid）</li>
+</ul>
+</li>
+<li><p>使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// req.session 是一个对象</span></span><br><span class="line"><span class="comment">// 当配置好 session 之后，可以使用 session 保持登录的状态</span></span><br><span class="line">req.session.user = user;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在其他路由，可以判断登录的状态</span></span><br><span class="line"><span class="keyword">if</span> (!req.session.user) &#123;</span><br><span class="line">  <span class="comment">// 如果状态不存在则没有登录</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 退出的时候要，销毁session</span></span><br><span class="line">req.session.destroy()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>session的原理</strong></p>
+<ol>
+<li>浏览器向服务器发送登录请求(post)，携带账号和密码</li>
+<li>服务器返回的响应头中携带 服务器生成的 sessionid(cookie中)，身份标示</li>
+<li>浏览器再次访问服务器的时候会通过cookie携带sessionid</li>
+<li>服务器获取浏览器发送的sessionid后，在服务器查找sessionid，如果找不到，未登录</li>
+<li>如果找到 sessionid，根据 sessionid 查找对应的对象，如果不存在，未登录</li>
+</ol>
+<p><strong>Cookie 和 Session 的区别</strong></p>
+<ul>
+<li>cookie 数据存放在客户端，session 数据放在服务器端。</li>
+<li>cookie 不是很安全，别人可以分析存放在本地的cookie 并进行 cookie 欺骗 考虑到安全应当使用session。</li>
+<li>session 会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能 考虑到减轻服务器性能方面，应当使用 cookie 。</li>
+<li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</li>
+<li>将登陆信息等重要信息存放为 session、其他信息如果需要保留，可以放在cookie中</li>
+</ul>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies</a></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/09/node + 插件 + 包 + 模块/" title="node + 插件 + 包 + 模块" target="_blank" rel="external">/2019/05/09/node + 插件 + 包 + 模块/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/yyy/2019/05/09/JS高级笔记/" title="JS高级笔记"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/React - 基础/" title="React - 基础"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>JS高级笔记 | Hexo</title>
+  <meta name="description" content="JS高级笔记一、前面知识点复习 创建相同结构对象是，为避免代码重复，可以使用函数对代码进行优化，也就是创建构造函数  什么是构造函数  当一个函数通过new的方式调用，我们就将这个函数称为构造函数构 造函数的作用：创建对象 使用规范 首字母大写(建议) 调用前加new          this的使用  this在方法内使用才有意义，指向函数调用者 特殊场景，当使用new调用函数时，函数内的thi">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS高级笔记">
+<meta property="og:url" content="/2019/05/09/JS高级笔记/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="JS高级笔记一、前面知识点复习 创建相同结构对象是，为避免代码重复，可以使用函数对代码进行优化，也就是创建构造函数  什么是构造函数  当一个函数通过new的方式调用，我们就将这个函数称为构造函数构 造函数的作用：创建对象 使用规范 首字母大写(建议) 调用前加new          this的使用  this在方法内使用才有意义，指向函数调用者 特殊场景，当使用new调用函数时，函数内的thi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-09T03:30:16.613Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS高级笔记">
+<meta name="twitter:description" content="JS高级笔记一、前面知识点复习 创建相同结构对象是，为避免代码重复，可以使用函数对代码进行优化，也就是创建构造函数  什么是构造函数  当一个函数通过new的方式调用，我们就将这个函数称为构造函数构 造函数的作用：创建对象 使用规范 首字母大写(建议) 调用前加new          this的使用  this在方法内使用才有意义，指向函数调用者 特殊场景，当使用new调用函数时，函数内的thi">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/09/JS高级笔记/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/Node-js/">Node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/React/">React</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/ajax、jsonp/">ajax、jsonp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/扩展阅读/">扩展阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/yyy/categories/本地存储/">本地存储</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/React/">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/Vue/">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/ajax、jsonp/">ajax、jsonp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/前端/">前端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/扩展阅读/">扩展阅读</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/yyy/tags/本地存储/">本地存储</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">五月 2019</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/ajax、jsonp/">ajax、jsonp</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/ajax + jsonp/" class="title">ajax + jsonp</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:33:47.197Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/本地存储/">本地存储</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/cookie、session、WebStorage/" class="title">cookie、session、WebStorage</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:32:47.110Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Git/">Git</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Git - 基础/" class="title">Git - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:31:16.682Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/JS高级笔记/" class="title">JS高级笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:30:19.347Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Node-js/">Node.js</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/node + 插件 + 包 + 模块/" class="title">node + 插件 + 包 + 模块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T03:28:32.690Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS高级笔记"><span class="toc-number">1.</span> <span class="toc-text">JS高级笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前面知识点复习"><span class="toc-number">1.1.</span> <span class="toc-text">一、前面知识点复习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、关于原型对象相关概念"><span class="toc-number">1.2.</span> <span class="toc-text">二、关于原型对象相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、关于继承"><span class="toc-number">1.3.</span> <span class="toc-text">三、关于继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#借用构造函数继承"><span class="toc-number">1.3.1.</span> <span class="toc-text">借用构造函数继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型继承"><span class="toc-number">1.3.2.</span> <span class="toc-text">原型继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合继承"><span class="toc-number">1.3.3.</span> <span class="toc-text">组合继承</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、函数进阶"><span class="toc-number">1.4.</span> <span class="toc-text">四、函数进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、arguments-对象"><span class="toc-number">1.4.1.</span> <span class="toc-text">1、arguments 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、函数的方法call和apply"><span class="toc-number">1.4.2.</span> <span class="toc-text">2、函数的方法call和apply</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、函数的方法-bind-方法-使用"><span class="toc-number">1.4.3.</span> <span class="toc-text">3、函数的方法 bind 方法 使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、关于闭包"><span class="toc-number">1.5.</span> <span class="toc-text">五、关于闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-作用域"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-关于闭包"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 关于闭包</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-JS高级笔记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS高级笔记
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/09/JS高级笔记/" class="article-date">
+	  <time datetime="2019-05-09T03:30:19.347Z" itemprop="datePublished">2019-05-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/JavaScript/">JavaScript</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/JS高级笔记/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="JS高级笔记"><a href="#JS高级笔记" class="headerlink" title="JS高级笔记"></a>JS高级笔记</h1><h2 id="一、前面知识点复习"><a href="#一、前面知识点复习" class="headerlink" title="一、前面知识点复习"></a>一、前面知识点复习</h2><ol>
+<li><p>创建相同结构对象是，为避免代码重复，可以使用函数对代码进行优化，也就是创建构造函数</p>
+<ul>
+<li><p>什么是构造函数</p>
+<ul>
+<li>当一个函数通过new的方式调用，我们就将这个函数称为构造函数构</li>
+<li>造函数的作用：创建对象</li>
+<li>使用规范<ul>
+<li>首字母大写(建议)</li>
+<li>调用前加new </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>this的使用</p>
+<ul>
+<li>this在方法内使用才有意义，指向函数调用者</li>
+<li>特殊场景，当使用new调用函数时，函数内的this指向实例对象<br>​</li>
+</ul>
+</li>
+<li><p>new帮我们做了什么？<br>​</p>
+</li>
+<li><p>使用构造函数时需要注意的点 （如果给构造函数设置返回值</p>
+<ul>
+<li><p>返回值为基本数据类型：会被忽略</p>
+</li>
+<li><p>如果返回值为复杂数据类型，这个值会替换掉原有的对象</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>思考：属性通常都是不同的，但是由于方法表示功能，功能通常是相同的，所以方法保存为多个相同的函数是没有意义的，并且浪费空间，如何将多个实例的方法值保存为一个共有的函数</li>
+</ol>
+<h2 id="二、关于原型对象相关概念"><a href="#二、关于原型对象相关概念" class="headerlink" title="二、关于原型对象相关概念"></a>二、关于原型对象相关概念</h2><ol>
+<li><p>每个函数都有一个(自带)属性：<strong>prototype</strong> 原型<br>a. 这个属性是一个对象，作用就是用于进行共有属性的保存使用的<br>b. <strong>prototype</strong>属性称为原型属性，也称为原型对象<br>c. 直接给这个对象设置方法即可，设置后所有的实例对象均可使用这个方法<br>​</p>
+<p>此时已经可以回答上面问题——可以把公用的属性或者方法放到原型对象里，通过这样原型链查找规则可以共享，节约内容，提高性能<br>​</p>
+</li>
+<li><p>为什么这个方法没有设置给实例对象本身，但是实例对象也可以使用呢？</p>
+<ul>
+<li>通过观察我们发现，每个实例对象都具有一个自带的属性 <strong>__proto__</strong> ，这个属性中具有设置给 <strong>构造函数.prototype</strong>的方法</li>
+<li>通过测试<code>构造函数.prototype === 实例对象.__proto__</code>结果为<strong>true</strong>可得出结论—— 两个属性指针指向的是同一个对象  </li>
+</ul>
+</li>
+<li><p>基本访问规则：当我们使用一个对象的属性时，如果自身有，就使用，如果没有，则查找 <strong>__proto__</strong> 中，如果有，就使用。<br>​</p>
+</li>
+<li><p>什么是原型链: 对象属性的查找方式：对象自身存在实力属性时，使用，否则，查找__proto__属性，这种查找方式称为原型链。原型链是用来描述实例对象与原型对象之间关系的一种方式。</p>
+</li>
+</ol>
+<ol start="5">
+<li><p>其他小知识点</p>
+<ul>
+<li><p>如何检测数据类型<br><strong>typeof</strong>，但是只能检测基本数据类型，实际上typeof在检测数据类型时，如果数据为一个指针，会认为是object</p>
+</li>
+<li><p>其他常用的类型检测方式：</p>
+<ul>
+<li><p><code>Array.isArray()</code> —— 检测数据类型是否为数组，ie9以下不支持</p>
+</li>
+<li><p><code>instanceof</code> 需要前后两个操作数，前操作数为实例对象，后操作数为构造函数，如果实例对象是通过构造函数创建的，返回true，否则返回false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">console.log([1,2,3] instanceof Array);    //true</span><br><span class="line">console.log(200 instanceof Array);        //false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Object.prototype.toString.call()</code>   返回的结果为数据类型名:(固定用法，记住即可)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">console.log(Object.prototype.toString.call(null));//&quot;[object Null]&quot;</span><br><span class="line">console.log(Object.prototype.toString.call([1,2,3]));//&quot;[object Array]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>总结：以后需要检测实例对象和构造函数之间关系的时候，就使用  <strong>instanceof </strong> 就好了。</p>
+</li>
+</ol>
+<h2 id="三、关于继承"><a href="#三、关于继承" class="headerlink" title="三、关于继承"></a>三、关于继承</h2><ol>
+<li><p>继承的作用：为了更好的数据共享</p>
+</li>
+<li><p>继承含义：多个构造函数之间的关系</p>
+</li>
+<li><p><strong>实现方式：</strong></p>
+<h3 id="借用构造函数继承"><a href="#借用构造函数继承" class="headerlink" title="借用构造函数继承"></a>借用构造函数继承</h3><ul>
+<li><p>设置需要被继承的构造函数Animal</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"吃各种吃的"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再设置一个猫咪构造函数<br>已经存在的构造函数Animal中具有了一些属性和方法，这些属性与方法是Cat构造函数需要的<br>没有必要再书写一遍了，可以使用继承的方式获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//函数可以通过函数名()的方式调用，也可以通过函数的call方法调用</span></span><br><span class="line">    <span class="comment">//通过call的方式，修改Animal中的this指向为当前Cat的this，并设置参数</span></span><br><span class="line">	<span class="comment">//call方法的参数1表示函数内的this指向</span></span><br><span class="line">	<span class="comment">//call方法的后面的其他参数表示真正的实参</span></span><br><span class="line">    Animal.call(<span class="keyword">this</span>,name,age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>上面这种继承方法称为借用构造函数
+
+效果：可以继承实例属性，但是原型中的方法无法继承
+​
+</code></pre><h3 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h3><ul>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"吃各种吃的"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">color</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//继承的核心代码：</span></span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal(<span class="string">"jack"</span>,<span class="number">18</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置被覆盖的constructor属性</span></span><br><span class="line">Cat.prototype.constructor = Cat;</span><br><span class="line">Cat.prototype.shangShu = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"猫咪可以爬树"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c1 = <span class="keyword">new</span> Cat(<span class="string">"red"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(c1);</span><br><span class="line"><span class="built_in">console</span>.log(c1.name);</span><br><span class="line"><span class="built_in">console</span>.log(c1.age);</span><br><span class="line"><span class="built_in">console</span>.log(c1.color);</span><br><span class="line">c1.shangShu();</span><br><span class="line">c1.eat();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用原型继承的方式：</p>
+<ul>
+<li>好处：可以继承原型中的方法</li>
+<li>缺点：实例属性虽然有，但是无法传参（跟没有一样）<br>​</li>
+</ul>
+<h3 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h3></li>
+</ul>
+<p>   ​    使用前面两种继承方式是发现各有优缺点，所以将两种方式集合使用<br>   ​    这种结合使用的方式，称为组合继承，组合继承是最常用的一种继承方式</p>
+<ul>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"吃各种吃的"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name,age,color</span>)</span>&#123;</span><br><span class="line">     <span class="comment">//使用借用构造函数的方式继承：</span></span><br><span class="line">     Animal.call(<span class="keyword">this</span>,name,age);</span><br><span class="line">     <span class="keyword">this</span>.color = color;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//原型继承的核心代码：</span></span><br><span class="line"> <span class="comment">//使用组合继承方式后，在构造函数体中就设置了实例属性，此处不需要传参</span></span><br><span class="line"> Cat.prototype = <span class="keyword">new</span> Animal();</span><br><span class="line"> <span class="comment">//设置被覆盖的constructor属性</span></span><br><span class="line"> Cat.prototype.constructor = Cat;</span><br><span class="line"> Cat.prototype.shangShu = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"猫咪可以爬树"</span>);</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> c1 = <span class="keyword">new</span> Cat(<span class="string">"rose"</span>,<span class="number">20</span>,<span class="string">"red"</span>);</span><br><span class="line"> <span class="built_in">console</span>.log(c1);</span><br><span class="line"> <span class="built_in">console</span>.log(c1.name);</span><br><span class="line"> <span class="built_in">console</span>.log(c1.age);</span><br><span class="line"> <span class="built_in">console</span>.log(c1.color);</span><br><span class="line"> c1.shangShu();</span><br><span class="line"> c1.eat();</span><br><span class="line"></span><br><span class="line"> <span class="built_in">console</span>.log(c1.constructor);</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<ol start="4">
+<li><p>对象之间的继承</p>
+<p>对象的拷贝（需要掌握）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name:<span class="string">"jack"</span>,</span><br><span class="line">    age:<span class="number">18</span>,</span><br><span class="line">    gender:<span class="string">"男"</span>,</span><br><span class="line">    children:&#123;</span><br><span class="line">        daughter:<span class="string">"lili"</span>,</span><br><span class="line">        son:&#123;</span><br><span class="line">            name:<span class="string">"tom"</span>,</span><br><span class="line">            age:<span class="number">12</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    sayHi:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"呵呵，我是人"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    obj2[k] = obj[k];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br></pre></td></tr></table></figure>
+<p><strong>思考：由于obj中的某个属性也是对象形式，进行拷贝操作时使用赋值运行导致两者相同，如何完全拷贝对象内的所有属性(包括属性的属性，达到完全无关的目的)</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//currentObj表示哪个元素要被拷贝</span></span><br><span class="line"><span class="comment">//targetObj表示要拷贝到哪个对象中</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">currentObj,targetObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> currentObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> currentObj[k] != <span class="string">"object"</span> || currentObj[k] === <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">//基本拷贝方式只适用于基本数据类型</span></span><br><span class="line">            targetObj[k] = currentObj[k];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果进入else，说明currentObj[k]属性值为复杂数据类型,</span></span><br><span class="line">		   <span class="comment">//想要复制复杂数据类型需要使用deepCopy函数</span></span><br><span class="line">            <span class="comment">//要求:两个参数都必须为对象形式，由于targetObj[k]为undefined，需要先赋值为对象再使用</span></span><br><span class="line">            <span class="comment">//完善功能：复杂数据类型值有可能是对象，也有可能是数组，需要进行判断后再设置</span></span><br><span class="line">            targetObj[k] = currentObj[k] <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">            deepCopy(currentObj[k],targetObj[k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;&#125;;</span><br><span class="line">deepCopy(obj,obj2);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="四、函数进阶"><a href="#四、函数进阶" class="headerlink" title="四、函数进阶"></a>四、函数进阶</h2><p>函数的概念：函数是由事件驱动的或在调用时执行的可重复使用的代码块。</p>
+<h3 id="1、arguments-对象"><a href="#1、arguments-对象" class="headerlink" title="1、arguments 对象"></a>1、arguments 对象</h3><ul>
+<li>arguments是伪数组(类数组)对象：没有数组方法 </li>
+<li>使用方式：只能再函数内使用，表示当前函数的实参列表</li>
+<li>作用：由于形参的设置时固定的，如果用户传入的实参更多时，只能使用arguments访问</li>
+</ul>
+<p>思考：伪数组如何使用数组方法</p>
+<p>​    因为不是通过Array创建的，所以无法访问Array.prototype<br>如何使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="comment">//下面两个函数是同一个函数</span></span><br><span class="line">    <span class="comment">//[1,2,3].__proto__.push;</span></span><br><span class="line">    <span class="comment">//Array.prototype.push;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过call借用数组push方法</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype.push.call(<span class="built_in">arguments</span>,<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//下面这个代码跟上面的代码功能相同，但是多创建了一个实例</span></span><br><span class="line">    <span class="comment">//[].push.call(arguments,200);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//console.log(arguments);</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">fun(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2、函数的方法call和apply"><a href="#2、函数的方法call和apply" class="headerlink" title="2、函数的方法call和apply"></a>2、函数的方法call和apply</h3><p>2.1.    <strong>call()</strong> 方法调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params">num,str</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"我是fun"</span>,num,str,<span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">fun.call(&#123;<span class="attr">name</span>:<span class="string">"jack"</span>&#125;,<span class="number">200</span>,<span class="string">"call调用"</span>);</span><br></pre></td></tr></table></figure>
+<p>2.2. <strong>apply()</strong> 方法调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//参数1 用于设置函数的this指向   参数2 需要传入的实参值，需要为数组形式(就一个);</span></span><br><span class="line">fun.apply(&#123;<span class="attr">name</span>:<span class="string">"rose"</span>&#125;,[<span class="number">300</span>,<span class="string">"apply调用"</span>]);</span><br></pre></td></tr></table></figure>
+<p>call与apply的区别：call传入实参时需要单个传入，apply传入实参时需要为数组结构</p>
+<p>函数代码的执行方式有几种？</p>
+<ul>
+<li>普通调用</li>
+<li>call()</li>
+<li>apply()</li>
+<li>事件驱动<br>​</li>
+</ul>
+<h3 id="3、函数的方法-bind-方法-使用"><a href="#3、函数的方法-bind-方法-使用" class="headerlink" title="3、函数的方法 bind 方法 使用"></a>3、函数的方法 bind 方法 使用</h3><ol>
+<li><p>基本使用：设置this指向后，返回当前函数的副本  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> resultFun = fun.bind(&#123;<span class="attr">name</span>:<span class="string">"jack"</span>&#125;);<span class="comment">//不会执行函数，this指向修改了</span></span><br><span class="line">resultFun();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与上一组 <figure class="highlight plain"><figcaption><span>的区别：call和apply 调用后，函数会立刻执行，bind调用后，函数不会立刻执行，而是返回副本</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 实参传递方式</span><br><span class="line"></span><br><span class="line">   ```javascript</span><br><span class="line">   //如果使用bind方法时设置了实参值，则返回的函数副本对应实参位置永远是这个值了</span><br><span class="line">   var resultFun = fun.bind(&#123;name:&quot;jack&quot;&#125;,100);</span><br><span class="line">   resultFun();</span><br><span class="line">   resultFun();</span><br></pre></td></tr></table></figure></p>
+<p>对函数副本进行调用时传入的实参会向后顺延</p>
+<p>例如：例如：resultFun这个函数在设置时num被设置为100，则本次传入的实参值对应的是形参str</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resultFun(<span class="string">"我是bind返回的函数"</span>);</span><br></pre></td></tr></table></figure>
+<p>注意点：    <strong>bind方法在ie9以下不支持</strong>，感兴趣可以自己查mdn 找解决方法</p>
+<p> ​        </p>
+</li>
+</ol>
+<h2 id="五、关于闭包"><a href="#五、关于闭包" class="headerlink" title="五、关于闭包"></a>五、关于闭包</h2><h3 id="5-1-作用域"><a href="#5-1-作用域" class="headerlink" title="5.1 作用域"></a>5.1 作用域</h3><ul>
+<li>开始学习闭包前，先简单回顾一下作用域</li>
+<li>作用域，可分为<code>局部作用域</code>和<code>全局作用域</code>。</li>
+<li>作用域内变量查找规则：会先从本作用域中去找，若没找到则向上级作用域中去找，以此类推就构成了作用域链儿。<br>​</li>
+</ul>
+<h3 id="5-2-关于闭包"><a href="#5-2-关于闭包" class="headerlink" title="5.2 关于闭包"></a>5.2 关于闭包</h3><ul>
+<li><p>关于闭包定义，这里引用  <strong>阮一峰</strong>  博客中的一段话作为解释</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//各种专业文献上的"闭包"（closure）定义非常抽象，很难看懂。我的理解是，闭包就是能够读取其他函数内部变量的函数。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成"定义在一个函数内部的函数"。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义在一个函数内部并引用父级作用域变量的函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 闭包，延展变量的作用范围</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getNum: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> num;</span><br><span class="line">        &#125;,</span><br><span class="line">        setNum: <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">            num = n;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = fn();</span><br><span class="line"><span class="comment">// 在全局作用域中，操作了fn作用域中的变量num</span></span><br><span class="line">obj.setNum(<span class="number">50</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.getNum());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>闭包用途</p>
+<ul>
+<li>可以在函数外部读取函数内部成员</li>
+<li>让函数内成员始终存活在内存中(延展变量的使用范围)<br>​</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>使用闭包的优缺点</p>
+<p>（优点不理解可以将上面闭包用途当做优点来回答）</p>
+<ul>
+<li>优点：<ul>
+<li>逻辑连续，当闭包作为另一个函数调用参数时，避免脱离当前逻辑而单独编写额外逻辑。 </li>
+<li>方便调用上下文的局部变量。 （什么事上下文：上下文总是关键字 this 的值，是调用当前可执行代码的对象的引用）</li>
+<li>加强封装性，是第2点的延伸，可以达到对变量的保护作用。 </li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。</li>
+<li>闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。<br>​</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如何解决闭包内存泄漏问题   手动释放内存：</p>
+<p>源码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cars</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"Benz"</span>;  </span><br><span class="line">    <span class="keyword">this</span>.color = [<span class="string">"white"</span>,<span class="string">"black"</span>];  </span><br><span class="line">&#125;  </span><br><span class="line">Cars.prototype.sayColor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> outer = <span class="keyword">this</span>;  </span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> outer.color  </span><br><span class="line">    &#125;;  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> Cars();  </span><br><span class="line"><span class="built_in">console</span>.log(instance.sayColor()())</span><br></pre></td></tr></table></figure>
+<p>优化后：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cars</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"Benz"</span>;  </span><br><span class="line">    <span class="keyword">this</span>.color = [<span class="string">"white"</span>,<span class="string">"black"</span>];  </span><br><span class="line">&#125;  </span><br><span class="line">Cars.prototype.sayColor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> outerColor = <span class="keyword">this</span>.color; <span class="comment">//保存一个副本到变量中  </span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> outerColor; <span class="comment">//应用这个副本  </span></span><br><span class="line">    &#125;;  </span><br><span class="line">    outColor = <span class="literal">null</span>; <span class="comment">//释放内存  </span></span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> Cars();  </span><br><span class="line"><span class="built_in">console</span>.log(instance.sayColor()())</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>闭包的使用场景</p>
+<ul>
+<li><p><strong>采用函数引用方式的setTimeout调用。</strong></p>
+<p>原生的setTimeout有一个缺陷，你传递的第一个函数不能带参数。即</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(func(parma),<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<p>这样的语句是不生效的（不过在不同浏览器中有不同的错误，总之都无法达到预期效果）</p>
+<p>这时，我们就可以用闭包来实现这个效果了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(param);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = func(<span class="number">1</span>)</span><br><span class="line">setTimeout(f, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>使用闭包可以在JavaScript中模拟块级作用域</strong> ECMAScript6标准之前的JavaScript本身没有块级作用域的概念;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outputNumbers</span>(<span class="params">count</span>)</span>&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; count; i++)&#123;</span><br><span class="line">            alert(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    alert(i); <span class="comment">//导致一个错误！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>闭包可以用于在对象中创建私有变量</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//闭包可以用于在对象中创建私有变量</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 私有变量和私有函数</span></span><br><span class="line">    <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 特权方法,调用私有方法、函数</span></span><br><span class="line">    <span class="keyword">this</span>.publicMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        privateVariable++;</span><br><span class="line">        <span class="keyword">return</span> privateFunction();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>将函数关联到对象的实例方法</strong></p>
+</li>
+<li><p><strong>封装相关的功能集</strong><br>​</p>
+<p>最后两个可以[参考<a href="http://www.jb51.net/article/110706.htm" target="_blank" rel="noopener">http://www.jb51.net/article/110706.htm</a></p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/09/JS高级笔记/" title="JS高级笔记" target="_blank" rel="external">/2019/05/09/JS高级笔记/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/yyy/2019/05/09/Git - 基础/" title="Git - 基础"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/node + 插件 + 包 + 模块/" title="node + 插件 + 包 + 模块"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
