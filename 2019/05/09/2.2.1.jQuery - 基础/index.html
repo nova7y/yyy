@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>jQuery - 基础 | nova7y</title>
+  <meta name="description" content="隐式迭代、链式编程 jQuery对象   英文 描述     $(‘选择器’); $是一个函数   var $btn = $(‘#btn’);   jQuery(‘选择器’); var $btn =   jQuery(‘#btn’)   $(dom对象); DOM转jq对象   var div =   $(‘div’)[0]; jq转DOM对象    通过$符号调用所返回的jQuery对象的本质就">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery - 基础">
+<meta property="og:url" content="/2019/05/09/2.2.1.jQuery - 基础/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="隐式迭代、链式编程 jQuery对象   英文 描述     $(‘选择器’); $是一个函数   var $btn = $(‘#btn’);   jQuery(‘选择器’); var $btn =   jQuery(‘#btn’)   $(dom对象); DOM转jq对象   var div =   $(‘div’)[0]; jq转DOM对象    通过$符号调用所返回的jQuery对象的本质就">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-09T07:01:07.578Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery - 基础">
+<meta name="twitter:description" content="隐式迭代、链式编程 jQuery对象   英文 描述     $(‘选择器’); $是一个函数   var $btn = $(‘#btn’);   jQuery(‘选择器’); var $btn =   jQuery(‘#btn’)   $(dom对象); DOM转jq对象   var div =   $(‘div’)[0]; jq转DOM对象    通过$符号调用所返回的jQuery对象的本质就">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/09/2.2.1.jQuery - 基础/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/yyy/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13.67px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13.33px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/html、css/" style="font-size: 13px;">html、css</a> <a href="/yyy/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13.67px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">23</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/扩展阅读/">扩展阅读</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/mock.js+easyMock/" class="title">mock.js+easyMock</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:09:27.856Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Vue/">Vue</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Vue - 基础/" class="title">Vue - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:07:25.801Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Node-js/">Node.js</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Node - 内置模块/" class="title">Node - 内置模块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:05:02.909Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Node-js/">Node.js</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Node - 基础/" class="title">Node - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:01:40.717Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/jQuery/">jQuery</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.2.1.jQuery - 基础/" class="title">jQuery - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T06:40:16.262Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jQuery对象"><span class="toc-number">1.</span> <span class="toc-text">jQuery对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择器"><span class="toc-number">2.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件相关"><span class="toc-number">3.</span> <span class="toc-text">事件相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#样式、属性、类名、内容控制"><span class="toc-number">4.</span> <span class="toc-text">样式、属性、类名、内容控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动画"><span class="toc-number">5.</span> <span class="toc-text">动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签元素控制"><span class="toc-number">6.</span> <span class="toc-text">标签元素控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JQ-ajax"><span class="toc-number">7.</span> <span class="toc-text">JQ - ajax</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他"><span class="toc-number">8.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码示例"><span class="toc-number">9.</span> <span class="toc-text">代码示例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#回到页面顶端-获取元素位置"><span class="toc-number">9.1.</span> <span class="toc-text">回到页面顶端+获取元素位置</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-2.2.1.jQuery - 基础" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery - 基础
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/09/2.2.1.jQuery - 基础/" class="article-date">
+	  <time datetime="2019-05-09T06:40:16.262Z" itemprop="datePublished">2019-05-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/jQuery/">jQuery</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/jQuery/">jQuery</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/2.2.1.jQuery - 基础/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p><code>隐式迭代、链式编程</code></p>
+<h1 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h1><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(‘选择器’);</td>
+<td>$是一个函数   var $btn = $(‘#btn’);</td>
+</tr>
+<tr>
+<td>jQuery(‘选择器’);</td>
+<td>var $btn =   jQuery(‘#btn’)</td>
+</tr>
+<tr>
+<td>$(dom对象);</td>
+<td>DOM转jq对象</td>
+</tr>
+<tr>
+<td>var div =   $(‘div’)[0];</td>
+<td>jq转DOM对象</td>
+</tr>
+</tbody>
+</table>
+<p>通过$符号调用所返回的jQuery对象的本质就是一个集合（==伪数组==）→   jQuery对象      //  通过index()可获取一组标签中的索引</p>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(‘#id’)</td>
+<td>ID选择器</td>
+<td>获取指定ID的元素</td>
+</tr>
+<tr>
+<td>$(‘.class’)</td>
+<td>类选择器</td>
+<td>获取同一类class的元素</td>
+</tr>
+<tr>
+<td>$(‘div’)</td>
+<td>标签选择器</td>
+<td>获取同一类标签的所有元素</td>
+</tr>
+<tr>
+<td>$(‘div,p,li’)</td>
+<td>并集选择器</td>
+<td>使用逗号分隔，只要符合条件之一就可。</td>
+</tr>
+<tr>
+<td>$(‘div.redClass’)</td>
+<td>交集选择器</td>
+<td>获取class为redClass的div元素</td>
+</tr>
+<tr>
+<td>$(‘ul &gt;   li’)</td>
+<td>子代选择器</td>
+<td>使用&gt;号，获取儿子层级的元素，注意，并不会获取孙子层级的元素</td>
+</tr>
+<tr>
+<td>$(‘ul li’)</td>
+<td>后代选择器</td>
+<td>使用空格，代表后代选择器，获取ul下的所有li元素，包括孙子等</td>
+</tr>
+<tr>
+<td>$(‘li:eq(2)’).css(‘color’,   ‘red’)</td>
+<td>:eq(index)</td>
+<td>获取到的li元素中，选择索引号为2的元素，索引号index从0开始。</td>
+</tr>
+<tr>
+<td>$(‘li:odd’).css(‘color’,   ‘red’)</td>
+<td>:odd</td>
+<td>获取到的li元素中，选择索引号为奇数的元素</td>
+</tr>
+<tr>
+<td>$(‘li:even’).css(‘color’,   ‘red’)</td>
+<td>:even</td>
+<td>获取到的li元素中，选择索引号为偶数的元素</td>
+</tr>
+<tr>
+<td>children(selector)</td>
+<td>(‘ul’).children(‘li’)</td>
+<td>相当于(‘ull &gt;   i’)，子类选择器</td>
+</tr>
+<tr>
+<td>find(selector)</td>
+<td>(‘ul’).find(‘li’)</td>
+<td>相当于(‘ul li’),后代选择器</td>
+</tr>
+<tr>
+<td>siblings(selector)</td>
+<td>$(‘#first’).siblings(‘li’)</td>
+<td>查找兄弟节点，不包括自己本身。</td>
+</tr>
+<tr>
+<td>parent()</td>
+<td>$(‘#first’).parent()</td>
+<td>查找父亲</td>
+</tr>
+<tr>
+<td>eq(index)</td>
+<td>$(‘li’).eq(2)</td>
+<td>相当于$(‘li:eq(2)’),index从0开始</td>
+</tr>
+<tr>
+<td>end()</td>
+<td></td>
+<td>找上一级的jq对象</td>
+</tr>
+<tr>
+<td>next()</td>
+<td>$(‘li’).next()</td>
+<td>找下一个兄弟</td>
+</tr>
+<tr>
+<td>nextAll()</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>prev()</td>
+<td>$(‘li’).prev()</td>
+<td>找上一次兄弟</td>
+</tr>
+<tr>
+<td>prevAll()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="事件相关"><a href="#事件相关" class="headerlink" title="事件相关"></a>事件相关</h1><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jQuery对象.事件名(事件处理程序);</td>
+<td>简单方式</td>
+<td>$(‘button’).click(function(){     alert(‘nihao’)   });</td>
+</tr>
+<tr>
+<td>jQuery对象.on(‘事件名’,事件处理程序);</td>
+<td>on方式注册</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.off(‘click’,事件处理程序名称)</td>
+<td>解绑简单的事件</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.off(‘click’,‘选择器’,事件处理程序名称)</td>
+<td>解绑事件委托注册的事件</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.trigger(‘事件名’);</td>
+<td>触发事件</td>
+<td>通常用于定时器，每隔<em>秒  触发一次某个元素的</em>事件</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事件委托  jQuery对象.on('事件名','选择器',事件处理程序);</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">'ul'</span>).on(<span class="string">'click'</span>, <span class="string">'li'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// this 是谁？ 当前点击的li</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    alert($(<span class="keyword">this</span>).text());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="样式、属性、类名、内容控制"><a href="#样式、属性、类名、内容控制" class="headerlink" title="样式、属性、类名、内容控制"></a>样式、属性、类名、内容控制</h1><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jQuery对象.css(name,value);</td>
+<td></td>
+<td>$(‘div’).css(‘width’,500);</td>
+</tr>
+<tr>
+<td>jQuery对象.css({ name:value, name:value});</td>
+<td></td>
+<td>$(‘div’).css({      border:’10px solid blue’,      background:’pink’,    });</td>
+</tr>
+<tr>
+<td>jQuery对象.css(‘样式属性名’);</td>
+<td></td>
+<td>var h = $(‘div’).css(‘height’);</td>
+</tr>
+<tr>
+<td>jQuery对象.addClass(‘类名’);</td>
+<td>添加类名</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.removeClass(‘类名’);</td>
+<td>移除类名</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.toggleClass(‘类名’);</td>
+<td>类名切换</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.hasClass(‘类名’);</td>
+<td>检测类名是否存在</td>
+<td>返回布尔值</td>
+</tr>
+<tr>
+<td>jQuery对象.attr(name,value)</td>
+<td>设置标签的属性</td>
+<td>$(“img”).attr(“width”,”180”);</td>
+</tr>
+<tr>
+<td>jQuery对象.attr(name);</td>
+<td>获取标签属性值</td>
+<td></td>
+</tr>
+<tr>
+<td>removeAttr(name);</td>
+<td>移除标签的属性</td>
+<td></td>
+</tr>
+<tr>
+<td>$(‘input’).prop(‘属性名’);</td>
+<td>prop方法操作属性</td>
+<td>针对：selected、checked、disabled</td>
+</tr>
+<tr>
+<td>jQuery对象.text();</td>
+<td>操作标签内部的文本</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.html();</td>
+<td>操作标签内部的所有内容</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.val();</td>
+<td>操作表单元素的内容</td>
+</tr>
+</tbody>
+</table>
+<h1 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h1><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>中文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jQuery对象.show(speed,easing,fn);</td>
+<td>显示</td>
+<td>-   参数speed，动画时长，数字→毫秒      - easing，运动的方式，默认swing缓冲,linear匀速</td>
+</tr>
+<tr>
+<td>jQuery对象.hide(speed,easing,fn);</td>
+<td>隐藏</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.toggle(speed,easing,fn);</td>
+<td>切换</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.slideDown(speed,easing,fn);</td>
+<td>下拉 卷曲-显示</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.slideUp(speed,easing,fn);</td>
+<td>下拉 卷曲-隐藏</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.slideToggle(speed,easing,fn);</td>
+<td>下拉 卷曲-切换</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.fadeIn(speed,easing,fn);</td>
+<td>淡入淡出</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.fadeOut(speed,easing,fn);</td>
+<td>淡入淡出</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.fadeToggle(speed,easing,fn);</td>
+<td>淡入淡出</td>
+<td></td>
+</tr>
+<tr>
+<td>animate(params,[speed],[easing],[fn])</td>
+<td>自定义动画</td>
+<td>animage({   样式属性名:目标值, 样式属性名:目标值},1000)</td>
+</tr>
+<tr>
+<td>jQuery对象.stop(clearQueue,jumpToEnd);</td>
+<td>停止动画</td>
+<td>2个值 是布尔值</td>
+</tr>
+</tbody>
+</table>
+<h1 id="标签元素控制"><a href="#标签元素控制" class="headerlink" title="标签元素控制"></a>标签元素控制</h1><table>
+<thead>
+<tr>
+<th>动态创建元素</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(‘<li></li>‘)</td>
+<td>创建元素</td>
+</tr>
+<tr>
+<td>新创建jQuery对象.appendTo(‘父选择器’、父对象);</td>
+<td>在最后追加元素</td>
+</tr>
+<tr>
+<td>父元素jQuery对象.apeend(新创建的jQuery对象);</td>
+<td></td>
+</tr>
+<tr>
+<td>新创建jQuery对象.prependTo(‘父元素选择器’);</td>
+<td>在前面追加元素</td>
+</tr>
+<tr>
+<td>父元素jQuery对象.prepend(新创建的jQuery对象);</td>
+<td></td>
+</tr>
+<tr>
+<td>jQuery对象.remove()</td>
+<td>删除元素   删谁就让谁调用这个方法</td>
+</tr>
+<tr>
+<td>jQuery对象.empty()</td>
+<td>清空元素   清空内部的所有元素及元素相关的事件</td>
+</tr>
+<tr>
+<td>jQuery对象.html(‘’);</td>
+<td>清空元素   不推荐使用，该方式不会清空事件</td>
+</tr>
+<tr>
+<td>jQuery对象.clone(布尔值);    返回克隆好的元素</td>
+<td>参数：默认是false,表示仅仅克隆内容。   true，克隆内容和事件</td>
+</tr>
+<tr>
+<td>$(“选择器”).before(html);</td>
+<td></td>
+</tr>
+<tr>
+<td>$(“选择器”).after(html)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>操作元素的尺寸</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jQuery对象.width(数字);</td>
+<td>仅内容部分</td>
+</tr>
+<tr>
+<td>jQuery对象.height(数字);</td>
+<td>仅内容部分</td>
+</tr>
+<tr>
+<td>jQuery对象.innerWidth(数字);</td>
+<td>内容部分 + padding</td>
+</tr>
+<tr>
+<td>jQuery对象.innerHeight(数字);</td>
+<td>内容部分 + padding</td>
+</tr>
+<tr>
+<td>jQuery对象.outerWidth(数字);</td>
+<td>内容部分 + padding +   border   .outerWidth(true) 额外获取margin</td>
+</tr>
+<tr>
+<td>jQuery对象.outerHeight(数字);</td>
+<td>内容部分 + padding +   border</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>操作元素的位置</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jQuery对象.offset()</td>
+<td>获取的元素的位置，永远参照文档,返回一个对象，对象中包含了元素的位置</td>
+</tr>
+<tr>
+<td>jQuery对象.position();</td>
+<td>返回的一个对象，对象中包含了元素的位置，参照最近的定位元素（和定位有关系）</td>
+</tr>
+<tr>
+<td>jQuery对象.scrollTop();</td>
+<td>$(window).scrollTop()   操作卷去的页面间距</td>
+</tr>
+</tbody>
+</table>
+<h1 id="JQ-ajax"><a href="#JQ-ajax" class="headerlink" title="JQ - ajax"></a>JQ - ajax</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123; <span class="attr">key</span>:value &#125;）</span><br><span class="line">       </span><br><span class="line">url：请求地址</span><br><span class="line">type：请求方法，默认为 <span class="keyword">get</span></span><br><span class="line">dataType：服务端响应数据类型</span><br><span class="line">contentType：请求体内容类型，默认 application/x-www-form-urlencoded</span><br><span class="line">data：需要传递到服务端的数据，如果 GET 则通过 URL 传递，如果 POST 则通过请求体传递</span><br><span class="line">timeout：请求超时时间</span><br><span class="line">beforeSend：请求发起之前触发</span><br><span class="line">success：请求成功之后触发（响应状态码 200）</span><br><span class="line">error：请求失败触发</span><br><span class="line">complete：请求完成触发（不管成功与否）</span><br><span class="line">       </span><br><span class="line">//或者：	</span><br><span class="line">$.<span class="keyword">get</span>(url, data, callback)	</span><br><span class="line">$.post(url, data, callback)</span><br></pre></td></tr></table></figure>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入口函数</td>
+<td>$(function(){ // 获取元素});</td>
+</tr>
+<tr>
+<td>$(document).ready(function(){   // 获取元素});</td>
+</tr>
+</tbody>
+</table>
+<p>window.onload会等页面全部加载完执行 只能存在一个，而jq可以存在多个，dpm树结束后就运行    </p>
+<p>“这俩都是在jq原型中创建一个方法，让jq对象调用（如果用上了this  this代码调用者）<br>$.prototype.createTable = function (shuju) {}<br>$.fn.createTable = function (shuju) {}”    </p>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事件对象.clientX/Y   参照浏览器</td>
+<td>事件对象.preventDefault();   阻止默认行为</td>
+</tr>
+<tr>
+<td>事件对象.pageX/Y   参照文档</td>
+<td>事件对象.stopPropagation();   阻止事件冒泡</td>
+</tr>
+<tr>
+<td>事件对象.offsetX/Y   参照事件源</td>
+<td>事件对象.keyCode   返回键码数字</td>
+</tr>
+<tr>
+<td>事件对象.target;</td>
+<td>事件对象.alt/shift/ctrlKey   返回是布尔值。 检测是否按下（true）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多库共存</td>
+<td>jq对象 =   jQuery.noConflict();</td>
+<td>不 冲突</td>
+<td>释放$，改成自定义的对象      var $1 = jQuery.noConflict();</td>
+</tr>
+<tr>
+<td>深/浅拷贝</td>
+<td>$.extend([true],obj1,obj2)</td>
+<td>对obj1进行 深拷贝、浅拷贝</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.data()</td>
+<td>拿标签中的data-* 自定义属性的值</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(selector).load(function)</td>
+<td>当指定的元素（及子元素）已加载时，会发生 load() 事件</td>
+</tr>
+<tr>
+<td>jQuery.getJSON(url,data,success(data,status,xhr))</td>
+<td>通过 HTTP GET 请求载入 JSON 数据。</td>
+</tr>
+<tr>
+<td>jQuery.getScript(url,success(response,status))</td>
+<td>getScript() 方法通过 HTTP GET 请求载入并执行 JavaScript 文件。</td>
+</tr>
+<tr>
+<td>$(from表单).serialize()</td>
+<td>统一获取表单中的数据，以键值对 呈现（input需要name属性）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><h2 id="回到页面顶端-获取元素位置"><a href="#回到页面顶端-获取元素位置" class="headerlink" title="回到页面顶端+获取元素位置"></a>回到页面顶端+获取元素位置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 窗口卷曲事件</span></span><br><span class="line">$(<span class="built_in">window</span>).scroll(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> b = $(<span class="built_in">window</span>).scrollTop() <span class="comment">// 获取页面卷曲值</span></span><br><span class="line">    <span class="keyword">let</span> a = $(<span class="string">'.jia'</span>).offset().top <span class="comment">//获取元素距离页面订单的px</span></span><br><span class="line">&#125;)</span><br><span class="line">$(<span class="string">'button'</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'html,body'</span>).animate(&#123;</span><br><span class="line">        scrollTop: <span class="number">0</span></span><br><span class="line">    &#125;) <span class="comment">//回到页面顶端</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+         <!--
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/09/2.2.1.jQuery - 基础/" title="jQuery - 基础" target="_blank" rel="external">/2019/05/09/2.2.1.jQuery - 基础/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+   -->
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/yyy/2019/05/09/Node - 基础/" title="Node - 基础"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/2.1.4.JavaScript - 高级、ES5、ES6/" title="JavaScript - 高级、ES5、ES6"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

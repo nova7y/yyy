@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>JavaScript - Math、Array、Date、String | nova7y</title>
+  <meta name="description" content="JS 对象Math   Math Math.*     Math.PI 获取圆周率   Math.random() 返回大于等于0小于1之间的随机数   Math.floor() 向下取整，返回一个小于当前数字的整数   Math.ceil() 向上取整，返回一个大于当前数字的整数   Math.round() 四舍五入   Math.abs() 取绝对值   Math.max() 返回一组数中的">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript - Math、Array、Date、String">
+<meta property="og:url" content="/2019/05/09/2.1.2.JavaScript - Math、Array、Date、String - 副本/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="JS 对象Math   Math Math.*     Math.PI 获取圆周率   Math.random() 返回大于等于0小于1之间的随机数   Math.floor() 向下取整，返回一个小于当前数字的整数   Math.ceil() 向上取整，返回一个大于当前数字的整数   Math.round() 四舍五入   Math.abs() 取绝对值   Math.max() 返回一组数中的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-09T05:49:17.815Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript - Math、Array、Date、String">
+<meta name="twitter:description" content="JS 对象Math   Math Math.*     Math.PI 获取圆周率   Math.random() 返回大于等于0小于1之间的随机数   Math.floor() 向下取整，返回一个小于当前数字的整数   Math.ceil() 向上取整，返回一个大于当前数字的整数   Math.round() 四舍五入   Math.abs() 取绝对值   Math.max() 返回一组数中的">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/09/2.1.2.JavaScript - Math、Array、Date、String - 副本/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/yyy/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13.67px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13.33px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/html、css/" style="font-size: 13px;">html、css</a> <a href="/yyy/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13.67px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">23</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/扩展阅读/">扩展阅读</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/mock.js+easyMock/" class="title">mock.js+easyMock</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:09:27.856Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Vue/">Vue</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Vue - 基础/" class="title">Vue - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:07:25.801Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Node-js/">Node.js</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Node - 内置模块/" class="title">Node - 内置模块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:05:02.909Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Node-js/">Node.js</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Node - 基础/" class="title">Node - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:01:40.717Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/jQuery/">jQuery</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.2.1.jQuery - 基础/" class="title">jQuery - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T06:40:16.262Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JS-对象"><span class="toc-number">1.</span> <span class="toc-text">JS 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Math"><span class="toc-number">1.1.</span> <span class="toc-text">Math</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Array"><span class="toc-number">1.2.</span> <span class="toc-text">Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Date"><span class="toc-number">1.3.</span> <span class="toc-text">Date</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String"><span class="toc-number">1.4.</span> <span class="toc-text">String</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-2.1.2.JavaScript - Math、Array、Date、String - 副本" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript - Math、Array、Date、String
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/09/2.1.2.JavaScript - Math、Array、Date、String - 副本/" class="article-date">
+	  <time datetime="2019-05-09T05:49:42.142Z" itemprop="datePublished">2019-05-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/JavaScript/">JavaScript</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/2.1.2.JavaScript - Math、Array、Date、String - 副本/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="JS-对象"><a href="#JS-对象" class="headerlink" title="JS 对象"></a>JS 对象</h1><h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><table>
+<thead>
+<tr>
+<th>Math</th>
+<th>Math.*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Math.PI</td>
+<td>获取圆周率</td>
+</tr>
+<tr>
+<td>Math.random()</td>
+<td>返回大于等于0小于1之间的随机数</td>
+</tr>
+<tr>
+<td>Math.floor()</td>
+<td>向下取整，返回一个小于当前数字的整数</td>
+</tr>
+<tr>
+<td>Math.ceil()</td>
+<td>向上取整，返回一个大于当前数字的整数</td>
+</tr>
+<tr>
+<td>Math.round()</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>Math.abs()</td>
+<td>取绝对值</td>
+</tr>
+<tr>
+<td>Math.max()</td>
+<td>返回一组数中的最大值(不可是数组)</td>
+</tr>
+<tr>
+<td>Math.min()</td>
+<td>返回一组数中的最小值(不可是数组)</td>
+</tr>
+<tr>
+<td>Math.pow(x,y)</td>
+<td>返回x的y次幂</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><table>
+<thead>
+<tr>
+<th>Array</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.toString()</td>
+<td>把数组转换为字符串，使用逗号分隔</td>
+</tr>
+<tr>
+<td>*.valueOf()</td>
+<td>返回数组对象本身 ？？？</td>
+</tr>
+<tr>
+<td>*.ary.push()</td>
+<td>数组末尾 增加值</td>
+</tr>
+<tr>
+<td>*.ary.pop()</td>
+<td>用于删除数组的最后一个元素并返回删除的元素。(会修改数组长度)</td>
+</tr>
+<tr>
+<td>*.ary.shift()</td>
+<td>用于删除数组的第一个元素并返回删除的元素。(会修改数组长度)</td>
+</tr>
+<tr>
+<td>*.unshift(number)</td>
+<td>在数组起始位置添加一个、或多个值</td>
+</tr>
+<tr>
+<td><em>.concat(</em>   //可以是 nub、ary   )</td>
+<td>拼接字符串、数组（第一个不能是Number类型）</td>
+</tr>
+<tr>
+<td>*.slice(startindex,   endindex)</td>
+<td>从当前数组中复制个新的数组，如果第二个值不写，则取到结尾</td>
+</tr>
+<tr>
+<td>*.splice(startindex,   deletCont, options)</td>
+<td>删除或者替换数组中的某些值</td>
+</tr>
+<tr>
+<td>*.indexOf(content[,index])，lastIndexof()</td>
+<td>查找所传值 在数据中的索引，未找到的话   返回-1</td>
+</tr>
+<tr>
+<td>*.join(‘内容’)</td>
+<td>在数组中的值 之间 插入内容，并转成字符串</td>
+</tr>
+<tr>
+<td>*.reverse()</td>
+<td>数组反转</td>
+</tr>
+<tr>
+<td>*.filter(function(item,index,   ary) {return 不要的值})     //返回一个新数组,可以获取赛选结果</td>
+<td></td>
+</tr>
+<tr>
+<td>map(function(item,index,ary)   {})  //遍历数组,返回一个新数组</td>
+<td></td>
+</tr>
+<tr>
+<td>*.forEach(function(item,index,   ary) {}) //遍历数组,没有返回值</td>
+<td></td>
+</tr>
+<tr>
+<td>*.sort()</td>
+<td>数组排序，默认按升序 排序</td>
+</tr>
+<tr>
+<td>var ary = [1500, 2000, 1000, 2100, 900, 1900, 3000]      ary.filter(function(item, index) {           if (item &gt;= 2000) {                 ary.splice(index, 1)            }       })</td>
+<td>var ary = [‘a’, ‘b’,   ‘c’, ‘d’, ‘a’, ‘e’, ‘f’, ‘a’, ‘g’, ‘h’]      ary.forEach(function(item, index) {           if (item == ‘a’) {             console.log(index)             }       })</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>var * = new   Date()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.toString();</td>
+<td>转化成字符串(Sat Nov 03 2018 19:04:20   GMT+0800 (中国标准时间))</td>
+</tr>
+<tr>
+<td>*.toDateString();</td>
+<td>转换成日期字符串(Sat Nov   03 2018)</td>
+</tr>
+<tr>
+<td>*.toTimeString();</td>
+<td>转换成时间字符串(19:04:20   GMT+0800 (中国标准时间))</td>
+</tr>
+<tr>
+<td>*.toLocaleDateString();</td>
+<td>返回本地的日期格式  （不同浏览器不同效果）</td>
+</tr>
+<tr>
+<td>*.toLocaleTimeString();</td>
+<td>返回本地的时间格式  （不同浏览器不同效果）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*.getSeconds()</td>
+<td>获取秒</td>
+</tr>
+<tr>
+<td>*.getMinutes()</td>
+<td>获取分钟</td>
+</tr>
+<tr>
+<td>*.getHours()</td>
+<td>获取小时</td>
+</tr>
+<tr>
+<td>*.getDay()</td>
+<td>返回周几   （0表示周日）</td>
+</tr>
+<tr>
+<td>*.getDate()</td>
+<td>返回当前月的第几天</td>
+</tr>
+<tr>
+<td>*.getMonth()</td>
+<td>返回月份   （从0开始）</td>
+</tr>
+<tr>
+<td>*.getFullYear()</td>
+<td>返回年份</td>
+</tr>
+<tr>
+<td>*.valueOf()</td>
+<td>获取当前时间毫秒</td>
+</tr>
+<tr>
+<td>*.getTime()</td>
+<td></td>
+</tr>
+<tr>
+<td>Date.now()</td>
+<td></td>
+</tr>
+<tr>
+<td>toLocaleString()</td>
+<td>格式化</td>
+</tr>
+</tbody>
+</table>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><table>
+<thead>
+<tr>
+<th>String</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.charAt(索引)</td>
+<td>获取指定位置处的字符</td>
+</tr>
+<tr>
+<td>*.str[index]</td>
+<td>获取指定位置的字符 （H5中的方法）</td>
+</tr>
+<tr>
+<td><em>.concat(</em>   //可以是 nub、ary   )</td>
+<td>拼接字符串、数组（第一个不能是Number类型）</td>
+</tr>
+<tr>
+<td>*.slice(索引,索引)</td>
+<td>从指定位置开始，截取字符串到结束位置，end值取不到</td>
+</tr>
+<tr>
+<td>*.substring(start,end)</td>
+<td>从指定位置开始，截取字符串到结束位置，   end值取不到</td>
+</tr>
+<tr>
+<td>*.substr(start,length)</td>
+<td>从指定位置开始，截取length长度个字符</td>
+</tr>
+<tr>
+<td><em>.indexOf(字符,从</em>索引开始找)</td>
+<td>返回字符在字符串中的位置</td>
+</tr>
+<tr>
+<td>lastIndexOf(字符)</td>
+<td>从后往前找，只找第一个匹配的字符</td>
+</tr>
+<tr>
+<td>*.trim()</td>
+<td>只能去除字符串前后空白</td>
+</tr>
+<tr>
+<td>*.toLocaleUpperCase()</td>
+<td>转化为大写</td>
+</tr>
+<tr>
+<td>*.toLocaleLowerCase()</td>
+<td>转化为小写</td>
+</tr>
+<tr>
+<td>*.replace(a,b)</td>
+<td>用b替换a</td>
+</tr>
+<tr>
+<td>*.split()</td>
+<td>以一个分割符,将一个字符串串分割成一个数组</td>
+</tr>
+<tr>
+<td>indexOf()   方法可返回某个指定的字符串值在字符串中首次出现的位置。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <div class="article-footer">
+         <!--
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/09/2.1.2.JavaScript - Math、Array、Date、String - 副本/" title="JavaScript - Math、Array、Date、String" target="_blank" rel="external">/2019/05/09/2.1.2.JavaScript - Math、Array、Date、String - 副本/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+   -->
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/yyy/2019/05/09/2.1.4.JavaScript - 高级、ES5、ES6/" title="JavaScript - 高级、ES5、ES6"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/2.1.3.JavaScript - DOM、BOM操作、事件/" title="JavaScript - DOM、BOM操作、事件"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

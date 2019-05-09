@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>mock.js+easyMock | nova7y</title>
+  <meta name="description" content="mock和easymockWHY? mock.js   and easymock     对于全端开发工程师在与后台同学协同开发的时候会遇到问题: (问号脸)后台接口都没有,请求个吉尔?  我们只能使用比如Apache/node等后台语言搭建一个服务器,再加上Mysql数据库加上可视化Navicat,给我们提供数据服务. 很烦,因为我们要模拟假数据表,关联数据库,测试运行后台服务并解决跨域等问题,">
+<meta name="keywords" content="扩展阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mock.js+easyMock">
+<meta property="og:url" content="/2019/05/09/mock.js+easyMock/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="mock和easymockWHY? mock.js   and easymock     对于全端开发工程师在与后台同学协同开发的时候会遇到问题: (问号脸)后台接口都没有,请求个吉尔?  我们只能使用比如Apache/node等后台语言搭建一个服务器,再加上Mysql数据库加上可视化Navicat,给我们提供数据服务. 很烦,因为我们要模拟假数据表,关联数据库,测试运行后台服务并解决跨域等问题,">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/02.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/03.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/01.bmp">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/06.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/04.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/05.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/07.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/08.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/09.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/10.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/11.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/12.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/14.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/15.png">
+<meta property="og:image" content="/2019/05/09/mock.js+easyMock/static/16.png">
+<meta property="og:updated_time" content="2019-05-09T07:10:41.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mock.js+easyMock">
+<meta name="twitter:description" content="mock和easymockWHY? mock.js   and easymock     对于全端开发工程师在与后台同学协同开发的时候会遇到问题: (问号脸)后台接口都没有,请求个吉尔?  我们只能使用比如Apache/node等后台语言搭建一个服务器,再加上Mysql数据库加上可视化Navicat,给我们提供数据服务. 很烦,因为我们要模拟假数据表,关联数据库,测试运行后台服务并解决跨域等问题,">
+<meta name="twitter:image" content="/2019/05/09/mock.js+easyMock/static/02.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/09/mock.js+easyMock/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/yyy/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13.67px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13.33px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/html、css/" style="font-size: 13px;">html、css</a> <a href="/yyy/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13.67px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">23</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/扩展阅读/">扩展阅读</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/mock.js+easyMock/" class="title">mock.js+easyMock</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:09:27.856Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Vue/">Vue</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Vue - 基础/" class="title">Vue - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:07:25.801Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Node-js/">Node.js</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Node - 内置模块/" class="title">Node - 内置模块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:05:02.909Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Node-js/">Node.js</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/Node - 基础/" class="title">Node - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T07:01:40.717Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/jQuery/">jQuery</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/09/2.2.1.jQuery - 基础/" class="title">jQuery - 基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-09T06:40:16.262Z" itemprop="datePublished">2019-05-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mock和easymock"><span class="toc-number">1.</span> <span class="toc-text">mock和easymock</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WHY-mock-js"><span class="toc-number">1.0.1.</span> <span class="toc-text">WHY? mock.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#and-easymock"><span class="toc-number">1.0.2.</span> <span class="toc-text">and easymock</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考-提个简单的开发需求"><span class="toc-number">1.1.</span> <span class="toc-text">思考: 提个简单的开发需求:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Mockjs怎么用"><span class="toc-number">1.2.</span> <span class="toc-text">一 Mockjs怎么用?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mock-js的使用"><span class="toc-number">1.2.1.</span> <span class="toc-text">1 mock.js的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1-安装并引入mock-js"><span class="toc-number">1.2.1.0.1.</span> <span class="toc-text">1.1.1 安装并引入mock.js</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-2-安装并引入mock-js"><span class="toc-number">1.2.1.0.2.</span> <span class="toc-text">1.1.2 安装并引入mock.js</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-3-mockjs模块模拟数据"><span class="toc-number">1.2.1.0.3.</span> <span class="toc-text">1.1.3 mockjs模块模拟数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-4-测试服务"><span class="toc-number">1.2.1.0.4.</span> <span class="toc-text">1.1.4 测试服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-5-使用"><span class="toc-number">1.2.1.0.5.</span> <span class="toc-text">1.1.5 使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-mockjs语法"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2 mockjs语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-Mock-mock-方法"><span class="toc-number">1.2.1.1.1.</span> <span class="toc-text">2.1 Mock.mock()方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-参数对象模板规则"><span class="toc-number">1.2.1.1.2.</span> <span class="toc-text">2.2 参数对象模板规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-Mock-valid-template-data-校验数据-处理请求发送来的数据-如果完全脱离后台就需要该方法"><span class="toc-number">1.2.1.1.3.</span> <span class="toc-text">2.3  Mock.valid( template, data ) 校验数据(处理请求发送来的数据,如果完全脱离后台就需要该方法)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-Mock-random工具对象"><span class="toc-number">1.2.1.1.4.</span> <span class="toc-text">2.4 Mock.random工具对象</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#3-easymock的使用"><span class="toc-number">2.</span> <span class="toc-text">3 easymock的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-注册"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">3.1 注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-注意右侧的使用文档右键新窗口打开"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">3.2 注意右侧的使用文档右键新窗口打开</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-快速开始-创建一个项目-点击左侧演示项目"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">3.3 快速开始 - 创建一个项目 点击左侧演示项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-打开项目设置"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">3.5 打开项目设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-配置接口点击保存-提示更新成功就OK了"><span class="toc-number">2.0.0.5.</span> <span class="toc-text">3.6 配置接口点击保存,提示更新成功就OK了</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-7-接口列表配置"><span class="toc-number">2.0.0.6.</span> <span class="toc-text">3.7 接口列表配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-8-接口配置页面-左侧是当前接口返回值设置-右侧接口请求方式-地址等设置"><span class="toc-number">2.0.0.7.</span> <span class="toc-text">3.8 接口配置页面: 左侧是当前接口返回值设置,右侧接口请求方式,地址等设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-9创建或更新接口后会返回到列表页面-点击预览按钮"><span class="toc-number">2.0.0.8.</span> <span class="toc-text">3.9创建或更新接口后会返回到列表页面, 点击预览按钮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-10使用-POSTMan测试接口"><span class="toc-number">2.0.0.9.</span> <span class="toc-text">3.10使用 POSTMan测试接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-11欧克-现在你可以脱离数据库及后台的配置发送ajax请求直接拿数据啦"><span class="toc-number">2.0.0.10.</span> <span class="toc-text">3.11欧克,现在你可以脱离数据库及后台的配置发送ajax请求直接拿数据啦!</span></a></li></ol></li>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-mock.js+easyMock" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mock.js+easyMock
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/09/mock.js+easyMock/" class="article-date">
+	  <time datetime="2019-05-09T07:09:27.856Z" itemprop="datePublished">2019-05-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/扩展阅读/">扩展阅读</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/扩展阅读/">扩展阅读</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/mock.js+easyMock/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="mock和easymock"><a href="#mock和easymock" class="headerlink" title="mock和easymock"></a>mock和easymock</h1><h3 id="WHY-mock-js"><a href="#WHY-mock-js" class="headerlink" title="WHY? mock.js"></a>WHY? <a href="http://mockjs.com/" target="_blank" rel="noopener">mock.js</a></h3><p>  <img src="./static/02.png" alt="mockjs"></p>
+<h3 id="and-easymock"><a href="#and-easymock" class="headerlink" title="and easymock"></a>and <a href="https://www.easy-mock.com/" target="_blank" rel="noopener">easymock</a></h3><p>  <img src="./static/03.png" alt="easymock"></p>
+<p>  <strong>对于全端开发工程师在与后台同学协同开发的时候会遇到问题</strong>: <em>(问号脸)后台接口都没有,请求个吉尔?</em><br>  我们只能使用比如Apache/node等后台语言搭建一个服务器,再加上Mysql数据库加上可视化Navicat,给我们提供数据服务. <strong>很烦</strong>,因为我们要模拟假数据表,关联数据库,测试运行后台服务并解决跨域等问题,然后才能做 <strong>前端开发</strong>,很难受,假如<strong>有一款在线工具能按照我们的接口文档咔咔往上整数据,然后发送的ajax请求都能响应且数据格式正确</strong>, 这就很舒服 ,最好<strong>能和Vue等主流框架配合使用</strong>那就更舒服了(<code>到vue再说</code>).</p>
+<p><strong>面试装逼:</strong> <em>Mock.js</em>是一款前端开发中拦截Ajax请求再生成随机数据响应的工具.可以用来模拟服务器响应. 优点是非常简单方便, 无侵入性, 基本覆盖常用的接口数据类型.</p>
+<hr>
+<hr>
+<h2 id="思考-提个简单的开发需求"><a href="#思考-提个简单的开发需求" class="headerlink" title="思考: 提个简单的开发需求:"></a>思考: 提个简单的开发需求:</h2>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">请求后台某个接口,返回<span class="number">10</span><span class="number">-15</span>条学生数据: 要求包含 姓名,年龄,性别. 成功状态码:<span class="number">200</span> .成功状态信息: success.</span><br><span class="line"></span><br><span class="line"><span class="string">`响应数据结构分析:`</span></span><br><span class="line">&#123;</span><br><span class="line">  status:<span class="number">200</span>,</span><br><span class="line">  msg:<span class="string">'success'</span>,</span><br><span class="line">  stuInfo:</span><br><span class="line">    &#123;</span><br><span class="line">      name:<span class="string">'abc'</span>,</span><br><span class="line">      age:<span class="number">10</span>,</span><br><span class="line">      gender:<span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    ,</span><br><span class="line">    ...</span><br><span class="line">    ,</span><br><span class="line">    &#123;</span><br><span class="line">      name:<span class="string">'abc'</span>,</span><br><span class="line">      age:<span class="number">10</span>,</span><br><span class="line">      gender:<span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">`方法1: 模拟后台(node/php + mysql)`</span></span><br><span class="line">  <span class="number">1</span>,搭建node服务器/Apache服务器 </span><br><span class="line">  <span class="number">2</span>,开启Mysql服务, 制定数据库,数据表,添加表信息(添加姓名,年龄,性别的值 和 值类型)</span><br><span class="line">  <span class="number">3</span>,使用node或者php语法关联数据库,声明查询sql语句,并执行sql.</span><br><span class="line">  <span class="number">4</span>,将查询db内容处理为json返回</span><br><span class="line">代码量: 前端ajax+模板引擎<span class="number">20</span>行左右 + 后台实现代码<span class="number">40</span>行左右 + 繁琐的数据表设计 + 一条条的添加数据库内容  =  BOOM心态爆炸!!!</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者你可以...</span></span><br><span class="line"><span class="string">`方法2: 完全脱离后台和数据库(mockjs配合vue的拦截器),或者 脱离数据库操作(mockjs简单的node后台)`</span></span><br><span class="line">  <span class="number">1</span>,搭建node服务器</span><br><span class="line">  <span class="number">2</span>,使用mockjs的mock方法制定随机数据</span><br><span class="line">  <span class="number">3</span>,处理为json返回</span><br><span class="line">代码量: 前端ajax+模板引擎<span class="number">20</span>行左右 + node服务响应mock数据<span class="number">11</span>行 = 咦嘿嘿很开心!</span><br><span class="line">代码:</span><br><span class="line">  <span class="keyword">const</span> app = reqire(<span class="string">'express'</span>)</span><br><span class="line">  <span class="keyword">const</span> Mock = <span class="built_in">require</span>(<span class="string">'mockjs'</span>)</span><br><span class="line">  app.get(<span class="string">'/someApi'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">var</span> resData = Mock.mock(&#123;</span><br><span class="line">      <span class="string">'status'</span>:<span class="number">200</span>,</span><br><span class="line">      <span class="string">'msg'</span>:<span class="string">'success'</span>,</span><br><span class="line">      <span class="string">'stuData|10-20'</span>:[&#123;</span><br><span class="line">        <span class="string">'name|1-3'</span>:<span class="regexp">/[a-z][A-Z]/</span>,</span><br><span class="line">        <span class="string">'age|+1'</span>:<span class="number">10</span>,</span><br><span class="line">        <span class="string">'gender|1'</span>:<span class="literal">true</span></span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;)</span><br><span class="line">    res.end(<span class="built_in">JSON</span>.stringify(resData))</span><br><span class="line">  &#125;)</span><br><span class="line">  app.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h2 id="一-Mockjs怎么用"><a href="#一-Mockjs怎么用" class="headerlink" title="一 Mockjs怎么用?"></a>一 Mockjs怎么用?</h2><h3 id="1-mock-js的使用"><a href="#1-mock-js的使用" class="headerlink" title="1 mock.js的使用"></a>1 mock.js的使用</h3><h5 id="1-1-1-安装并引入mock-js"><a href="#1-1-1-安装并引入mock-js" class="headerlink" title="1.1.1 安装并引入mock.js"></a>1.1.1 安装并引入mock.js</h5><p>  创建一个node服务器–server.js文件<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入express</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="comment">// 创建服务对象</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="comment">// 准备数据</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="string">'123'</span></span><br><span class="line"><span class="comment">// 监听路由</span></span><br><span class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123; </span><br><span class="line">  res.end(data);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 开启服务</span></span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure></p>
+<h5 id="1-1-2-安装并引入mock-js"><a href="#1-1-2-安装并引入mock-js" class="headerlink" title="1.1.2 安装并引入mock.js"></a>1.1.2 安装并引入mock.js</h5>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install mockjs </span><br><span class="line">或者 </span><br><span class="line">script:src=&quot;http://mockjs.com/dist/mock.js&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="1-1-3-mockjs模块模拟数据"><a href="#1-1-3-mockjs模块模拟数据" class="headerlink" title="1.1.3 mockjs模块模拟数据"></a>1.1.3 mockjs模块模拟数据</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引进express</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="comment">// 引进mockjs</span></span><br><span class="line"><span class="keyword">const</span> Mock = <span class="built_in">require</span>(<span class="string">'mockjs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 准备服务对象</span></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听路由</span></span><br><span class="line">app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 准备随机数据</span></span><br><span class="line">  <span class="keyword">var</span> data = Mock.mock(&#123;</span><br><span class="line">    <span class="string">'list|1-20'</span>: [&#123;</span><br><span class="line">      <span class="string">'name|3-5'</span>: <span class="regexp">/[a-z][A-Z]/</span>,</span><br><span class="line">      <span class="string">'age|10-15'</span>: <span class="number">15</span>,</span><br><span class="line">      <span class="string">'gender|1'</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;)</span><br><span class="line">  res.end(<span class="built_in">JSON</span>.stringify(data));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开启服务</span></span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="1-1-4-测试服务"><a href="#1-1-4-测试服务" class="headerlink" title="1.1.4 测试服务"></a>1.1.4 测试服务</h5><p>在terminal窗口中运行命令nodemoon server.js<br>在浏览器中请求127.0.0.1:3000 观察响应体<br><img src="./static/01.bmp" alt="响应数据"></p>
+<h5 id="1-1-5-使用"><a href="#1-1-5-使用" class="headerlink" title="1.1.5 使用"></a>1.1.5 使用</h5><p>这样在ajax请求相关接口就能返回内容随机,结构固定的JSON数据了</p>
+<hr>
+<h4 id="2-mockjs语法"><a href="#2-mockjs语法" class="headerlink" title="2 mockjs语法"></a>2 <a href="https://github.com/nuysoft/Mock/wiki/Syntax-Specification" target="_blank" rel="noopener">mockjs语法</a></h4><h5 id="2-1-Mock-mock-方法"><a href="#2-1-Mock-mock-方法" class="headerlink" title="2.1 Mock.mock()方法"></a>2.1 <strong>Mock.mock()方法</strong></h5><p>  加对象参数就可以生成响应数据</p>
+<hr>
+<h5 id="2-2-参数对象模板规则"><a href="#2-2-参数对象模板规则" class="headerlink" title="2.2 参数对象模板规则"></a>2.2 参数对象模板规则</h5><ul>
+<li><strong>属性名|生成规则：属性值 name | rule : value</strong>  </li>
+<li><strong>name</strong>: 生成数据的名字字符串</li>
+<li><strong>|</strong>: 一定要加</li>
+<li><strong>rule</strong>: 生成数据的规则<pre><code>|min-max                  生成个数min至max条
+|count                    生成count条
+|min-max.dmin-dmax        1-9.2-3  数字值在1-9之间,小数点后保留2-3位  如 2.1   3.74
+|min-max.dcount           1-9.2     数字值在1-9之间,小数点后保留2位   如2.13  8.54
+|count.dmin-dmax          10.1-2    整数部分是10,小数点部分1-2位      如10.99   10.1
+|count.dcount             10.2      整数部分是10,小数点部分2位        如10.11   10.43
+|+step                    &apos;score|+1&apos;:1,   以value 1为基准,递增1
+</code></pre></li>
+<li><p><strong>value</strong>: 属性值的规则</p>
+<ul>
+<li><p>字符串</p>
+<pre><code>&apos;name|min-max&apos;: string 
+通过重复 string 生成一个字符串，min&lt;=重复次数&lt;=max
+
+&apos;name|count&apos;: string 
+通过重复 string 生成一个字符串，重复次数==count。
+</code></pre></li>
+<li><p>数字</p>
+<pre><code>&apos;name|+1&apos;: number 
+属性值自动加 1，初始值为 number。
+
+&apos;name|min-max&apos;: number    
+number确定数据类型,生成值在min-max间的整数
+
+&apos;name|min-max.dmin-dmax&apos;: number
+number确定数据类型,生成值在min-max间的小数
+</code></pre></li>
+<li>布尔<pre><code>&apos;name|1&apos;: boolean
+随机生成一个布尔值,真假各50%
+&apos;name|t-f&apos;: true
+随机生成一个布尔值,真占t/t+f  假占f/t+f
+</code></pre></li>
+<li><p>对象</p>
+<pre><code>&apos;name|count&apos;: object
+从属性值 object 中随机选取 count 个属性。
+
+&apos;name|min-max&apos;: object
+从属性值 object 中随机选取 min 到 max 个属性。
+</code></pre></li>
+<li><p><code>数组</code>  </p>
+<pre><code>&apos;name|1&apos;: array
+从属性值 array 中随机选取 1 个元素，作为最终值。
+
+&apos;name|+1&apos;: array
+从属性值 array 中顺序选取 1 个元素，作为最终值。
+
+&apos;name|min-max&apos;: array
+通过重复属性值 array 生成一个新数组，重复次数大于等于 min，小于等于 max。
+
+&apos;name|count&apos;: array
+通过重复属性值 array 生成一个新数组，重复次数为 count。
+
+var data = mock.mock({
+  // 将value数组中的项(对象) 重复计算1-10次 添加到新数组返回
+  &apos;obj|1-10&apos;:[
+    {
+      &apos;score|+1&apos;:1
+    }
+  ]
+})
+//生成 { obj: [ { score: 1 }, { score: 2 }, { score: 3 }, { score: 4 } ] }
+</code></pre></li>
+<li><p>函数(不用)</p>
+<pre><code>&apos;name&apos;: function
+执行函数 function，取其返回值作为最终的属性值，函数的上下文为属性 &apos;name&apos; 所在的对象。
+</code></pre></li>
+<li>正则<pre><code>&apos;name&apos;: regexp
+根据正则表达式 regexp 反向生成可以匹配它的字符串。用于生成自定义格式的字符串。/[a-z][A-Z][0-9]/  /\w\W\s\S\d\D/  /\d{5,10}/ [\u4e00-\u9fa5]    
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="2-3-Mock-valid-template-data-校验数据-处理请求发送来的数据-如果完全脱离后台就需要该方法"><a href="#2-3-Mock-valid-template-data-校验数据-处理请求发送来的数据-如果完全脱离后台就需要该方法" class="headerlink" title="2.3  Mock.valid( template, data ) 校验数据(处理请求发送来的数据,如果完全脱离后台就需要该方法)"></a>2.3  <strong>Mock.valid( template, data )</strong> 校验数据(处理请求发送来的数据,如果完全脱离后台就需要该方法)</h5><ul>
+<li><code>在vue中可以脱离后台开发(到下个自习说)</code></li>
+<li><strong>template</strong> 必选, 表示数据模板，可以是对象或字符串</li>
+<li><strong>data</strong> 必选, 表示真实数据<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以用来做基于mock的ajax请求参数的处理</span></span><br><span class="line"><span class="keyword">var</span> template = &#123;</span><br><span class="line">    name: <span class="string">'value1'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    name: <span class="string">'value2'</span></span><br><span class="line">&#125;</span><br><span class="line">Mock.valid(template, data)<span class="comment">//返回值是一个校验结果数组</span></span><br><span class="line"><span class="comment">// 如果匹配则 返回空数组</span></span><br><span class="line"><span class="comment">// 如果不匹配 messages属性表示tteamplate和data不匹配的原因</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h5 id="2-4-Mock-random工具对象"><a href="#2-4-Mock-random工具对象" class="headerlink" title="2.4 Mock.random工具对象"></a>2.4 <a href="https://github.com/nuysoft/Mock/wiki/Mock.Random" target="_blank" rel="noopener">Mock.random</a>工具对象</h5><ul>
+<li>Mock.Random 是一个工具类，<code>用于生成各种随机数据。不用掌握,用到就点击蓝字查</code></li>
+</ul>
+<hr>
+<h1 id="3-easymock的使用"><a href="#3-easymock的使用" class="headerlink" title="3 easymock的使用"></a>3 easymock的使用</h1><p>  <img src="./static/06.png" alt="easymock"></p>
+<h4 id="3-1-注册"><a href="#3-1-注册" class="headerlink" title="3.1 注册"></a>3.1 <a href="https://www.easy-mock.com/login" target="_blank" rel="noopener"><code>注册</code></a></h4><p>  <img src="./static/04.png" alt="个人页面"></p>
+<h4 id="3-2-注意右侧的使用文档右键新窗口打开"><a href="#3-2-注意右侧的使用文档右键新窗口打开" class="headerlink" title="3.2 注意右侧的使用文档右键新窗口打开"></a>3.2 注意右侧的<a href="https://www.easy-mock.com/docs" target="_blank" rel="noopener"><code>使用文档</code></a>右键新窗口打开</h4><p>  <img src="./static/05.png" alt="文档"></p>
+<h4 id="3-3-快速开始-创建一个项目-点击左侧演示项目"><a href="#3-3-快速开始-创建一个项目-点击左侧演示项目" class="headerlink" title="3.3 快速开始 - 创建一个项目 点击左侧演示项目"></a>3.3 <code>快速开始 - 创建一个项目</code> 点击左侧演示项目</h4><p>  <img src="./static/07.png" alt="打开项目"></p>
+<h4 id="3-5-打开项目设置"><a href="#3-5-打开项目设置" class="headerlink" title="3.5 打开项目设置"></a>3.5 <code>打开项目设置</code></h4><p>  <img src="./static/08.png" alt="项目设置"></p>
+<h4 id="3-6-配置接口点击保存-提示更新成功就OK了"><a href="#3-6-配置接口点击保存-提示更新成功就OK了" class="headerlink" title="3.6 配置接口点击保存,提示更新成功就OK了"></a>3.6 <code>配置接口</code>点击保存,提示更新成功就OK了</h4><p>  <img src="./static/09.png" alt="项目设置"></p>
+<h4 id="3-7-接口列表配置"><a href="#3-7-接口列表配置" class="headerlink" title="3.7 接口列表配置"></a>3.7 <code>接口列表配置</code></h4><pre><code>记录当前项目的基本地址  `Base URL,注意要记录自己项目的啊!`
+https://www.easy-mock.com/mock/5bcd7381617c6c67bc2a20f8/itcast
+点击3.1左侧项目,进入个人项目,点击创建接口
+</code></pre><p>  <img src="./static/10.png" alt="接口列表位置"></p>
+<h4 id="3-8-接口配置页面-左侧是当前接口返回值设置-右侧接口请求方式-地址等设置"><a href="#3-8-接口配置页面-左侧是当前接口返回值设置-右侧接口请求方式-地址等设置" class="headerlink" title="3.8 接口配置页面: 左侧是当前接口返回值设置,右侧接口请求方式,地址等设置"></a>3.8 <code>接口配置页面</code>: 左侧是当前接口返回值设置,右侧接口请求方式,地址等设置</h4><p>  <img src="./static/11.png" alt="接口详情设置">  <img src="./static/12.png" alt="配置"><br>  将以下代码粘贴至左侧区域,并配置右侧选项<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &#123;</span><br><span class="line">  <span class="comment">//响应状态码</span></span><br><span class="line">  <span class="string">'status'</span>: <span class="number">200</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// stus 值为数组</span></span><br><span class="line">  <span class="string">'stus|5-10'</span>: [&#123;</span><br><span class="line">    <span class="string">'name|2-4'</span>: <span class="regexp">/[\u4e00-\u9fa5]/</span>, <span class="comment">//生辰任意内容的字符串</span></span><br><span class="line">    <span class="string">'age|+1'</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">'score|1-100'</span>: <span class="number">100</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-9创建或更新接口后会返回到列表页面-点击预览按钮"><a href="#3-9创建或更新接口后会返回到列表页面-点击预览按钮" class="headerlink" title="3.9创建或更新接口后会返回到列表页面, 点击预览按钮"></a>3.9创建或更新接口后会返回到列表页面, <strong>点击预览按钮</strong></h4><pre><code>如果能够看到响应的数据,就说明本次请求配置是欧克的
+</code></pre><p>  <img src="./static/14.png" alt="接口预览-响应"><br>  <img src="./static/15.png" alt="接口预览-请求"></p>
+<h4 id="3-10使用-POSTMan测试接口"><a href="#3-10使用-POSTMan测试接口" class="headerlink" title="3.10使用 POSTMan测试接口"></a>3.10使用 <strong>POSTMan</strong>测试接口</h4><pre><code>`拼接地址注意: 要使用easymock项目的BaseUrl 和 测试接口的地址&quot;test&quot;拼接`
+</code></pre><p>  <img src="./static/16.png" alt="接口预览-请求"></p>
+<h4 id="3-11欧克-现在你可以脱离数据库及后台的配置发送ajax请求直接拿数据啦"><a href="#3-11欧克-现在你可以脱离数据库及后台的配置发送ajax请求直接拿数据啦" class="headerlink" title="3.11欧克,现在你可以脱离数据库及后台的配置发送ajax请求直接拿数据啦!"></a>3.11欧克,现在你可以脱离数据库及后台的配置发送ajax请求直接拿数据啦!</h4>
+      
+    </div>
+    <div class="article-footer">
+         <!--
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/09/mock.js+easyMock/" title="mock.js+easyMock" target="_blank" rel="external">/2019/05/09/mock.js+easyMock/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+   -->
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/09/Vue - 基础/" title="Vue - 基础"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
