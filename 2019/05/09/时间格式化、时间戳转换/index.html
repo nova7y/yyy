@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>CSS 盒子模型塌陷的解决方法 | nova7y</title>
-  <meta name="description" content="HTML+CSS一、盒子塌陷是什么？本应该在父盒子内部的元素跑到了外部。 二，为什么会出现盒子塌陷？ 当父元素没设置足够大小的时候，而子元素设置了浮动的属性，子元素就会跳出父元素的边界（脱离文档流），尤其是当父元素的高度为auto时，而父元素中又没有其它非浮动的可见元素时，父盒子的高度就会直接塌陷为零， 我们称这是CSS高度塌陷。 三，关于盒子塌陷的几种解决方法 最简单，直接，粗暴的方法就是盒子大">
-<meta name="keywords" content="前端">
+  <title>时间格式化、时间戳转换 | nova7y</title>
+  <meta name="description" content="时间格式化123456789101112131415  var ddd = new Date()  var year = ddd.getFullYear()  var month = ddd.getMonth() + 1  var day = ddd.getDate()  var hours = ddd.getHours()  var minutes = ddd.getMinutes()  var">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS 盒子模型塌陷的解决方法">
-<meta property="og:url" content="/2019/05/09/CSS 盒子模型塌陷的解决方法/index.html">
+<meta property="og:title" content="时间格式化、时间戳转换">
+<meta property="og:url" content="/2019/05/09/时间格式化、时间戳转换/index.html">
 <meta property="og:site_name" content="nova7y">
-<meta property="og:description" content="HTML+CSS一、盒子塌陷是什么？本应该在父盒子内部的元素跑到了外部。 二，为什么会出现盒子塌陷？ 当父元素没设置足够大小的时候，而子元素设置了浮动的属性，子元素就会跳出父元素的边界（脱离文档流），尤其是当父元素的高度为auto时，而父元素中又没有其它非浮动的可见元素时，父盒子的高度就会直接塌陷为零， 我们称这是CSS高度塌陷。 三，关于盒子塌陷的几种解决方法 最简单，直接，粗暴的方法就是盒子大">
+<meta property="og:description" content="时间格式化123456789101112131415  var ddd = new Date()  var year = ddd.getFullYear()  var month = ddd.getMonth() + 1  var day = ddd.getDate()  var hours = ddd.getHours()  var minutes = ddd.getMinutes()  var">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-10T05:27:02.004Z">
+<meta property="og:updated_time" content="2019-05-09T10:18:17.817Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS 盒子模型塌陷的解决方法">
-<meta name="twitter:description" content="HTML+CSS一、盒子塌陷是什么？本应该在父盒子内部的元素跑到了外部。 二，为什么会出现盒子塌陷？ 当父元素没设置足够大小的时候，而子元素设置了浮动的属性，子元素就会跳出父元素的边界（脱离文档流），尤其是当父元素的高度为auto时，而父元素中又没有其它非浮动的可见元素时，父盒子的高度就会直接塌陷为零， 我们称这是CSS高度塌陷。 三，关于盒子塌陷的几种解决方法 最简单，直接，粗暴的方法就是盒子大">
+<meta name="twitter:title" content="时间格式化、时间戳转换">
+<meta name="twitter:description" content="时间格式化123456789101112131415  var ddd = new Date()  var year = ddd.getFullYear()  var month = ddd.getMonth() + 1  var day = ddd.getDate()  var hours = ddd.getHours()  var minutes = ddd.getMinutes()  var">
   <!-- Canonical links -->
-  <link rel="canonical" href="/2019/05/09/CSS 盒子模型塌陷的解决方法/index.html">
+  <link rel="canonical" href="/2019/05/09/时间格式化、时间戳转换/index.html">
   
     <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
   
@@ -292,21 +292,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-CSS"><span class="toc-number">1.</span> <span class="toc-text">HTML+CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、盒子塌陷是什么？"><span class="toc-number">1.1.</span> <span class="toc-text">一、盒子塌陷是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二，为什么会出现盒子塌陷？"><span class="toc-number">1.2.</span> <span class="toc-text">二，为什么会出现盒子塌陷？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三，关于盒子塌陷的几种解决方法"><span class="toc-number">1.3.</span> <span class="toc-text">三，关于盒子塌陷的几种解决方法</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#时间格式化"><span class="toc-number">1.</span> <span class="toc-text">时间格式化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#时间转时间戳"><span class="toc-number">2.</span> <span class="toc-text">时间转时间戳</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#时间戳转时间"><span class="toc-number">3.</span> <span class="toc-text">时间戳转时间</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-CSS 盒子模型塌陷的解决方法" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-时间格式化、时间戳转换" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      CSS 盒子模型塌陷的解决方法
+      时间格式化、时间戳转换
     </h1>
   
 
@@ -314,46 +314,50 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/yyy/2019/05/09/CSS 盒子模型塌陷的解决方法/" class="article-date">
-	  <time datetime="2019-05-09T07:33:02.154Z" itemprop="datePublished">2019-05-09</time>
+	<a href="/yyy/2019/05/09/时间格式化、时间戳转换/" class="article-date">
+	  <time datetime="2019-05-09T08:38:53.862Z" itemprop="datePublished">2019-05-09</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/yyy/categories/前端/">前端</a>
+    <a class="article-category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/yyy/tags/前端/">前端</a>
+	<a class="article-tag-link" href="/yyy/tags/JavaScript/">JavaScript</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/CSS 盒子模型塌陷的解决方法/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/时间格式化、时间戳转换/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="HTML-CSS"><a href="#HTML-CSS" class="headerlink" title="HTML+CSS"></a>HTML+CSS</h1><h2 id="一、盒子塌陷是什么？"><a href="#一、盒子塌陷是什么？" class="headerlink" title="一、盒子塌陷是什么？"></a>一、盒子塌陷是什么？</h2><p>本应该在父盒子内部的元素跑到了外部。</p>
-<h2 id="二，为什么会出现盒子塌陷？"><a href="#二，为什么会出现盒子塌陷？" class="headerlink" title="二，为什么会出现盒子塌陷？"></a>二，为什么会出现盒子塌陷？</h2><p> 当父元素没设置足够大小的时候，而子元素设置了浮动的属性，子元素就会跳出父元素的边界（脱离文档流），尤其是当父元素的高度为auto时，而父元素中又没有其它非浮动的可见元素时，父盒子的高度就会直接塌陷为零， 我们称这是<strong>CSS高度塌陷</strong>。</p>
-<h2 id="三，关于盒子塌陷的几种解决方法"><a href="#三，关于盒子塌陷的几种解决方法" class="headerlink" title="三，关于盒子塌陷的几种解决方法"></a>三，关于盒子塌陷的几种解决方法</h2><ol>
-<li><p>最简单，直接，粗暴的方法就是盒子大小写死，给每个盒子设定固定的width和height，直到合适为止，这样的好处是简单方便，兼容性好，适合只改动少量内容不涉及盒子排布的版面，缺点是非自适应，浏览器的窗口大小直接影响用户体验。</p>
-</li>
-<li><p>给外部的父盒子也添加浮动，让其也脱离标准文档流，这种方法方便，但是对页面的布局不是很友好，不易维护。</p>
-</li>
-<li><p>给父盒子添加overflow属性。<br> overflow:auto; 有可能出现滚动条，影响美观。<br> overflow:hidden; 可能会带来内容不可见的问题。</p>
-</li>
-<li><p>父盒子里最下方引入清除浮动块。最简单的有：<br> <code>&lt;span style=&quot;clear:both;&quot;&gt;&lt;/span&gt;</code><br> 有很多人是这么解决的，但是我们并不推荐，因为其引入了不必要的冗余元素 。</p>
-</li>
-<li><p>after伪类清除浮动。<br> 外部盒子的after伪元素设置clear属性。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#parent</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">       <span class="attribute">clear</span>: both;</span><br><span class="line">       <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">       <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">       <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">       <span class="attribute">display</span>: block;</span><br><span class="line">       <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+        <h1 id="时间格式化"><a href="#时间格式化" class="headerlink" title="时间格式化"></a>时间格式化</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> ddd = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  <span class="keyword">var</span> year = ddd.getFullYear()</span><br><span class="line">  <span class="keyword">var</span> month = ddd.getMonth() + <span class="number">1</span></span><br><span class="line">  <span class="keyword">var</span> day = ddd.getDate()</span><br><span class="line">  <span class="keyword">var</span> hours = ddd.getHours()</span><br><span class="line">  <span class="keyword">var</span> minutes = ddd.getMinutes()</span><br><span class="line">  <span class="keyword">var</span> seconds = ddd.getSeconds()</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;year&#125;</span>-<span class="subst">$&#123;month&#125;</span>-<span class="subst">$&#123;day&#125;</span> <span class="subst">$&#123;hours&#125;</span>:<span class="subst">$&#123;minutes&#125;</span>:<span class="subst">$&#123;seconds&#125;</span>`</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> tempTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">return</span> tempTime.toLocaleDateString().replace(<span class="regexp">/\//g</span>, <span class="string">"-"</span>) + <span class="string">" "</span> + tempTime.toTimeString().substr(<span class="number">0</span>, <span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="时间转时间戳"><a href="#时间转时间戳" class="headerlink" title="时间转时间戳"></a>时间转时间戳</h1><blockquote>
+<p>javascript获得时间戳的方法有四种，都是通过实例化时间对象 new Date() 来进一步获取当前的时间戳</p>
+</blockquote>
+<p>1.var timestamp1 = Date.parse(new Date()); // 结果：1477808630000 不推荐这种办法，毫秒级别的数值被转化为000</p>
+<p>  console.log(timestamp1);</p>
+<p>2.var timestamp2 = (new Date()).valueOf(); // 结果：1477808630404 通过<code>valueOf()</code>函数返回指定对象的原始值获得准确的时间戳值</p>
+<p>console.log(timestamp2);</p>
+<p>3.var timestamp3 = new Date().getTime(); // 结果：1477808630404 ，通过原型方法直接获得当前时间的毫秒值，准确</p>
+<p>console.log(timestamp3);</p>
+<p>4.var timetamp4 = Number(new Date()) ; //结果：1477808630404 ,将时间转化为一个number类型的数值，即时间戳</p>
+<p>console.log(timetamp4);</p>
+<p><strong>如果不需要精确到毫秒，可以 / 1000</strong></p>
+<h1 id="时间戳转时间"><a href="#时间戳转时间" class="headerlink" title="时间戳转时间"></a>时间戳转时间</h1><p>var timestamp4 = new Date(1472048779952);**//直接用 new Date(时间戳) 格式转化获得当前时间</p>
+<p>console.log(timestamp4);</p>
+<p>console.log(timestamp4.toLocaleDateString().replace(/\//g, “-“) + “ “ + timestamp4.toTimeString().substr(0, 8)); //再利用拼接正则等手段转化为yyyy-MM-dd hh:mm:ss 格式</p>
+<p>不过这样转换在某些浏览器上会出现不理想的效果，因为toLocaleDateString()方法是因浏览器而异的，比如 IE为2016年8月24日 22:26:19 格式 搜狗为Wednesday, August 24, 2016 22:39:42</p>
+<p><em>可以通过分别获取时间的年月日进行拼接，比如：</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getdate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(),</span><br><span class="line">                y = now.getFullYear(),</span><br><span class="line">                m = now.getMonth() + <span class="number">1</span>,</span><br><span class="line">                d = now.getDate();</span><br><span class="line">            <span class="keyword">return</span> y + <span class="string">"-"</span> + (m &lt; <span class="number">10</span> ? <span class="string">"0"</span> + m : m) + <span class="string">"-"</span> + (d &lt; <span class="number">10</span> ? <span class="string">"0"</span> + d : d) + <span class="string">" "</span> + now.toTimeString().substr(<span class="number">0</span>, <span class="number">8</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -364,7 +368,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="/2019/05/09/CSS 盒子模型塌陷的解决方法/" title="CSS 盒子模型塌陷的解决方法" target="_blank" rel="external">/2019/05/09/CSS 盒子模型塌陷的解决方法/</a>
+      <a href="/2019/05/09/时间格式化、时间戳转换/" title="时间格式化、时间戳转换" target="_blank" rel="external">/2019/05/09/时间格式化、时间戳转换/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -412,12 +416,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/yyy/2019/05/09/时间格式化、时间戳转换/" title="时间格式化、时间戳转换"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/yyy/2019/05/10/js获取客户端真实IP/" title="js获取客户端真实IP"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/yyy/2019/05/09/mock.js+easyMock/" title="mock.js+easyMock"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/yyy/2019/05/09/CSS 盒子模型塌陷的解决方法/" title="CSS 盒子模型塌陷的解决方法"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
