@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>盒子设置最小高度值并自适应高度 | nova7y</title>
+  <meta name="description" content="盒子设置最小高度值并自适应高度一般来说，想让一个DIV盒子的高度能够根据盒子内的内容自动调整，不设置盒子的高度值（height）就行了。 但还有一种情况：为了使盒子布局美观，需要对盒子设置一个初始高度，当盒子中的内容很少时，保持这个初始高度，如果内容超过该盒子初始高度的容量，则盒子的高度根据内容自动调整增高。所以这时需要设置一个具体的DIV盒子高度值，又要使其能够在超过初始高度时自适应。 具体解决">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="盒子设置最小高度值并自适应高度">
+<meta property="og:url" content="/2019/05/13/盒子设置最小高度值并自适应高度/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="盒子设置最小高度值并自适应高度一般来说，想让一个DIV盒子的高度能够根据盒子内的内容自动调整，不设置盒子的高度值（height）就行了。 但还有一种情况：为了使盒子布局美观，需要对盒子设置一个初始高度，当盒子中的内容很少时，保持这个初始高度，如果内容超过该盒子初始高度的容量，则盒子的高度根据内容自动调整增高。所以这时需要设置一个具体的DIV盒子高度值，又要使其能够在超过初始高度时自适应。 具体解决">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-13T01:47:11.315Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="盒子设置最小高度值并自适应高度">
+<meta name="twitter:description" content="盒子设置最小高度值并自适应高度一般来说，想让一个DIV盒子的高度能够根据盒子内的内容自动调整，不设置盒子的高度值（height）就行了。 但还有一种情况：为了使盒子布局美观，需要对盒子设置一个初始高度，当盒子中的内容很少时，保持这个初始高度，如果内容超过该盒子初始高度的容量，则盒子的高度根据内容自动调整增高。所以这时需要设置一个具体的DIV盒子高度值，又要使其能够在超过初始高度时自适应。 具体解决">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/13/盒子设置最小高度值并自适应高度/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/yyy/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>改bug和写bug中...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13.33px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13.33px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13.67px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13.33px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">34</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/13/JS实现文件拖拽上传功能/" class="title">JS实现文件拖拽上传功能</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-13T07:22:53.447Z" itemprop="datePublished">2019-05-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/前端/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/13/限制文本字数，超出部分用省略号显示/" class="title">限制文本字数，超出部分用省略号显示</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-13T06:41:33.627Z" itemprop="datePublished">2019-05-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/前端/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/13/CSS3自定义滚动条样式/" class="title">CSS3自定义滚动条样式</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-13T06:00:17.057Z" itemprop="datePublished">2019-05-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/前端/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/13/CSS 实现隐藏滚动条同时又可以滚动/" class="title">CSS 实现隐藏滚动条同时又可以滚动</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-13T05:58:53.333Z" itemprop="datePublished">2019-05-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/前端/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/13/盒子设置最小高度值并自适应高度/" class="title">盒子设置最小高度值并自适应高度</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-13T01:45:56.894Z" itemprop="datePublished">2019-05-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#盒子设置最小高度值并自适应高度"><span class="toc-number">1.</span> <span class="toc-text">盒子设置最小高度值并自适应高度</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-盒子设置最小高度值并自适应高度" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      盒子设置最小高度值并自适应高度
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/13/盒子设置最小高度值并自适应高度/" class="article-date">
+	  <time datetime="2019-05-13T01:45:56.894Z" itemprop="datePublished">2019-05-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/前端/">前端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/前端/">前端</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/13/盒子设置最小高度值并自适应高度/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="盒子设置最小高度值并自适应高度"><a href="#盒子设置最小高度值并自适应高度" class="headerlink" title="盒子设置最小高度值并自适应高度"></a>盒子设置最小高度值并自适应高度</h1><p>一般来说，想让一个DIV盒子的高度能够根据盒子内的内容自动调整，不设置盒子的高度值（height）就行了。</p>
+<p>但还有一种情况：为了使盒子布局美观，需要对盒子设置一个初始高度，当盒子中的内容很少时，保持这个初始高度，如果内容超过该盒子初始高度的容量，则盒子的高度根据内容自动调整增高。所以这时需要设置一个具体的DIV盒子高度值，又要使其能够在超过初始高度时自适应。</p>
+<p>具体解决办法是（假设DIV盒子的初始高度是500px）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#columnMain</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="attribute">min-height</span>:<span class="number">500px</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">height</span>:auto <span class="meta">!important</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">height</span>:<span class="number">500px</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里，height:500px;适用于IE6，因为IE6不认识前两条CSS语句，但height:500px;对IE6足够了，因为IE6的渲染办法是当已设置的实际高度不够用时，会自动撑开盒子的高度；前两条CSS语句min-height:500px;height:auto !important;是对IE7+、Chrome、FF和Oprea用的，这些版本的浏览器使用min-height:500px;设置了最小高度，如果超过了最小高度，则使用height:auto !important;自动调整高度，注意这条CSS语句中有!important，所以它的优先性是超过其后的height:500px;的。</p>
+<p>至此，问题解决。</p>
+
+      
+    </div>
+    <div class="article-footer">
+         <!--
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/13/盒子设置最小高度值并自适应高度/" title="盒子设置最小高度值并自适应高度" target="_blank" rel="external">/2019/05/13/盒子设置最小高度值并自适应高度/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+   -->
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/yyy/2019/05/13/CSS 实现隐藏滚动条同时又可以滚动/" title="CSS 实现隐藏滚动条同时又可以滚动"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/10/JS判断后台返回值是否存在/" title="JS判断后台返回值是否存在"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
