@@ -5476,7 +5476,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #31b5f4;
+  color: #c82829;
 }
 
 pre .number,
@@ -5490,7 +5490,7 @@ pre .constant {
 
 pre .ruby .class .title,
 pre .css .rules .attribute {
-  color: #ffeb00;
+  color: #718c00;
 }
 
 pre .string,
@@ -5499,7 +5499,7 @@ pre .inheritance,
 pre .header,
 pre .ruby .symbol,
 pre .xml .cdata {
-  color: #ffeb00;
+  color: #718c00;
 }
 
 pre .title,
@@ -5522,17 +5522,17 @@ pre .coffeescript .title {
 pre .keyword,
 pre .javascript .function,
 pre .js .function {
-  color: #ccabff;
+  color: #8959a8;
 }
 
 pre,
 .highlight {
-  background: #000;
+  background: #fafafa;
   margin: 10px 0;
   padding: 15px 10px;
   overflow: auto;
   font-size: 13px;
-  color: #fff;
+  color: #4d4d4c;
   line-height: 1.5;
 }
 
