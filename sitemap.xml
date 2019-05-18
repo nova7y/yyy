@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/2019/05/16/Vue%20-%20%E5%9F%BA%E7%A1%80/</loc>
+    
+    <lastmod>2019-05-18T05:44:02.069Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>/2019/05/16/JS%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2019-05-18T05:28:13.615Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>/2019/05/16/element-ui%E7%9A%84table%E8%A1%A8%E6%A0%BC%E4%B8%8D%E5%AF%B9%E9%BD%90%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2019-05-18T05:08:34.998Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>/2019/05/16/2.2.1.jQuery%20-%20%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2019-05-16T04:21:12.446Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>/2019/05/16/JS%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E6%80%BB%E7%BB%93/</loc>
-    
-    <lastmod>2019-05-15T07:13:08.483Z</lastmod>
     
   </url>
   
@@ -135,13 +142,6 @@
   </url>
   
   <url>
-    <loc>/2019/05/09/Vue%20-%20%E5%9F%BA%E7%A1%80/</loc>
-    
-    <lastmod>2019-05-09T07:08:37.875Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>/2019/05/09/Node%20-%20%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9D%97/</loc>
     
     <lastmod>2019-05-09T07:07:01.772Z</lastmod>
@@ -233,14 +233,14 @@
   </url>
   
   <url>
-    <loc>/2019/05/16/axios%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AAbaseURL/</loc>
+    <loc>/2019/05/09/Vue%20-%20element-ui/</loc>
     
     <lastmod>2019-05-09T03:26:14.031Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/2019/05/09/Vue%20-%20element-ui/</loc>
+    <loc>/2019/05/16/axios%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AAbaseURL/</loc>
     
     <lastmod>2019-05-09T03:26:14.031Z</lastmod>
     
