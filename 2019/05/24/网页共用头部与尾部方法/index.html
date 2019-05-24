@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>网页共用头部与尾部方法 | nova7y</title>
+  <meta name="description" content="一、asp语言和PHP语言首先制作一个头部文件head.asp，或者一个底部文件foot.asp。如主页是index.asp，调用头部代码是在index.asp文件代码的开始位置（第一个标记后面，标记前面）增加如下代码： 1&amp;lt;!–  #include file=”head.asp”    –&amp;gt; 调用共用底部文件代码是在index.asp文件代码的结束位置（最后一个标记前面）增加如下代码">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页共用头部与尾部方法">
+<meta property="og:url" content="/2019/05/24/网页共用头部与尾部方法/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="一、asp语言和PHP语言首先制作一个头部文件head.asp，或者一个底部文件foot.asp。如主页是index.asp，调用头部代码是在index.asp文件代码的开始位置（第一个标记后面，标记前面）增加如下代码： 1&amp;lt;!–  #include file=”head.asp”    –&amp;gt; 调用共用底部文件代码是在index.asp文件代码的结束位置（最后一个标记前面）增加如下代码">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-24T13:30:00.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网页共用头部与尾部方法">
+<meta name="twitter:description" content="一、asp语言和PHP语言首先制作一个头部文件head.asp，或者一个底部文件foot.asp。如主页是index.asp，调用头部代码是在index.asp文件代码的开始位置（第一个标记后面，标记前面）增加如下代码： 1&amp;lt;!–  #include file=”head.asp”    –&amp;gt; 调用共用底部文件代码是在index.asp文件代码的结束位置（最后一个标记前面）增加如下代码">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/24/网页共用头部与尾部方法/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/yyy/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>改bug和写bug中...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/yyy/tags/Node-js/" style="font-size: 13.25px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13.5px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13.25px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">46</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/前端/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/24/网页共用头部与尾部方法/" class="title">网页共用头部与尾部方法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-24T13:25:26.977Z" itemprop="datePublished">2019-05-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/24/js实现表格内容无缝滚动 - v2/" class="title">js实现表格内容无缝滚动 - v2</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-24T13:22:04.955Z" itemprop="datePublished">2019-05-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/24/Linux常用命令大全/" class="title">Linux常用命令大全</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-24T13:16:55.117Z" itemprop="datePublished">2019-05-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/23/预览input-file上传的图片/" class="title">预览input-file上传的图片</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-23T09:05:02.196Z" itemprop="datePublished">2019-05-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/23/input输入内容，每隔4位空格/" class="title">input输入内容，每隔4位空格</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-23T07:49:04.156Z" itemprop="datePublished">2019-05-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、asp语言和PHP语言"><span class="toc-number">1.</span> <span class="toc-text">一、asp语言和PHP语言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、html语言"><span class="toc-number">2.</span> <span class="toc-text">二、html语言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、script语言–推荐这种"><span class="toc-number">3.</span> <span class="toc-text">三、script语言–推荐这种</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-网页共用头部与尾部方法" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      网页共用头部与尾部方法
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/24/网页共用头部与尾部方法/" class="article-date">
+	  <time datetime="2019-05-24T13:25:26.977Z" itemprop="datePublished">2019-05-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/前端/">前端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/前端/">前端</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/24/网页共用头部与尾部方法/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="一、asp语言和PHP语言"><a href="#一、asp语言和PHP语言" class="headerlink" title="一、asp语言和PHP语言"></a>一、asp语言和PHP语言</h1><p>首先制作一个头部文件head.asp，或者一个底部文件foot.asp。如主页是index.asp，调用头部代码是在index.asp文件代码的开始位置（第一个标记后面，<head><meta name="generator" content="Hexo 3.8.0">标记前面）增加如下代码：</head></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!–  #include file=”head.asp”    –&gt;</span><br></pre></td></tr></table></figure>
+<p>调用共用底部文件代码是在index.asp文件代码的结束位置（最后一个标记前面）增加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!–     #include file=”foot.asp”    –&gt;</span><br></pre></td></tr></table></figure>
+<p>如果是PHP文件，文件名改为 footer.php即可。</p>
+<h1 id="二、html语言"><a href="#二、html语言" class="headerlink" title="二、html语言"></a>二、html语言</h1><p>制作一个共用头部文件head.htm或一个共用底部文件foot.htm。如主页文件是index.htm，调用头部和底部文件的方法是：在主页文件代码的开始位置和结束位置分别增加下面的代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">MARGINWIDTH</span>=<span class="string">0</span> <span class="attr">MARGINHEIGHT</span>=<span class="string">0</span> <span class="attr">HSPACE</span>=<span class="string">0</span> <span class="attr">VSPACE</span>=<span class="string">0</span> <span class="attr">FRAMEBORDER</span>=<span class="string">0</span> <span class="attr">SCROLLING</span>=<span class="string">no</span> <span class="attr">src</span>=<span class="string">”head.htm”</span> <span class="attr">height</span>=<span class="string">“auto”</span> <span class="attr">width</span>=<span class="string">"100%"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">MARGINWIDTH</span>=<span class="string">0</span> <span class="attr">MARGINHEIGHT</span>=<span class="string">0</span> <span class="attr">HSPACE</span>=<span class="string">0</span> <span class="attr">VSPACE</span>=<span class="string">0</span> <span class="attr">FRAMEBORDER</span>=<span class="string">0</span> <span class="attr">SCROLLING</span>=<span class="string">no</span> <span class="attr">src</span>=<span class="string">”foot.htm”</span> <span class="attr">height</span>=<span class="string">"auto"</span> <span class="attr">width</span>=<span class="string">"100%"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>比如下面的代码主页面：index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">'head.css'</span>  <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> &gt;</span></span><br><span class="line">//主页面index.html</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'miaov_head'</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">MARGINWIDTH</span>=<span class="string">0</span> <span class="attr">MARGINHEIGHT</span>=<span class="string">0</span> <span class="attr">HSPACE</span>=<span class="string">0</span> <span class="attr">VSPACE</span>=<span class="string">0</span> <span class="attr">FRAMEBORDER</span>=<span class="string">0</span> <span class="attr">SCROLLING</span>=<span class="string">no</span> <span class="attr">src</span>=<span class="string">"head.html"</span> <span class="attr">width</span>=<span class="string">"100%"</span>  <span class="attr">height</span>=<span class="string">"auto"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span>--------这里调用head.html页面，需要使用div包起来，否则样式会发生改变</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>单独存放的head.html代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">'head.css'</span>  <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> &gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'miaov_head'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.cnblogs.com/jtjds/"</span>&gt;</span>Mac<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.cnblogs.com/jtjds/"</span>&gt;</span>iPad<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.cnblogs.com/jtjds/"</span>&gt;</span>iPhone<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.cnblogs.com/jtjds/"</span>&gt;</span>Watch<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.cnblogs.com/jtjds/"</span>&gt;</span>Music<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.cnblogs.com/jtjds/"</span>&gt;</span>Contact Us<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>css样式代码如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;<span class="attribute">background</span>:white;<span class="attribute">position</span>:relative;<span class="attribute">height</span>:<span class="number">100%</span>;<span class="attribute">color</span>: <span class="number">#777</span>;<span class="attribute">font-size</span>: <span class="number">13px</span>;&#125;</span><br><span class="line"><span class="selector-tag">img</span>&#123;<span class="attribute">border</span>:none;<span class="attribute">display</span>:block;&#125;</span><br><span class="line"><span class="selector-tag">li</span>&#123;<span class="attribute">list-style</span>:none;<span class="attribute">text-decoration</span>: none;&#125;</span><br><span class="line"><span class="selector-class">.miaov_head</span>&#123;<span class="attribute">height</span>:<span class="number">36px</span>;<span class="attribute">width</span>:<span class="number">100%</span>;<span class="attribute">margin</span>:<span class="number">0</span> auto;<span class="attribute">background</span>: black;<span class="attribute">margin-bottom</span>: <span class="number">0px</span>;&#125;</span><br><span class="line"><span class="selector-class">.miaov_head</span>  <span class="selector-tag">img</span>&#123;<span class="attribute">width</span>: <span class="number">30px</span> ;<span class="attribute">height</span>: <span class="number">30px</span>;<span class="attribute">margin-top</span>: <span class="number">0</span>;<span class="attribute">margin-left</span>: <span class="number">130px</span>;&#125;</span><br><span class="line"><span class="selector-class">.miaov_head</span>  <span class="selector-tag">ul</span>&#123;<span class="attribute">float</span>: left;<span class="attribute">width</span>:<span class="number">900px</span>;<span class="attribute">height</span>: <span class="number">36px</span>;<span class="attribute">margin-top</span>: <span class="number">0px</span>;<span class="attribute">color</span>: white;<span class="attribute">position</span>: absolute;<span class="attribute">top</span>: <span class="number">0px</span>;<span class="attribute">margin-left</span>: <span class="number">200px</span>;&#125;</span><br><span class="line"><span class="selector-class">.miaov_head</span>  <span class="selector-tag">ul</span> <span class="selector-tag">li</span>&#123;<span class="attribute">float</span>: left;<span class="attribute">padding-left</span>: <span class="number">80px</span>;<span class="attribute">margin-left</span>: <span class="number">0px</span>;<span class="attribute">color</span>: white;<span class="attribute">list-style</span>: none; &#125;</span><br><span class="line"><span class="selector-class">.miaov_head</span>  <span class="selector-tag">ul</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span>&#123;<span class="attribute">color</span>: white;<span class="attribute">font-size</span>: <span class="number">14px</span>;<span class="attribute">text-decoration</span>: none;&#125;</span><br><span class="line"><span class="selector-class">.miaov_head</span> <span class="selector-tag">input</span>&#123;<span class="attribute">position</span>: absolute;<span class="attribute">top</span>: <span class="number">5px</span>;<span class="attribute">margin-left</span>: <span class="number">1000px</span>;<span class="attribute">width</span>: <span class="number">200px</span>;<span class="attribute">height</span>: <span class="number">22px</span>;&#125;</span><br><span class="line"><span class="selector-class">.miaov_head</span> <span class="selector-tag">a</span>&#123;<span class="attribute">line-height</span>:<span class="number">36px</span>;<span class="attribute">color</span>:<span class="number">#777</span>;&#125;</span><br><span class="line"><span class="selector-class">.miaov_head</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">color</span>:<span class="number">#555</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、script语言–推荐这种"><a href="#三、script语言–推荐这种" class="headerlink" title="三、script语言–推荐这种"></a>三、script语言–推荐这种</h1><blockquote>
+<p>制作一个共用头部文件head.js和一个共用底部文件foot.js。如主页文件是index.htm，调用头部和底部文件的方法是：在主页文件代码的开始位置和结束位置分别增加下面的代码:<script src="head.js">和<script src='foot.js'>调用共同的网页头部或者网页底部，减少了每个页面都要编写头部或底部的复杂程度，而且方便修改，只要修改一个头部或者底部文件，所有页面的头部或者底部都随之改变，增加了工作效率。</p>
+</blockquote>
+<p>比如：head.js文件——根据上面的head.html，利用转换工具：<a href="http://tool.chinaz.com/Tools/Html_Js.aspx">http://tool.chinaz.com/Tools/Html_Js.aspx</a></p>
+<p> html转换为JS:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;html xmlns=\"http://www.w3.org/1999/xhtml\"&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;head&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;style&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;/style&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;title&gt;&lt;/title&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">" &lt;link href=\'head.css\'  rel=\"stylesheet\" type=\"text/css\" /&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;/head&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;body &gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">" &lt;div class=\'miaov_head\'&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"    &lt;ul&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"      &lt;li&gt;&lt;a href=\"http://www.cnblogs.com/jtjds/\"&gt;Mac&lt;/a&gt;&lt;/li&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"      &lt;li&gt;&lt;a href=\"http://www.cnblogs.com/jtjds/\"&gt;iPad&lt;/a&gt;&lt;/li&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"      &lt;li&gt;&lt;a href=\"http://www.cnblogs.com/jtjds/\"&gt;iPhone&lt;/a&gt;&lt;/li&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"      &lt;li&gt;&lt;a href=\"http://www.cnblogs.com/jtjds/\"&gt;Watch&lt;/a&gt;&lt;/li&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"      &lt;li&gt;&lt;a href=\"http://www.cnblogs.com/jtjds/\"&gt;Music&lt;/a&gt;&lt;/li&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"      &lt;li&gt;&lt;a href=\"http://www.cnblogs.com/jtjds/\"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"    &lt;/ul&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;/div&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">" "</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;/body&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">"&lt;/html&gt;"</span>);</span><br><span class="line"><span class="built_in">document</span>.writeln(<span class="string">""</span>);</span><br></pre></td></tr></table></figure>
+<p> 以后无论在哪个页面，想调用该头部文件，直接插入head.js文件即可：下面是随便建的一个页面，//MAC.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"head.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>-------------------这里调用head.js</span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> &gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="四：shtml文件"><a href="#四：shtml文件" class="headerlink" title="四：shtml文件"></a>四：shtml文件</h1><p>使用ssi技术页面生成shtml文件，只用在头部文件位置加入<!--#include file="header.htm" -->，然后修改的时候只要修改header.htm文件就可以了。使用shtml的好处是对搜索引擎比较友好，需要处理的文件在服务器端完成的， 不会加重访问者的浏览器负担。</p>
+<h1 id="五：本地合并"><a href="#五：本地合并" class="headerlink" title="五：本地合并"></a>五：本地合并</h1><p>即将HTML硬拆成头、尾、内容三个部分的文件，在预览或者发布之前用脚本手工合并。很久以前用过，没有后台的时候使用效果不错。</p>
+<h1 id="六：ajax动态拉取填充"><a href="#六：ajax动态拉取填充" class="headerlink" title="六：ajax动态拉取填充"></a>六：ajax动态拉取填充</h1><h1 id="七：web服务器（比如IIS）中设定包含"><a href="#七：web服务器（比如IIS）中设定包含" class="headerlink" title="七：web服务器（比如IIS）中设定包含"></a>七：web服务器（比如IIS）中设定包含</h1><p>比如我们说的SSI，文档后缀名是.shtml的就可以使用include包含。</p>
+<p>SSI（Server Side Include)，通常称为”服务器端嵌入”或者叫”服务器端包含”，是一种类似于ASP的基于服务器的网页制作技术。默认扩展名是 .stm、.shtm 和 .shtml。SSI就是在HTML文件中，可以通过注释行调用的命令或指针，SSI具有 强大的功能，只要使用一条简单的SSI命令就可以实现整个网站的内容更新，时间和日期的动态显示，以及执行shell和CGI脚本程序等复杂的功能。</p>
+<h1 id="八：后台模板引擎处理（字符串拼接）"><a href="#八：后台模板引擎处理（字符串拼接）" class="headerlink" title="八：后台模板引擎处理（字符串拼接）"></a>八：后台模板引擎处理（字符串拼接）</h1></script></p></blockquote>
+      
+    </div>
+    <div class="article-footer">
+         <!--
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/24/网页共用头部与尾部方法/" title="网页共用头部与尾部方法" target="_blank" rel="external">/2019/05/24/网页共用头部与尾部方法/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+   -->
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/24/js实现表格内容无缝滚动 - v2/" title="js实现表格内容无缝滚动 - v2"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

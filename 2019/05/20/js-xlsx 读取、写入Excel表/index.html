@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>js-xlsx 读取、写入Excel表 | nova7y</title>
+  <meta name="description" content="在实际开发中，经常会遇到导入Excel文件的需求，有的产品人想法更多，想要在前端直接判断文件内容格式是否正确，必填项是否已填写 依据HTML5的FileReader，可以使用新的API打开本地文件（参考这篇文章）  FileReader.readAsBinaryString(Blob|File) FileReader.readAsText(Blob|File, opt_encoding) File">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-xlsx 读取、写入Excel表">
+<meta property="og:url" content="/2019/05/20/js-xlsx 读取、写入Excel表/index.html">
+<meta property="og:site_name" content="nova7y">
+<meta property="og:description" content="在实际开发中，经常会遇到导入Excel文件的需求，有的产品人想法更多，想要在前端直接判断文件内容格式是否正确，必填项是否已填写 依据HTML5的FileReader，可以使用新的API打开本地文件（参考这篇文章）  FileReader.readAsBinaryString(Blob|File) FileReader.readAsText(Blob|File, opt_encoding) File">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-22T06:01:12.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js-xlsx 读取、写入Excel表">
+<meta name="twitter:description" content="在实际开发中，经常会遇到导入Excel文件的需求，有的产品人想法更多，想要在前端直接判断文件内容格式是否正确，必填项是否已填写 依据HTML5的FileReader，可以使用新的API打开本地文件（参考这篇文章）  FileReader.readAsBinaryString(Blob|File) FileReader.readAsText(Blob|File, opt_encoding) File">
+  <!-- Canonical links -->
+  <link rel="canonical" href="/2019/05/20/js-xlsx 读取、写入Excel表/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/yyy/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/yyy/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/nova7y" target="_blank">
+          <img class="img-circle img-rotate" src="/yyy/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">nova7y</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">******</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/yyy/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/yyy/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/yyy/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/yyy/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/yyy/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>改bug和写bug中...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/yyy/tags/Node-js/" style="font-size: 13.25px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13.5px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13.25px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">46</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/前端/">前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/24/网页共用头部与尾部方法/" class="title">网页共用头部与尾部方法</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-24T13:25:26.977Z" itemprop="datePublished">2019-05-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/24/js实现表格内容无缝滚动 - v2/" class="title">js实现表格内容无缝滚动 - v2</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-24T13:22:04.955Z" itemprop="datePublished">2019-05-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/24/Linux常用命令大全/" class="title">Linux常用命令大全</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-24T13:16:55.117Z" itemprop="datePublished">2019-05-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/23/预览input-file上传的图片/" class="title">预览input-file上传的图片</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-23T09:05:02.196Z" itemprop="datePublished">2019-05-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/23/input输入内容，每隔4位空格/" class="title">input输入内容，每隔4位空格</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-23T07:49:04.156Z" itemprop="datePublished">2019-05-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#读取excel表"><span class="toc-number">1.</span> <span class="toc-text">读取excel表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码示例"><span class="toc-number">1.1.</span> <span class="toc-text">代码示例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#导出excel表"><span class="toc-number">2.</span> <span class="toc-text">导出excel表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在vue中使用"><span class="toc-number">3.</span> <span class="toc-text">在vue中使用</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-js-xlsx 读取、写入Excel表" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js-xlsx 读取、写入Excel表
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/yyy/2019/05/20/js-xlsx 读取、写入Excel表/" class="article-date">
+	  <time datetime="2019-05-20T07:59:27.474Z" itemprop="datePublished">2019-05-20</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/yyy/tags/JavaScript/">JavaScript</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/20/js-xlsx 读取、写入Excel表/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>在实际开发中，经常会遇到导入Excel文件的需求，有的产品人想法更多，想要在前端直接判断文件内容格式是否正确，必填项是否已填写</p>
+<p>依据HTML5的FileReader，可以使用新的API打开本地文件（参考<a href="https://www.html5rocks.com/en/tutorials/file/dndfiles/" target="_blank" rel="noopener">这篇文章</a>）</p>
+<ul>
+<li>FileReader.readAsBinaryString(Blob|File)</li>
+<li>FileReader.readAsText(Blob|File, opt_encoding)</li>
+<li>FileReader.readAsDataURL(Blob|File)</li>
+<li>FileReader.readAsArrayBuffer(Blob|File)</li>
+</ul>
+<p>通过 readAsBinaryString 虽然能打开二进制文件（<em>.pdf、</em>.doc、*.xls等），但如若要直接通过JS进行判断这些二进制数据是否符合要求，是不行的</p>
+<p>所以就需要转换，对于Excel文件的内容分析转换，已经有了比较成熟的解决方案：<a href="https://github.com/SheetJS/js-xlsx" target="_blank" rel="noopener">js-xlsx </a></p>
+<p>其实现方式也用到了上述新特性，看看具体要怎么用</p>
+<h1 id="读取excel表"><a href="#读取excel表" class="headerlink" title="读取excel表"></a>读取excel表</h1><p><strong>1. 首先定义一个文件上传项</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"excel-file"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>2. 下载js-xlsx的相应的 xlsx.core.min.js 文件后引入</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"xlsx.core.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>3. 监听文件选择，即时打开文件获取表格内容</strong></p>
+<p>使用XLSX.utils.sheet_to_json方法解析表格对象返回相应的JSON数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#excel-file'</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> files = e.target.files;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</span><br><span class="line">            fileReader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">var</span> data = ev.target.result,</span><br><span class="line">                        workbook = XLSX.read(data, &#123;</span><br><span class="line">                            type: <span class="string">'binary'</span></span><br><span class="line">                        &#125;), <span class="comment">// 以二进制流方式读取得到整份excel表格对象</span></span><br><span class="line">                        persons = []; <span class="comment">// 存储获取到的数据</span></span><br><span class="line">                &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'文件类型不正确'</span>);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 表格的表格范围，可用于判断表头是否数量是否正确</span></span><br><span class="line">                <span class="keyword">var</span> fromTo = <span class="string">''</span>;</span><br><span class="line">                <span class="comment">// 遍历每张表读取</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> sheet <span class="keyword">in</span> workbook.Sheets) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (workbook.Sheets.hasOwnProperty(sheet)) &#123;</span><br><span class="line">                        fromTo = workbook.Sheets[sheet][<span class="string">'!ref'</span>];</span><br><span class="line">                        <span class="built_in">console</span>.log(fromTo);</span><br><span class="line">                        persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));</span><br><span class="line">                        <span class="comment">// break; // 如果只取第一张表，就取消注释这行</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="built_in">console</span>.log(persons);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 以二进制方式打开文件</span></span><br><span class="line">            fileReader.readAsBinaryString(files[<span class="number">0</span>]);</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>上述代码只是简单地获取表格文件的内容，如果要判断，还得根据实际加上一些判断逻辑</p>
+<p>js-xlsx只能读取相关的文件，否则会报错</p>
+<p><strong>4. 表格文件内容</strong></p>
+<p>使用一个excel表格，定义了三张表</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p><strong>5. 查看获取到的数据</strong></p>
+<p>红框部分为三个表项的不同之处，看看代码执行之后的结果：</p>
+<p>4</p>
+<p>第一个红框是每张表的数据范围，由于js-xlsx这个库自身的问题，它是不会直接获取到表头数据保存起来的，而是直接把表头放到最末级的内容对象里面</p>
+<p>可自行逐级看看读取到的表格workbook对象内容：</p>
+<p>5</p>
+<p>如果要判断表头的数量，就需要使用到!ref属性</p>
+<p>在excel文件中，A1:D3中的字母指代列待号，紧接其后的数字指代行号，所以判断表头数量，即为判断列号数量</p>
+<p>比如第一张表有四个表头，所以为A-D;第三张表有五个表头，所以为A-E，如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (fromTo[<span class="number">0</span>] === <span class="string">'A'</span> &amp;&amp; fromTo[<span class="number">3</span>] === <span class="string">'D'</span>) &#123;</span><br><span class="line">     excelIsOk = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这只是单单判断表头数量，还得判断表头内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(persons);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> headStr = <span class="string">'姓名,性别,年龄,学校'</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; persons.length; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">Object</span>.keys(persons[i]).join(<span class="string">','</span>) !== headStr) &#123;</span><br><span class="line">		persons.splice(i, <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(persons);</span><br></pre></td></tr></table></figure>
+<p>6</p>
+<p>可以看到，倒数第二项的JSON数据，因为表头内容不匹配，被过滤掉了</p>
+<p>这里还得注意的是最后一项，虽然有个表头，但因为没有内容，所以得到的JSON是符合要求的，所以就需要用到那个!ref属性来共同判断表格是否符合要求</p>
+<p>7</p>
+<p><strong>6. 其他</strong></p>
+<p>除此之外，还有更多用法如XLSX.readFile、XLSX.writeFile等，具体就看看<a href="https://github.com/SheetJS/js-xlsx" target="_blank" rel="noopener">官方文档</a>吧</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p><strong>版本1：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./xlsx.core.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">onchange</span>=<span class="string">"importf(this)"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> rABS = <span class="literal">false</span>; <span class="comment">//是否将文件读取为二进制字符串</span></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">importf</span>(<span class="params">obj</span>) </span>&#123; <span class="comment">//导入</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (!obj.files) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span>;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> f = obj.files[<span class="number">0</span>]; &#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> name = f.name;</span></span><br><span class="line"><span class="javascript">                reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> data = e.target.result;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> wb;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (rABS) &#123;</span></span><br><span class="line"><span class="undefined">                        wb = XLSX.read(data, &#123;</span></span><br><span class="line"><span class="javascript">                            type: <span class="string">'binary'</span></span></span><br><span class="line"><span class="undefined">                        &#125;);</span></span><br><span class="line"><span class="javascript">                    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">var</span> arr = fixdata(data);</span></span><br><span class="line"><span class="undefined">                        wb = XLSX.read(btoa(arr), &#123;</span></span><br><span class="line"><span class="javascript">                            type: <span class="string">'base64'</span></span></span><br><span class="line"><span class="undefined">                        &#125;);</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 结果json输出</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[<span class="number">0</span>]]));</span></span><br><span class="line"><span class="undefined">                &#125;;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (rABS) reader.readAsBinaryString(f);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">else</span> reader.readAsArrayBuffer(f);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">fixdata</span>(<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> o = <span class="string">""</span>,</span></span><br><span class="line"><span class="undefined">                l = 0,</span></span><br><span class="line"><span class="undefined">                w = 10240;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span> (; l &lt; data.byteLength / w; ++l) o += <span class="built_in">String</span>.fromCharCode.apply(<span class="literal">null</span>, <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(data.slice(l * w,</span></span><br><span class="line"><span class="undefined">                l * w + w)));</span></span><br><span class="line"><span class="javascript">            o += <span class="built_in">String</span>.fromCharCode.apply(<span class="literal">null</span>, <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(data.slice(l * w)));</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> o;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>版本2</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"./xlsx.core.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"excel-file"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> file = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>)</span></span><br><span class="line"><span class="javascript">        file.onchange = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> files = e.target.files;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader();</span></span><br><span class="line"><span class="javascript">            fileReader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> data = ev.target.result,</span></span><br><span class="line"><span class="undefined">                        workbook = XLSX.read(data, &#123;</span></span><br><span class="line"><span class="javascript">                            type: <span class="string">'binary'</span></span></span><br><span class="line"><span class="javascript">                        &#125;), <span class="comment">// 以二进制流方式读取得到整份excel表格对象</span></span></span><br><span class="line"><span class="javascript">                        persons = []; <span class="comment">// 存储获取到的数据</span></span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">catch</span> (e) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">'文件类型不正确'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">return</span>;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">                <span class="comment">// 表格的表格范围，可用于判断表头是否数量是否正确</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> fromTo = <span class="string">''</span>;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 遍历每张表读取</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">for</span> (<span class="keyword">var</span> sheet <span class="keyword">in</span> workbook.Sheets) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span> (workbook.Sheets.hasOwnProperty(sheet)) &#123;</span></span><br><span class="line"><span class="javascript">                        <span class="comment">// fromTo = workbook.Sheets[sheet]['!ref'] = 'A2:C4'    设置取值范围</span></span></span><br><span class="line"><span class="javascript">                        fromTo = workbook.Sheets[sheet][<span class="string">'!ref'</span>] = <span class="string">'A2:C100'</span></span></span><br><span class="line"><span class="undefined">                        persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));</span></span><br><span class="line"><span class="javascript">                        <span class="comment">// break; // 如果只取第一张表，就取消注释这行</span></span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(persons);</span></span><br><span class="line"><span class="undefined">            &#125;;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 以二进制方式打开文件</span></span></span><br><span class="line"><span class="undefined">            fileReader.readAsBinaryString(files[0]);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="导出excel表"><a href="#导出excel表" class="headerlink" title="导出excel表"></a>导出excel表</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"downloadExl(jsonDate)"</span>&gt;</span>导出<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./xlsx.core.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--调用FileSaver saveAs函数可以实现文件下载--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;script src="http://sheetjs.com/demos/Blob.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">    &lt;script src="http://sheetjs.com/demos/FileSaver.js"&gt;&lt;/script&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="comment">//如果使用 FileSaver.js 就不要同时使用以下函数</span></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">saveAs</span>(<span class="params">obj, fileName</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">//当然可以自定义简单的下载文件实现方式</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> tmpa = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span></span><br><span class="line"><span class="javascript">        tmpa.download = fileName || <span class="string">"下载"</span>;</span></span><br><span class="line"><span class="javascript">        tmpa.href = URL.createObjectURL(obj); <span class="comment">//绑定a标签</span></span></span><br><span class="line"><span class="javascript">        tmpa.click(); <span class="comment">//模拟点击实现下载</span></span></span><br><span class="line"><span class="javascript">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">//延时释放</span></span></span><br><span class="line"><span class="javascript">          URL.revokeObjectURL(obj); <span class="comment">//用URL.revokeObjectURL()来释放这个object URL</span></span></span><br><span class="line"><span class="undefined">        &#125;, 100);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> jsonDate = [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">//测试数据</span></span></span><br><span class="line"><span class="javascript">          <span class="string">"保质期临期预警(天)"</span>: <span class="string">"adventLifecycle"</span>,</span></span><br><span class="line"><span class="javascript">          商品标题: <span class="string">"title"</span>,</span></span><br><span class="line"><span class="javascript">          建议零售价: <span class="string">"defaultPrice"</span>,</span></span><br><span class="line"><span class="javascript">          <span class="string">"高(cm)"</span>: <span class="string">"height"</span>,</span></span><br><span class="line"><span class="javascript">          商品描述: <span class="string">"Description"</span>,</span></span><br><span class="line"><span class="javascript">          <span class="string">"保质期禁售(天)"</span>: <span class="string">"lockupLifecycle"</span>,</span></span><br><span class="line"><span class="javascript">          商品名称: <span class="string">"skuName"</span>,</span></span><br><span class="line"><span class="javascript">          商品简介: <span class="string">"brief"</span>,</span></span><br><span class="line"><span class="javascript">          <span class="string">"宽(cm)"</span>: <span class="string">"width"</span>,</span></span><br><span class="line"><span class="javascript">          阿达: <span class="string">"asdz"</span>,</span></span><br><span class="line"><span class="javascript">          货号: <span class="string">"goodsNo"</span>,</span></span><br><span class="line"><span class="javascript">          商品条码: <span class="string">"skuNo"</span>,</span></span><br><span class="line"><span class="javascript">          商品品牌: <span class="string">"brand"</span>,</span></span><br><span class="line"><span class="javascript">          <span class="string">"净容积(cm^3)"</span>: <span class="string">"netVolume"</span>,</span></span><br><span class="line"><span class="javascript">          是否保质期管理: <span class="string">"isShelfLifeMgmt"</span>,</span></span><br><span class="line"><span class="javascript">          是否串号管理: <span class="string">"isSNMgmt"</span>,</span></span><br><span class="line"><span class="javascript">          商品颜色: <span class="string">"color"</span>,</span></span><br><span class="line"><span class="javascript">          尺码: <span class="string">"size"</span>,</span></span><br><span class="line"><span class="javascript">          是否批次管理: <span class="string">"isBatchMgmt"</span>,</span></span><br><span class="line"><span class="javascript">          商品编号: <span class="string">"skuCode"</span>,</span></span><br><span class="line"><span class="javascript">          商品简称: <span class="string">"shortName"</span>,</span></span><br><span class="line"><span class="javascript">          <span class="string">"毛重(g)"</span>: <span class="string">"grossWeight"</span>,</span></span><br><span class="line"><span class="javascript">          <span class="string">"长(cm)"</span>: <span class="string">"length"</span>,</span></span><br><span class="line"><span class="javascript">          英文名称: <span class="string">"englishName"</span>,</span></span><br><span class="line"><span class="javascript">          <span class="string">"净重(g)"</span>: <span class="string">"netWeight"</span>,</span></span><br><span class="line"><span class="javascript">          商品分类: <span class="string">"categoryId"</span>,</span></span><br><span class="line"><span class="undefined">          这里超过了: 1111.0,</span></span><br><span class="line"><span class="javascript">          <span class="string">"保质期(天)"</span>: <span class="string">"expDate"</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      ];</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 定义导出的格式类型</span></span></span><br><span class="line"><span class="javascript">       <span class="keyword">const</span> wopts = &#123; <span class="attr">bookType</span>: <span class="string">'csv'</span>, <span class="attr">bookSST</span>: <span class="literal">false</span>, <span class="attr">type</span>: <span class="string">'binary'</span> &#125;;<span class="comment">//ods</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// const wopts = &#123; bookType: "xlsx", bookSST: false, type: "binary" &#125;; //xlsx</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// const wopts = &#123; bookType: 'ods', bookSST: false, type: 'binary' &#125;;//ods</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// const wopts = &#123; bookType: 'xlsb', bookSST: false, type: 'binary' &#125;;//xlsb</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// const wopts = &#123; bookType: 'fods', bookSST: false, type: 'binary' &#125;;//fods</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// const wopts = &#123; bookType: "biff2", bookSST: false, type: "binary" &#125;; //xls</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">downloadExl</span>(<span class="params">data, type</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> wb = &#123; <span class="attr">SheetNames</span>: [<span class="string">"Sheet1"</span>], <span class="attr">Sheets</span>: &#123;&#125;, <span class="attr">Props</span>: &#123;&#125; &#125;;</span></span><br><span class="line"><span class="javascript">        wb.Sheets[<span class="string">"Sheet1"</span>] = XLSX.utils.json_to_sheet(data); <span class="comment">//通过json_to_sheet转成单页(Sheet)数据</span></span></span><br><span class="line"><span class="undefined">        saveAs(</span></span><br><span class="line"><span class="javascript">          <span class="keyword">new</span> Blob([s2ab(XLSX.write(wb, wopts))], &#123;</span></span><br><span class="line"><span class="javascript">            type: <span class="string">"application/octet-stream"</span></span></span><br><span class="line"><span class="undefined">          &#125;),</span></span><br><span class="line"><span class="javascript">          <span class="string">`<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().getTime()&#125;</span>`</span> +</span></span><br><span class="line"><span class="javascript">            <span class="string">"."</span> +</span></span><br><span class="line"><span class="javascript">            (wopts.bookType == <span class="string">"biff2"</span> ? <span class="string">"xls"</span> : wopts.bookType)</span></span><br><span class="line"><span class="undefined">        );</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">s2ab</span>(<span class="params">s</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">ArrayBuffer</span> !== <span class="string">"undefined"</span>) &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(s.length);</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> view = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(buf);</span></span><br><span class="line"><span class="javascript">          <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i != s.length; ++i) view[i] = s.charCodeAt(i) &amp; <span class="number">0xff</span>;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> buf;</span></span><br><span class="line"><span class="javascript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="built_in">Array</span>(s.length);</span></span><br><span class="line"><span class="javascript">          <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i != s.length; ++i) buf[i] = s.charCodeAt(i) &amp; <span class="number">0xff</span>;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> buf;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="在vue中使用"><a href="#在vue中使用" class="headerlink" title="在vue中使用"></a>在vue中使用</h1><p>npm i xlsx</p>
+<blockquote>
+<p>自定义组件</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"read"</span>&gt;</span><br><span class="line">    上传文件</span><br><span class="line">    &lt;input type=<span class="string">"file"</span> name=<span class="string">"file"</span> id=<span class="string">"file"</span>&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> XLSX <span class="keyword">from</span> <span class="string">'xlsx'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  methods: &#123;</span><br><span class="line">    init() &#123;</span><br><span class="line">      <span class="keyword">let</span> read = <span class="built_in">document</span>.querySelector(<span class="string">'.read'</span>)</span><br><span class="line">      <span class="keyword">let</span> file = <span class="built_in">document</span>.querySelector(<span class="string">'#file'</span>)</span><br><span class="line">      <span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line">      read.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        file.click()</span><br><span class="line">      &#125;</span><br><span class="line">      file.onchange = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> files = e.target.files</span><br><span class="line">        <span class="keyword">var</span> fileReader = <span class="keyword">new</span> FileReader()</span><br><span class="line">        fileReader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> data = ev.target.result,</span><br><span class="line">              workbook = XLSX.read(data, &#123;</span><br><span class="line">                type: <span class="string">'binary'</span></span><br><span class="line">              &#125;), <span class="comment">// 以二进制流方式读取得到整份excel表格对象</span></span><br><span class="line">              persons = [] <span class="comment">// 存储获取到的数据</span></span><br><span class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            alert(<span class="string">'文件类型不正确'</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 表格的表格范围，可用于判断表头是否数量是否正确</span></span><br><span class="line">          <span class="keyword">var</span> fromTo = <span class="string">''</span></span><br><span class="line">          <span class="comment">// 遍历每张表读取</span></span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">var</span> sheet <span class="keyword">in</span> workbook.Sheets) &#123;</span><br><span class="line">            <span class="keyword">if</span> (workbook.Sheets.hasOwnProperty(sheet)) &#123;</span><br><span class="line">              <span class="comment">// fromTo = workbook.Sheets[sheet]['!ref'] = 'A2:C4'    设置取值范围</span></span><br><span class="line">              fromTo = workbook.Sheets[sheet][<span class="string">'!ref'</span>] = <span class="string">'A2:C100'</span></span><br><span class="line">              persons = persons.concat(</span><br><span class="line">                XLSX.utils.sheet_to_json(workbook.Sheets[sheet])</span><br><span class="line">              )</span><br><span class="line">              <span class="comment">// break; // 如果只取第一张表，就取消注释这行</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//   console.log(persons)</span></span><br><span class="line">          that.$emit(<span class="string">'result'</span>, persons)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 以二进制方式打开文件</span></span><br><span class="line">        fileReader.readAsBinaryString(files[<span class="number">0</span>])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="keyword">this</span>.init()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style lang="scss" scoped&gt;</span></span><br><span class="line"><span class="regexp">.read &#123;</span></span><br><span class="line"><span class="regexp">  width: 500px;</span></span><br><span class="line"><span class="regexp">  height: 50px;</span></span><br><span class="line"><span class="regexp">  line-height: 50px;</span></span><br><span class="line"><span class="regexp">  background: red;</span></span><br><span class="line"><span class="regexp">  text-align: center;</span></span><br><span class="line"><span class="regexp">  user-select: none;</span></span><br><span class="line"><span class="regexp">  cursor: pointer;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  #file &#123;</span></span><br><span class="line"><span class="regexp">    display: none;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+         <!--
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="/2019/05/20/js-xlsx 读取、写入Excel表/" title="js-xlsx 读取、写入Excel表" target="_blank" rel="external">/2019/05/20/js-xlsx 读取、写入Excel表/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/nova7y" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/yyy/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/nova7y" target="_blank"><span class="text-dark">nova7y</span><small class="ml-1x">******</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+   -->
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/yyy/2019/05/23/input输入内容，每隔4位空格/" title="input输入内容，每隔4位空格"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/yyy/2019/05/20/exports与export的区别/" title="exports与export的区别"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/nova7y" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/yyy/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+      
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/yyy/js/plugin.min.js"></script>
+<script src="/yyy/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/yyy/',
+        CONTENT_URL: '/yyy/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/yyy/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

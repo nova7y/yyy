@@ -18,20 +18,20 @@
   
   
   <title>cookie、session、WebStorage | nova7y</title>
-  <meta name="description" content="Cookies缺点：  大小受限，每个cookie有4k限制 用户可以操作（禁用）cookie，使功能受限 安全性较低 每次访问都要传送cookie给服务器，浪费带宽 cookie数据有路径（path）的概念，限制其只属于某个路径下  Session存储在服务器端、与cookie配合使用 WebStorage H5新技术  说明特点：  存储空间更大：单个item数据大小可以达到5MB 节省网络流">
+  <meta name="description" content="Cookies 生命期为只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。 存放数据大小为4K左右 。有个数限制（各浏览器不同），一般不能超过20个。与服务器端通信：每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题。但Cookie需要程序员自己封装，源生的Cookie接口不友好  12345678910111213141516//Cookie方法&amp;lt;s">
 <meta name="keywords" content="本地存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cookie、session、WebStorage">
-<meta property="og:url" content="/2019/05/09/cookie、session、WebStorage/index.html">
+<meta property="og:url" content="/2019/05/16/cookie、session、WebStorage/index.html">
 <meta property="og:site_name" content="nova7y">
-<meta property="og:description" content="Cookies缺点：  大小受限，每个cookie有4k限制 用户可以操作（禁用）cookie，使功能受限 安全性较低 每次访问都要传送cookie给服务器，浪费带宽 cookie数据有路径（path）的概念，限制其只属于某个路径下  Session存储在服务器端、与cookie配合使用 WebStorage H5新技术  说明特点：  存储空间更大：单个item数据大小可以达到5MB 节省网络流">
+<meta property="og:description" content="Cookies 生命期为只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。 存放数据大小为4K左右 。有个数限制（各浏览器不同），一般不能超过20个。与服务器端通信：每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题。但Cookie需要程序员自己封装，源生的Cookie接口不友好  12345678910111213141516//Cookie方法&amp;lt;s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T03:32:43.339Z">
+<meta property="og:updated_time" content="2019-05-24T13:16:19.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie、session、WebStorage">
-<meta name="twitter:description" content="Cookies缺点：  大小受限，每个cookie有4k限制 用户可以操作（禁用）cookie，使功能受限 安全性较低 每次访问都要传送cookie给服务器，浪费带宽 cookie数据有路径（path）的概念，限制其只属于某个路径下  Session存储在服务器端、与cookie配合使用 WebStorage H5新技术  说明特点：  存储空间更大：单个item数据大小可以达到5MB 节省网络流">
+<meta name="twitter:description" content="Cookies 生命期为只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。 存放数据大小为4K左右 。有个数限制（各浏览器不同），一般不能超过20个。与服务器端通信：每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题。但Cookie需要程序员自己封装，源生的Cookie接口不友好  12345678910111213141516//Cookie方法&amp;lt;s">
   <!-- Canonical links -->
-  <link rel="canonical" href="/2019/05/09/cookie、session、WebStorage/index.html">
+  <link rel="canonical" href="/2019/05/16/cookie、session、WebStorage/index.html">
   
     <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
   
@@ -181,7 +181,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Node-js/" style="font-size: 13.25px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13.5px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13.25px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
+      <a href="/yyy/tags/Git/" style="font-size: 13px;">Git</a> <a href="/yyy/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/yyy/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/yyy/tags/Node-js/" style="font-size: 13.25px;">Node.js</a> <a href="/yyy/tags/React/" style="font-size: 13px;">React</a> <a href="/yyy/tags/Vue/" style="font-size: 13.5px;">Vue</a> <a href="/yyy/tags/ajax、jsonp/" style="font-size: 13px;">ajax、jsonp</a> <a href="/yyy/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/yyy/tags/sql/" style="font-size: 13px;">sql</a> <a href="/yyy/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/yyy/tags/前端/" style="font-size: 13.75px;">前端</a> <a href="/yyy/tags/扩展阅读/" style="font-size: 13.25px;">扩展阅读</a> <a href="/yyy/tags/本地存储/" style="font-size: 13px;">本地存储</a> <a href="/yyy/tags/正则/" style="font-size: 13px;">正则</a>
     </div>
   </div>
 
@@ -190,7 +190,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">39</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/yyy/archives/2019/05/">May 2019</a><span class="archive-list-count">46</span></li></ul>
     </div>
   </div>
 
@@ -206,43 +206,13 @@
             
             <div class="item-inner">
               <p class="item-category">
-                <a class="category-link" href="/yyy/categories/Vue/">Vue</a>
+                <a class="category-link" href="/yyy/categories/前端/">前端</a>
               </p>
               <p class="item-title">
-                <a href="/yyy/2019/05/17/Vue接入腾讯防水墙/" class="title">Vue接入腾讯防水墙</a>
+                <a href="/yyy/2019/05/24/网页共用头部与尾部方法/" class="title">网页共用头部与尾部方法</a>
               </p>
               <p class="item-date">
-                <time datetime="2019-05-17T06:00:57.464Z" itemprop="datePublished">2019-05-17</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/yyy/categories/Vue/">Vue</a>
-              </p>
-              <p class="item-title">
-                <a href="/yyy/2019/05/16/Vue - 基础/" class="title">Vue - 基础</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-05-16T08:50:56.998Z" itemprop="datePublished">2019-05-16</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/yyy/categories/扩展阅读/">扩展阅读</a>
-              </p>
-              <p class="item-title">
-                <a href="/yyy/2019/05/16/mock.js+easyMock/" class="title">mock.js+easyMock</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-05-16T08:50:56.842Z" itemprop="datePublished">2019-05-16</time>
+                <time datetime="2019-05-24T13:25:26.977Z" itemprop="datePublished">2019-05-24</time>
               </p>
             </div>
           </li>
@@ -254,10 +224,25 @@
                 <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
               </p>
               <p class="item-title">
-                <a href="/yyy/2019/05/16/JS遍历对象、数组总结/" class="title">JS遍历对象、数组总结</a>
+                <a href="/yyy/2019/05/24/js实现表格内容无缝滚动 - v2/" class="title">js实现表格内容无缝滚动 - v2</a>
               </p>
               <p class="item-date">
-                <time datetime="2019-05-16T08:50:56.826Z" itemprop="datePublished">2019-05-16</time>
+                <time datetime="2019-05-24T13:22:04.955Z" itemprop="datePublished">2019-05-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/24/Linux常用命令大全/" class="title">Linux常用命令大全</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-24T13:16:55.117Z" itemprop="datePublished">2019-05-24</time>
               </p>
             </div>
           </li>
@@ -269,10 +254,25 @@
                 <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
               </p>
               <p class="item-title">
-                <a href="/yyy/2019/05/16/JS获取客户端真实IP/" class="title">JS获取客户端真实IP</a>
+                <a href="/yyy/2019/05/23/预览input-file上传的图片/" class="title">预览input-file上传的图片</a>
               </p>
               <p class="item-date">
-                <time datetime="2019-05-16T08:50:56.779Z" itemprop="datePublished">2019-05-16</time>
+                <time datetime="2019-05-23T09:05:02.196Z" itemprop="datePublished">2019-05-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/yyy/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/yyy/2019/05/23/input输入内容，每隔4位空格/" class="title">input输入内容，每隔4位空格</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-23T07:49:04.156Z" itemprop="datePublished">2019-05-23</time>
               </p>
             </div>
           </li>
@@ -292,7 +292,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookies"><span class="toc-number">1.</span> <span class="toc-text">Cookies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session"><span class="toc-number">2.</span> <span class="toc-text">Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebStorage"><span class="toc-number">3.</span> <span class="toc-text">WebStorage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-number">3.1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">3.2.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookies"><span class="toc-number">1.</span> <span class="toc-text">Cookies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session"><span class="toc-number">2.</span> <span class="toc-text">Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebStorage"><span class="toc-number">3.</span> <span class="toc-text">WebStorage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#localStorage"><span class="toc-number">3.1.</span> <span class="toc-text">localStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sessionStorage"><span class="toc-number">3.2.</span> <span class="toc-text">sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域不同！！"><span class="toc-number">3.3.</span> <span class="toc-text">作用域不同！！</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
@@ -314,8 +314,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/yyy/2019/05/09/cookie、session、WebStorage/" class="article-date">
-	  <time datetime="2019-05-09T03:32:47.110Z" itemprop="datePublished">2019-05-09</time>
+	<a href="/yyy/2019/05/16/cookie、session、WebStorage/" class="article-date">
+	  <time datetime="2019-05-16T08:50:56.717Z" itemprop="datePublished">2019-05-16</time>
 	</a>
 </span>
         
@@ -333,13 +333,17 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/cookie、session、WebStorage/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/16/cookie、session、WebStorage/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p><strong>缺点：</strong></p>
+        <h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><blockquote>
+<p>生命期为只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。 存放数据大小为4K左右 。有个数限制（各浏览器不同），一般不能超过20个。与服务器端通信：每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题。但Cookie需要程序员自己封装，源生的Cookie接口不友好</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Cookie方法</span></span><br><span class="line">&lt;script src=<span class="string">"../js/cookie.js"</span>&gt;&lt;/script&gt;<span class="comment">//Cookie函数自己封装引入</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">haxi</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(getCookie(<span class="string">"isClose"</span>))&#123;             </span><br><span class="line">            $(<span class="string">".header"</span>).hide();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $(<span class="string">".header"</span>).show();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        $(<span class="string">".close"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            $(<span class="string">".header"</span>).fadeOut(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">            setCookie(<span class="string">"isClose"</span>, <span class="string">"1"</span>,<span class="string">"s10"</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    haxi();</span><br></pre></td></tr></table></figure>
+<p><strong>缺点：</strong></p>
 <ul>
 <li>大小受限，每个cookie有4k限制</li>
 <li>用户可以操作（禁用）cookie，使功能受限</li>
@@ -347,24 +351,31 @@
 <li>每次访问都要传送cookie给服务器，浪费带宽</li>
 <li>cookie数据有路径（path）的概念，限制其只属于某个路径下</li>
 </ul>
+<p><strong>优点</strong></p>
+<ul>
+<li>通过良好的编程，控制保存在cookie中的session对象的大小。</li>
+<li>通过加密和安全传输技术，减少cookie被破解的可能性。</li>
+<li>只有在cookie中存放不敏感的数据，即使被盗取也不会有很大的损失。</li>
+<li>控制cookie的生命期，使之不会永远有效。这样的话偷盗者很可能拿到的就   是一个过期的cookie。</li>
+</ul>
 <h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>存储在服务器端、与cookie配合使用</p>
 <h2 id="WebStorage"><a href="#WebStorage" class="headerlink" title="WebStorage"></a>WebStorage</h2><blockquote>
 <p>H5新技术</p>
 </blockquote>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p><strong>特点：</strong></p>
 <ul>
 <li>存储空间更大：单个item数据大小可以达到5MB</li>
 <li>节省网络流量：WebStorage不会传送到服务器，存储在本地的数据可以直接获取使用</li>
 <li>只能存储字符串类型</li>
 </ul>
-<p><strong>种类：</strong></p>
-<ul>
-<li>localStorage（本地存储）   不会自动清除</li>
-<li>sessionStorage（会话存储）    浏览器关闭 自动清除</li>
-</ul>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.localStorage</span><br><span class="line"><span class="built_in">window</span>.sessionStorage</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setItem (key, value)		<span class="comment">//保存数据，以键值对的方式储存信息。</span></span><br><span class="line">getItem (key) 				<span class="comment">//获取数据，将键值传入，即可获取到对应的value值。</span></span><br><span class="line">removeItem (key) 			<span class="comment">//删除单个数据，根据键值移除对应的信息。</span></span><br><span class="line">clear () 					<span class="comment">//删除所有的数据</span></span><br><span class="line">key (index) 				<span class="comment">//获取某个索引的key</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.sessionStorage.setItem(<span class="string">'islogin'</span>,<span class="string">'true'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><blockquote>
+<p>localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。</p>
+</blockquote>
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><blockquote>
+<p>sessionStorage仅在当前会话下有效，关闭页面或浏览器后被清除。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。源生接口可以接受，亦可再次封装来对Object和Array有更好的支持。</p>
+</blockquote>
+<p>localStorage和sessionStorage使用时使用相同的API：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">"key"</span>,<span class="string">"value"</span>);<span class="comment">//以“key”为名称存储一个值“value”</span></span><br><span class="line"></span><br><span class="line">localStorage.getItem(<span class="string">"key"</span>);<span class="comment">//获取名称为“key”的值</span></span><br><span class="line"></span><br><span class="line">localStorage.removeItem(<span class="string">"key"</span>);<span class="comment">//删除名称为“key”的信息。</span></span><br><span class="line"></span><br><span class="line">localStorage.clear();<span class="comment">//清空localStorage中所有信息</span></span><br></pre></td></tr></table></figure>
+<h3 id="作用域不同！！"><a href="#作用域不同！！" class="headerlink" title="作用域不同！！"></a>作用域不同！！</h3><p>不同浏览器无法共享localStorage或sessionStorage中的信息。相同浏览器的不同页面间可以共享相同的 localStorage（页面属于相同域名和端口），但是不同页面或标签页间无法共享sessionStorage的信息。这里需要注意的是，页面及标 签页仅指顶级窗口，如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</p>
 
       
     </div>
@@ -375,7 +386,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="/2019/05/09/cookie、session、WebStorage/" title="cookie、session、WebStorage" target="_blank" rel="external">/2019/05/09/cookie、session、WebStorage/</a>
+      <a href="/2019/05/16/cookie、session、WebStorage/" title="cookie、session、WebStorage" target="_blank" rel="external">/2019/05/16/cookie、session、WebStorage/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -423,12 +434,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/yyy/2019/05/09/ajax + jsonp/" title="ajax + jsonp"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/yyy/2019/05/16/element-ui的table表格不对齐问题/" title="element-ui的table表格不对齐问题"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/yyy/2019/05/09/Git - 基础/" title="Git - 基础"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/yyy/2019/05/16/axios处理多个baseURL/" title="Vue - element-ui"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
