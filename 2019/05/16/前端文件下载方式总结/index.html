@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>SQL | nova7y</title>
-  <meta name="description" content="SQLint 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数 数据库操作   数据库操作       //这里不要大写      create database 数据库名 增加 - 数据库   drop database 数据库名 删除 - 数据库   use 数据库名 切换 - 数据库   create   table 表">
-<meta name="keywords" content="sql">
+  <title>前端文件下载方式总结 | nova7y</title>
+  <meta name="description" content="api没有任何验证，访问即可下载 api有验证：  通过 header 进行验证 通过 cookie 进行验证    接下来我会针对这三种方式来展示我spike得到的解决方案。 api 没有任何验证 可以直接通过访问该url进行下载，即：  1&amp;lt;a href=&quot;&amp;#123;download url&amp;#125;&quot;&amp;gt;download&amp;lt;/a&amp;gt;  使用 download 属性（貌">
+<meta name="keywords" content="前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL">
-<meta property="og:url" content="/2019/05/09/4.SQL/index.html">
+<meta property="og:title" content="前端文件下载方式总结">
+<meta property="og:url" content="/2019/05/16/前端文件下载方式总结/index.html">
 <meta property="og:site_name" content="nova7y">
-<meta property="og:description" content="SQLint 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数 数据库操作   数据库操作       //这里不要大写      create database 数据库名 增加 - 数据库   drop database 数据库名 删除 - 数据库   use 数据库名 切换 - 数据库   create   table 表">
+<meta property="og:description" content="api没有任何验证，访问即可下载 api有验证：  通过 header 进行验证 通过 cookie 进行验证    接下来我会针对这三种方式来展示我spike得到的解决方案。 api 没有任何验证 可以直接通过访问该url进行下载，即：  1&amp;lt;a href=&quot;&amp;#123;download url&amp;#125;&quot;&amp;gt;download&amp;lt;/a&amp;gt;  使用 download 属性（貌">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T04:57:44.191Z">
+<meta property="og:updated_time" content="2019-05-25T03:41:35.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL">
-<meta name="twitter:description" content="SQLint 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数 数据库操作   数据库操作       //这里不要大写      create database 数据库名 增加 - 数据库   drop database 数据库名 删除 - 数据库   use 数据库名 切换 - 数据库   create   table 表">
+<meta name="twitter:title" content="前端文件下载方式总结">
+<meta name="twitter:description" content="api没有任何验证，访问即可下载 api有验证：  通过 header 进行验证 通过 cookie 进行验证    接下来我会针对这三种方式来展示我spike得到的解决方案。 api 没有任何验证 可以直接通过访问该url进行下载，即：  1&amp;lt;a href=&quot;&amp;#123;download url&amp;#125;&quot;&amp;gt;download&amp;lt;/a&amp;gt;  使用 download 属性（貌">
   <!-- Canonical links -->
-  <link rel="canonical" href="/2019/05/09/4.SQL/index.html">
+  <link rel="canonical" href="/2019/05/16/前端文件下载方式总结/index.html">
   
     <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
   
@@ -292,21 +292,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL"><span class="toc-number">1.</span> <span class="toc-text">SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库操作"><span class="toc-number">1.1.</span> <span class="toc-text">数据库操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增"><span class="toc-number">1.2.</span> <span class="toc-text">增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删"><span class="toc-number">1.3.</span> <span class="toc-text">删</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改"><span class="toc-number">1.4.</span> <span class="toc-text">改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查"><span class="toc-number">1.5.</span> <span class="toc-text">查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">1.6.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#api-没有任何验证"><span class="toc-number">1.</span> <span class="toc-text">api 没有任何验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#api-使用-header-进行验证"><span class="toc-number">2.</span> <span class="toc-text">api 使用 header 进行验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#api-使用-cookie-进行验证"><span class="toc-number">3.</span> <span class="toc-text">api 使用 cookie 进行验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#坑"><span class="toc-number">4.</span> <span class="toc-text">坑</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-4.SQL" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-前端文件下载方式总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      SQL
+      前端文件下载方式总结
     </h1>
   
 
@@ -314,220 +314,61 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/yyy/2019/05/09/4.SQL/" class="article-date">
-	  <time datetime="2019-05-09T04:57:17.451Z" itemprop="datePublished">2019-05-09</time>
+	<a href="/yyy/2019/05/16/前端文件下载方式总结/" class="article-date">
+	  <time datetime="2019-05-16T08:50:57.029Z" itemprop="datePublished">2019-05-16</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/yyy/categories/sql/">sql</a>
+    <a class="article-category-link" href="/yyy/categories/前端/">前端</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/yyy/tags/sql/">sql</a>
+	<a class="article-tag-link" href="/yyy/tags/前端/">前端</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/4.SQL/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/16/前端文件下载方式总结/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>int 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数</p>
-<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><table>
-<thead>
-<tr>
-<th>数据库操作       //这里不要大写</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>create database 数据库名</td>
-<td>增加 - 数据库</td>
-</tr>
-<tr>
-<td>drop database 数据库名</td>
-<td>删除 - 数据库</td>
-</tr>
-<tr>
-<td>use 数据库名</td>
-<td>切换 - 数据库</td>
-</tr>
-<tr>
-<td>create   table 表名 (       id int auto_increment primary   key,        name varchar(20) not null,)</td>
-<td>新建 - 表</td>
-</tr>
-<tr>
-<td>auto_increment</td>
-<td>自动编号</td>
-</tr>
-<tr>
-<td>primary key</td>
-<td>主键  唯一标识</td>
-</tr>
-<tr>
-<td>drop table 表名</td>
-<td>删除 - 表</td>
-</tr>
-</tbody>
-</table>
-<h2 id="增"><a href="#增" class="headerlink" title="增"></a>增</h2><table>
-<thead>
-<tr>
-<th>增</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>INSERT INTO users   (uname, upwd, uqq) values(‘zs’,’123’, ‘12345’)</td>
-<td>普通增加</td>
-</tr>
-<tr>
-<td>INSERT INTO users   values(2,’zs’,’123’, ‘12345’)</td>
-<td>可省略字段名</td>
-</tr>
-</tbody>
-</table>
-<h2 id="删"><a href="#删" class="headerlink" title="删"></a>删</h2><table>
-<thead>
-<tr>
-<th>删除</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DELETE FROM users   WHERE uid = 1</td>
-<td>条件删除</td>
-</tr>
-<tr>
-<td>DELETE FROM users</td>
-<td>清空数据</td>
-</tr>
-</tbody>
-</table>
-<h2 id="改"><a href="#改" class="headerlink" title="改"></a>改</h2><table>
-<thead>
-<tr>
-<th>改</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UPDATE users SET   uname=’zsxxx’, uqq=’111’ WHERE uid=1</td>
-</tr>
-</tbody>
-</table>
-<h2 id="查"><a href="#查" class="headerlink" title="查"></a>查</h2><table>
-<thead>
-<tr>
-<th>查</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SELECT * FROM   users</td>
-<td>普通查询</td>
-</tr>
-<tr>
-<td>SELECT * FROM users   WHERE uname like ‘%s%’</td>
-<td>模糊查询</td>
-</tr>
-<tr>
-<td>SELECT * FROM users WHERE uname in (‘zs’,’ls’)</td>
-<td>in 查询</td>
-</tr>
-<tr>
-<td>SELECT * FROM users ORDER BY 字段 DESC</td>
-<td>order by 排序</td>
-</tr>
-<tr>
-<td>asc 默认是升序      desc 降序</td>
-<td></td>
-</tr>
-<tr>
-<td>SELECT * FROM users LIMIT 3</td>
-<td>LIMIT 限制查询数量</td>
-</tr>
-<tr>
-<td>SELECT * FROM users   ORDER BY id DESC LIMIT 3</td>
-<td>降序后取3条数据</td>
-</tr>
-<tr>
-<td>SELECT * FROM users   ORDER BY id DESC LIMIT 3,2</td>
-<td>跳过3条，取2条</td>
-</tr>
-<tr>
-<td>SELECT COUNT(*) FROM   users</td>
-<td>获取总条数</td>
-</tr>
-<tr>
-<td>SELECT count(*) as   sum FROM users     //as  用于起别名</td>
-<td></td>
-</tr>
-<tr>
-<td>SELECT column_name(s)      FROM table_name1      INNER JOIN table_name2       ON table_name1.column_name=table_name2.column_name      where 条件</td>
-<td>多表查询</td>
-</tr>
-</tbody>
-</table>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><table>
-<thead>
-<tr>
-<th>其他</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>=</td>
-<td>等于</td>
-<td>BETWEEN…AND</td>
-<td>在某个范围内</td>
-</tr>
-<tr>
-<td>&lt;&gt;</td>
-<td>不等于</td>
-<td>LIKE</td>
-<td>搜索某种模式</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>大于</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>小于</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&gt;=</td>
-<td>大于等于</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;=</td>
-<td>小于等于</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+        <ul>
+<li>api没有任何验证，访问即可下载</li>
+<li>api有验证： <ul>
+<li>通过 header 进行验证</li>
+<li>通过 cookie 进行验证</li>
+</ul>
+</li>
+</ul>
+<p>接下来我会针对这三种方式来展示我spike得到的解决方案。</p>
+<h4 id="api-没有任何验证"><a href="#api-没有任何验证" class="headerlink" title="api 没有任何验证"></a>api 没有任何验证</h4><ul>
+<li>可以直接通过访问该url进行下载，即：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;download url&#125;"</span>&gt;</span>download<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 download 属性（貌似是html5的新特性），会直接进行文件的下载：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;download url&#125;"</span> <span class="attr">download</span>=<span class="string">"&#123;default name&#125;"</span>&gt;</span>download<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>  还有一个稍微绕一点的方法（其实是一个东西）：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">element.href = URL.createObjectURL(&#123;download url&#125;);</span><br><span class="line">element.download = <span class="string">'route.xls'</span>;</span><br><span class="line">element.click();</span><br></pre></td></tr></table></figure>
+<h4 id="api-使用-header-进行验证"><a href="#api-使用-header-进行验证" class="headerlink" title="api 使用 header 进行验证"></a>api 使用 header 进行验证</h4><p>说一点题外话，这个还是花了我一些时间去搞得，因为一提到在前端进行文件下载，很多人提供的解决方案都是没有验证中的第一种。然而目前这种方式并不提供添加 header 功能，所以 html 提供的 download 新特性没法使用。</p>
+<p>可以先将文件下载拆解成两个步骤：</p>
+<ol>
+<li>获取文件内容</li>
+<li>将文件进行保存</li>
+</ol>
+<p>step 1 肯定是可行，只需要发送request请求，带上header就可以很好的得到文件内容。<br> step 2 有一个问题，如何保存文件。由于web端无法直接将文件写到用户的磁盘上，需要通过浏览器来进行。可以使用的一个方法就是上边提到过的那个稍微绕一点的方法的修改版： 将文件写到一个Blob中，然后为这个Blob创建一个新的页面，进入到这个页面，就会进行下载。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line"><span class="keyword">const</span> file = <span class="keyword">new</span> Blob([data]);</span><br><span class="line">element.href = URL.createObjectURL(file);</span><br><span class="line">element.download = <span class="string">'route.xls'</span>;</span><br><span class="line">element.click();</span><br></pre></td></tr></table></figure>
+<h4 id="api-使用-cookie-进行验证"><a href="#api-使用-cookie-进行验证" class="headerlink" title="api 使用 cookie 进行验证"></a>api 使用 cookie 进行验证</h4><p>这个我还没有进行了解过。。。看到过有人说，如果食用cookie验证的话，前端的实现就同没有验证的实现是相同的。由于我并不了解，不多说。。。。</p>
+<h4 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h4><p>这里记录一下我踩过的大坑。我在获取文件内容的时候使用了一个第三方库，我在之前使用的时候获取到的json都是没有问题的，但是这个库在发送request的时候如果没有设置encoding，会自动将获取的内容转码，这个是事先我不知道的。所以保存下来的文件一直都是乱码。</p>
+<p>一个教训就是，在传送像文件这种流的数据（只要不是string的数据），最好不要使用第三方库，而是使用比较原生的方法会比较好。</p>
 
       
     </div>
@@ -538,7 +379,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="/2019/05/09/4.SQL/" title="SQL" target="_blank" rel="external">/2019/05/09/4.SQL/</a>
+      <a href="/2019/05/16/前端文件下载方式总结/" title="前端文件下载方式总结" target="_blank" rel="external">/2019/05/16/前端文件下载方式总结/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -586,12 +427,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/yyy/2019/05/09/2.1.1.JavaScript - 基础/" title="JavaScript - 基础"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/yyy/2019/05/17/Vue接入腾讯防水墙/" title="Vue接入腾讯防水墙"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/yyy/2019/05/09/3.正则/" title="正则表达式- 基础"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/yyy/2019/05/16/Vue - 基础/" title="Vue - 基础"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>SQL | nova7y</title>
-  <meta name="description" content="SQLint 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数 数据库操作   数据库操作       //这里不要大写      create database 数据库名 增加 - 数据库   drop database 数据库名 删除 - 数据库   use 数据库名 切换 - 数据库   create   table 表">
-<meta name="keywords" content="sql">
+  <title>前端文件上传方式总结 | nova7y</title>
+  <meta name="description" content="第一种：经典的form和input上传。设置form的aciton为后端页面，enctype=”multipart/form-data”，type=‘post’ 123456&amp;lt;form action=&apos;uploadFile.php&apos; enctype=&quot;multipart/form-data&quot; type=&apos;post&apos;&amp;gt;　　&amp;lt;input type=&apos;file&apos;&amp;gt;　　&amp;lt;in">
+<meta name="keywords" content="前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL">
-<meta property="og:url" content="/2019/05/09/4.SQL/index.html">
+<meta property="og:title" content="前端文件上传方式总结">
+<meta property="og:url" content="/2019/05/25/前端文件上传方式总结/index.html">
 <meta property="og:site_name" content="nova7y">
-<meta property="og:description" content="SQLint 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数 数据库操作   数据库操作       //这里不要大写      create database 数据库名 增加 - 数据库   drop database 数据库名 删除 - 数据库   use 数据库名 切换 - 数据库   create   table 表">
+<meta property="og:description" content="第一种：经典的form和input上传。设置form的aciton为后端页面，enctype=”multipart/form-data”，type=‘post’ 123456&amp;lt;form action=&apos;uploadFile.php&apos; enctype=&quot;multipart/form-data&quot; type=&apos;post&apos;&amp;gt;　　&amp;lt;input type=&apos;file&apos;&amp;gt;　　&amp;lt;in">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T04:57:44.191Z">
+<meta property="og:updated_time" content="2019-05-25T03:44:30.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL">
-<meta name="twitter:description" content="SQLint 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数 数据库操作   数据库操作       //这里不要大写      create database 数据库名 增加 - 数据库   drop database 数据库名 删除 - 数据库   use 数据库名 切换 - 数据库   create   table 表">
+<meta name="twitter:title" content="前端文件上传方式总结">
+<meta name="twitter:description" content="第一种：经典的form和input上传。设置form的aciton为后端页面，enctype=”multipart/form-data”，type=‘post’ 123456&amp;lt;form action=&apos;uploadFile.php&apos; enctype=&quot;multipart/form-data&quot; type=&apos;post&apos;&amp;gt;　　&amp;lt;input type=&apos;file&apos;&amp;gt;　　&amp;lt;in">
   <!-- Canonical links -->
-  <link rel="canonical" href="/2019/05/09/4.SQL/index.html">
+  <link rel="canonical" href="/2019/05/25/前端文件上传方式总结/index.html">
   
     <link rel="alternate" href="/atom.xml" title="nova7y" type="application/atom+xml">
   
@@ -292,21 +292,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL"><span class="toc-number">1.</span> <span class="toc-text">SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库操作"><span class="toc-number">1.1.</span> <span class="toc-text">数据库操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增"><span class="toc-number">1.2.</span> <span class="toc-text">增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删"><span class="toc-number">1.3.</span> <span class="toc-text">删</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改"><span class="toc-number">1.4.</span> <span class="toc-text">改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查"><span class="toc-number">1.5.</span> <span class="toc-text">查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">1.6.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一种：经典的form和input上传。"><span class="toc-number">1.</span> <span class="toc-text">第一种：经典的form和input上传。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二种：使用formData上传。"><span class="toc-number">2.</span> <span class="toc-text">第二种：使用formData上传。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三种：使用fileReader读取文件数据进行上传。"><span class="toc-number">3.</span> <span class="toc-text">第三种：使用fileReader读取文件数据进行上传。</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-4.SQL" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-前端文件上传方式总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      SQL
+      前端文件上传方式总结
     </h1>
   
 
@@ -314,220 +314,58 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/yyy/2019/05/09/4.SQL/" class="article-date">
-	  <time datetime="2019-05-09T04:57:17.451Z" itemprop="datePublished">2019-05-09</time>
+	<a href="/yyy/2019/05/25/前端文件上传方式总结/" class="article-date">
+	  <time datetime="2019-05-25T03:41:45.029Z" itemprop="datePublished">2019-05-25</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/yyy/categories/sql/">sql</a>
+    <a class="article-category-link" href="/yyy/categories/前端/">前端</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/yyy/tags/sql/">sql</a>
+	<a class="article-tag-link" href="/yyy/tags/前端/">前端</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/09/4.SQL/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/yyy/2019/05/25/前端文件上传方式总结/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>int 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数</p>
-<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><table>
-<thead>
-<tr>
-<th>数据库操作       //这里不要大写</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>create database 数据库名</td>
-<td>增加 - 数据库</td>
-</tr>
-<tr>
-<td>drop database 数据库名</td>
-<td>删除 - 数据库</td>
-</tr>
-<tr>
-<td>use 数据库名</td>
-<td>切换 - 数据库</td>
-</tr>
-<tr>
-<td>create   table 表名 (       id int auto_increment primary   key,        name varchar(20) not null,)</td>
-<td>新建 - 表</td>
-</tr>
-<tr>
-<td>auto_increment</td>
-<td>自动编号</td>
-</tr>
-<tr>
-<td>primary key</td>
-<td>主键  唯一标识</td>
-</tr>
-<tr>
-<td>drop table 表名</td>
-<td>删除 - 表</td>
-</tr>
-</tbody>
-</table>
-<h2 id="增"><a href="#增" class="headerlink" title="增"></a>增</h2><table>
-<thead>
-<tr>
-<th>增</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>INSERT INTO users   (uname, upwd, uqq) values(‘zs’,’123’, ‘12345’)</td>
-<td>普通增加</td>
-</tr>
-<tr>
-<td>INSERT INTO users   values(2,’zs’,’123’, ‘12345’)</td>
-<td>可省略字段名</td>
-</tr>
-</tbody>
-</table>
-<h2 id="删"><a href="#删" class="headerlink" title="删"></a>删</h2><table>
-<thead>
-<tr>
-<th>删除</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DELETE FROM users   WHERE uid = 1</td>
-<td>条件删除</td>
-</tr>
-<tr>
-<td>DELETE FROM users</td>
-<td>清空数据</td>
-</tr>
-</tbody>
-</table>
-<h2 id="改"><a href="#改" class="headerlink" title="改"></a>改</h2><table>
-<thead>
-<tr>
-<th>改</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UPDATE users SET   uname=’zsxxx’, uqq=’111’ WHERE uid=1</td>
-</tr>
-</tbody>
-</table>
-<h2 id="查"><a href="#查" class="headerlink" title="查"></a>查</h2><table>
-<thead>
-<tr>
-<th>查</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SELECT * FROM   users</td>
-<td>普通查询</td>
-</tr>
-<tr>
-<td>SELECT * FROM users   WHERE uname like ‘%s%’</td>
-<td>模糊查询</td>
-</tr>
-<tr>
-<td>SELECT * FROM users WHERE uname in (‘zs’,’ls’)</td>
-<td>in 查询</td>
-</tr>
-<tr>
-<td>SELECT * FROM users ORDER BY 字段 DESC</td>
-<td>order by 排序</td>
-</tr>
-<tr>
-<td>asc 默认是升序      desc 降序</td>
-<td></td>
-</tr>
-<tr>
-<td>SELECT * FROM users LIMIT 3</td>
-<td>LIMIT 限制查询数量</td>
-</tr>
-<tr>
-<td>SELECT * FROM users   ORDER BY id DESC LIMIT 3</td>
-<td>降序后取3条数据</td>
-</tr>
-<tr>
-<td>SELECT * FROM users   ORDER BY id DESC LIMIT 3,2</td>
-<td>跳过3条，取2条</td>
-</tr>
-<tr>
-<td>SELECT COUNT(*) FROM   users</td>
-<td>获取总条数</td>
-</tr>
-<tr>
-<td>SELECT count(*) as   sum FROM users     //as  用于起别名</td>
-<td></td>
-</tr>
-<tr>
-<td>SELECT column_name(s)      FROM table_name1      INNER JOIN table_name2       ON table_name1.column_name=table_name2.column_name      where 条件</td>
-<td>多表查询</td>
-</tr>
-</tbody>
-</table>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><table>
-<thead>
-<tr>
-<th>其他</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>=</td>
-<td>等于</td>
-<td>BETWEEN…AND</td>
-<td>在某个范围内</td>
-</tr>
-<tr>
-<td>&lt;&gt;</td>
-<td>不等于</td>
-<td>LIKE</td>
-<td>搜索某种模式</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>大于</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>小于</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&gt;=</td>
-<td>大于等于</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;=</td>
-<td>小于等于</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+        <h1 id="第一种：经典的form和input上传。"><a href="#第一种：经典的form和input上传。" class="headerlink" title="第一种：经典的form和input上传。"></a>第一种：经典的form和input上传。</h1><p>设置form的aciton为后端页面，enctype=”multipart/form-data”，type=‘post’</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">'uploadFile.php'</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">type</span>=<span class="string">'post'</span>&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span>&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'hidden'</span> <span class="attr">name</span>=<span class="string">'userid'</span>&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'hidden'</span> <span class="attr">name</span>=<span class="string">'signature'</span>&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">button</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用input选择文件，设置好其他input的值，点击提交，将文件数据及签名等认证信息发送到form设置的action对应的页面，浏览器也会跳转到该页面。触发form表单提交数据的方式有2种，一种是在页面上点击button按钮或<input type="submit">按钮触发，第二种是在js中执行form.submit()方法。</p>
+<p>优点：使用简单方便，兼容性好，基本所有浏览器都支持。</p>
+<p>缺点：1. 提交数据后页面会跳转（下面会讲如何禁止页面跳转）。</p>
+<p>​           2.因为是浏览器发起的请求，不是一个ajax，所以前端无法知道什么时候上传结束。</p>
+<p>​           \3. form表单里发送除文件外的数据，一般是新建一个type=hidden的input，value=‘需要传的数据’，每发送一个数据就需要一个input，一旦多了就会使得dom看起来比较冗余。</p>
+<p><strong>小技巧：</strong></p>
+<p>form表单提交数据后会自动跳转到action指定的页面，为了禁止页面跳转，可以在页面中新建一个空的ifame，比如name=’upload’，然后设置form的target=”Uploader”，form有一个target的属性，规定在何处打开action，这样form提交数据后就会仍停留在当前页。代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">'uploadFile.php'</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">type</span>=<span class="string">'post'</span>  <span class="attr">target</span>=<span class="string">"uploader1"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ifrmae</span> <span class="attr">name</span>=<span class="string">'upload'</span> <span class="attr">id</span>=<span class="string">'uploader1'</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样写的另一个好处是，可以知道什么时候上传完成并接收到后端的回调结果。比如上面这个例子，文件数据发送到了 ‘uploadFile.php’，假设该页面处理完数据后返回了一个地址，该地址会被写入到之前的iframe中。所以在ifame的onload函数触发时，也就是上传完成后，可以在iframe中读取到后端返回的数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  iframe = <span class="built_in">document</span>.getElementById(<span class="string">'upload1'</span>);</span><br><span class="line">iframe.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">	<span class="keyword">var</span> doc = <span class="built_in">window</span>.frames[<span class="string">'uploader1'</span>].document;</span><br><span class="line">	<span class="keyword">var</span> pre = doc.getElementsByTagName(<span class="string">'pre'</span>);</span><br><span class="line">	<span class="keyword">var</span> obj = <span class="built_in">JSON</span>.parse(pre[<span class="number">0</span>].innerHTML);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 使用这种方法时需要注意，iframe有跨域限制，创建出来的iframe的地址如果和当前页面地址不同源，会报错。这种情况下，建议大家在iframe的onload函数中，再次向后端请求一个接口获取文件地址，而不是直接去iframe里读取。或者返回这样的数据。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">	<span class="built_in">window</span>.top.window[callback](data)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">callback是和前端约定好的名字，上传完成后触发该函数并返回后端数据。</span><br></pre></td></tr></table></figure>
+<h1 id="第二种：使用formData上传。"><a href="#第二种：使用formData上传。" class="headerlink" title="第二种：使用formData上传。"></a>第二种：使用formData上传。</h1><p>用js构造form表单的数据，简单高效，但最低只兼容IE10，所以需要兼容IE9的童鞋们就略过这个方法吧。</p>
+<p>html:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">formData.append(<span class="string">"userid"</span>, userid);</span><br><span class="line">formData.append(<span class="string">"signature"</span>, signature);</span><br><span class="line">formData.append(<span class="string">"file"</span>, file); <span class="comment">//file是blob数据</span></span><br><span class="line"><span class="comment">//再用ajax发送formData到服务器即可，注意一定要是post方式上传</span></span><br></pre></td></tr></table></figure>
+<p>说明：第一种方法提到了创建多个type=‘hidden’的input来发送签名数据，这儿可以用formData.append方法来代替该操作，避免了dom中有多个input的情况出现。最后将file数据也append到formData发送到服务器即可完成上传。</p>
+<p>优点：由于这种方式是ajax上传，可以准确知道什么时候上传完成，也可以方便地接收到回调数据。</p>
+<p>缺点：兼容性差</p>
+<h1 id="第三种：使用fileReader读取文件数据进行上传。"><a href="#第三种：使用fileReader读取文件数据进行上传。" class="headerlink" title="第三种：使用fileReader读取文件数据进行上传。"></a>第三种：使用fileReader读取文件数据进行上传。</h1><p>HTML5的新api，兼容性也不是特别好，只兼容到了IE10。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fr = <span class="keyword">new</span> FileReader();</span><br><span class="line">	fr.readAsDataURL(file);</span><br><span class="line">	fr.onload = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> data= event.target.result; <span class="comment">//此处获得的data是base64格式的数据</span></span><br><span class="line">	img.src = data;</span><br><span class="line">	ajax(url,&#123;data&#125; ,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面获得的data可以用来实现图片上传前的本地预览，也可以用来发送base64数据给后端然后返回该数据块对应的地址。</p>
+<p>优点： 同第二种</p>
+<p>缺点：一次性发送大量的base64数据会导致浏览器卡顿，服务器端接收这样的数据可能也会出现问题。</p>
 
       
     </div>
@@ -538,7 +376,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="/2019/05/09/4.SQL/" title="SQL" target="_blank" rel="external">/2019/05/09/4.SQL/</a>
+      <a href="/2019/05/25/前端文件上传方式总结/" title="前端文件上传方式总结" target="_blank" rel="external">/2019/05/25/前端文件上传方式总结/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -586,12 +424,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/yyy/2019/05/09/2.1.1.JavaScript - 基础/" title="JavaScript - 基础"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/yyy/2019/05/25/HTTP协议详解/" title="HTTP协议详解"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/yyy/2019/05/09/3.正则/" title="正则表达式- 基础"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/yyy/2019/05/24/网页共用头部与尾部方法/" title="网页共用头部与尾部方法"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
